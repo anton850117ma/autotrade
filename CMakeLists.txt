@@ -9,7 +9,10 @@ project(autotrade LANGUAGES CSharp)
 # The .resx and other Properties files are optional here, but including them makes them visible in the VS solution for easy editing. 
 add_executable(${CMAKE_PROJECT_NAME}
     ${CMAKE_SOURCE_DIR}/src/Program.cs
-    ${CMAKE_SOURCE_DIR}/src/RayinVTSAPI.cs
+    ${CMAKE_SOURCE_DIR}/src/Utility.cs
+    ${CMAKE_SOURCE_DIR}/src/EventHandler.cs
+    ${CMAKE_SOURCE_DIR}/src/ConfigHandler.cs
+    ${CMAKE_SOURCE_DIR}/src/RayinAPI.cs
 )
 
 # Set the .NET Framework version for the executable.
@@ -43,4 +46,8 @@ set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_DOTNET_REFERENCES
     "System"
     "System.Runtime.InteropServices"
+)
+
+set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_PACKAGE_REFERENCES 
+    "Tommy_3.1.2"
 )
