@@ -1,15 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
 using Rayin;
 
 namespace AutoTrade
 {
-    public class EventHandler
+    public class Status
     {
-
+        public bool isLogined;
+        public bool isOrderConnected;
+        public bool isAckMatConnected;
+        public bool isQuoteConnected;
+    }
+    public class EventHandler : Status
+    {
         RayinAPI.OnLoginEvent? onLogin;
+        RayinAPI.OnConnectEvent? onConnect;
 
         public EventHandler()
         {
@@ -22,14 +29,19 @@ namespace AutoTrade
             RayinAPI.SetOnLoginEvent(onLogin);
         }
 
-        void OnLoginStatus(string status)
+        private void OnLoginStatus(string status)
         {
             if (status.IndexOf("<ret ") >= 0 &&
                 Utility.GetXMLValue(status, "status") != "OK")
             {
-                Console.WriteLine("Error: Login failed");
+                Console.WriteLine("Error: " + Utility.GetXMLValue(status, "msg"));
                 return;
             }
+            
+            isLogined = true;
+            // Interlocked.Exchange(ref isLogined, true);
+
+            Console.WriteLine("Status: Login OK");
 
             //下單連線 && 回報連線 && 行情連線
             if (RayinAPI.ConnectToOrderServer() &&
@@ -39,16 +51,26 @@ namespace AutoTrade
                 Console.WriteLine("Error: Connect failed");
             }
 
-            Console.WriteLine("Status: Login success");
+            Console.WriteLine("Status: Connect OK");
         }
 
-        public void Login()
+        public bool Login(bool use_multi, bool use_debug, int timeout,
+                          string host, int port, string account,
+                          string password)
         {
-            // RayinAPI.SetMultiThread(chk_enMultiThread.Checked);
-            // RayinAPI.SetDebugMode(true); //是否產生除錯log
-            // RayinAPI.SetRecvTimeout(int.Parse(tb_recv.Text));
-            // RayinAPI.SetServer(tb_ip.Text, int.Parse(tb_port.Text));
-            // RayinAPI.Login(tb_username.Text, tb_password.Text);
+            isLogined = false;
+            RayinAPI.SetMultiThread(use_multi);
+            RayinAPI.SetDebugMode(use_debug); //是否產生除錯log
+            RayinAPI.SetRecvTimeout(timeout);
+            RayinAPI.SetServer(host, port);
+            return RayinAPI.Login(account, password);
         }
+
+        public bool Logout()
+        {
+            return RayinAPI.Logout();
+        }
+
+
     }
 }

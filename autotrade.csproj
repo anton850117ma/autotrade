@@ -8,7 +8,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<Reference Include="RayinVTS.dll">
-			<HintPath>..\lib\RayinVTS.dll</HintPath>
+			<HintPath>RayinVTS.dll</HintPath>
 			<SpecificVersion>False</SpecificVersion>
 		</Reference>
 	</ItemGroup>

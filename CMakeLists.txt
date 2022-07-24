@@ -40,11 +40,12 @@ set(CMAKE_CSharp_FLAGS "/langversion:latest")
 
 # # If necessary, link in other library/DLL references, such as 3rd party libraries.
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY 
-    VS_DOTNET_REFERENCE_RayinVTS ${CMAKE_SOURCE_DIR}/lib/RayinVTS.dll)
+    VS_DOTNET_REFERENCE_RayinVTS RayinVTS.dll)
 
 # # Add in the .NET reference libraries.
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_DOTNET_REFERENCES
     "System"
+    "System.Threading"
     "System.Runtime.InteropServices"
 )
 

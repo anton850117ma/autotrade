@@ -54,6 +54,10 @@ namespace Rayin
         [DllImport("RayinVTS.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern bool Login(string account, string password);
 
+        //登入函數
+        [DllImport("RayinVTS.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        public static extern bool Logout();
+
         //下單連線函數
         [DllImport("RayinVTS.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern bool ConnectToOrderServer();
