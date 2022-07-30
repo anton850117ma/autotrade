@@ -11,7 +11,7 @@ namespace AutoTrade
         static void Main(string[] args)
         {
 
-            DataHandler dataHandler = new DataHandler("data");
+            DataHandler dataHandler = new DataHandler(@"data//測試環境參考價_上市.txt");
 
             // EventHandler handler = new EventHandler();
             // var login = handler.Login(true, 1000, "itstradeuat.pscnet.com.tw", 11002, "A100000261", "AA123456");

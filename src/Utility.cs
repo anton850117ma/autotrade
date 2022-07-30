@@ -7,6 +7,24 @@ namespace AutoTrade
 {
     public class Utility
     {
+
+        public enum IndexT30 {
+            Code = 1,
+            UpperPrice = 2,
+            ClosePrice = 3,
+            LowerPrice = 4,
+            TradeType = 6,
+            IsDisposed = 7,
+            IsMonitored = 13,
+            IsLimited = 14,
+            Category = 15
+        }
+
+        public const string DEF_NOREMAL_STRING = "正常";
+        public const string DEF_DISABLED_STRING = "不可";
+        public const int DEF_TARGET_CODE_LEN = 4;
+        
+
         //XMLText = XML電文完整內容  XMLName = XML欄位值
         public static string GetXMLValue(string XMLText, string XMLName)
         {
