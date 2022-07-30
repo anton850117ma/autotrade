@@ -1,8 +1,8 @@
 ﻿using System;
-using Tommy;
 using System.IO;
-using System.Text.RegularExpressions;
-using System.Runtime.InteropServices;
+using System.Reflection;
+// using System.Text.RegularExpressions;
+// using System.Runtime.InteropServices;
 
 namespace AutoTrade
 {
@@ -10,18 +10,14 @@ namespace AutoTrade
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            EventHandler handler = new EventHandler();
 
-            var login = handler.Login(true, true, 1000, "itstradeuat.pscnet.com.tw", 11002, "A100000261", "AA123456");
-            while(login);
-            
-            
+            DataHandler dataHandler = new DataHandler("data");
 
-            // StreamReader reader = File.OpenText("configuration.toml");
+            // EventHandler handler = new EventHandler();
+            // var login = handler.Login(true, 1000, "itstradeuat.pscnet.com.tw", 11002, "A100000261", "AA123456");
+            // while(login);
 
-            // Parse the table
-            // TomlTable table = TOML.Parse(reader);
+
 
         }
     }

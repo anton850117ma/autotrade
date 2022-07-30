@@ -37,7 +37,7 @@ namespace AutoTrade
                 Console.WriteLine("Error: " + Utility.GetXMLValue(status, "msg"));
                 return;
             }
-            
+
             isLogined = true;
             // Interlocked.Exchange(ref isLogined, true);
 
@@ -54,12 +54,11 @@ namespace AutoTrade
             Console.WriteLine("Status: Connect OK");
         }
 
-        public bool Login(bool use_multi, bool use_debug, int timeout,
+        public bool Login(bool use_debug, int timeout,
                           string host, int port, string account,
                           string password)
         {
             isLogined = false;
-            RayinAPI.SetMultiThread(use_multi);
             RayinAPI.SetDebugMode(use_debug); //是否產生除錯log
             RayinAPI.SetRecvTimeout(timeout);
             RayinAPI.SetServer(host, port);

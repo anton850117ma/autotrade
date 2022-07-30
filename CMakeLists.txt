@@ -11,7 +11,7 @@ add_executable(${CMAKE_PROJECT_NAME}
     ${CMAKE_SOURCE_DIR}/src/Program.cs
     ${CMAKE_SOURCE_DIR}/src/Utility.cs
     ${CMAKE_SOURCE_DIR}/src/EventHandler.cs
-    ${CMAKE_SOURCE_DIR}/src/ConfigHandler.cs
+    ${CMAKE_SOURCE_DIR}/src/DataHandler.cs
     ${CMAKE_SOURCE_DIR}/src/RayinAPI.cs
 )
 
@@ -45,10 +45,10 @@ set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY
 # # Add in the .NET reference libraries.
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_DOTNET_REFERENCES
     "System"
-    "System.Threading"
-    "System.Runtime.InteropServices"
+    # "System.Threading"
+    # "System.Runtime.InteropServices"
 )
 
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_PACKAGE_REFERENCES 
-    "Tommy_3.1.2"
+    "Tomlyn_0.15.0"
 )
