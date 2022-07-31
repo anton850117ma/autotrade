@@ -8,7 +8,8 @@ namespace AutoTrade
     public class Utility
     {
 
-        public enum IndexT30 {
+        public enum IndexT30
+        {
             Code = 1,
             UpperPrice = 2,
             ClosePrice = 3,
@@ -20,10 +21,20 @@ namespace AutoTrade
             Category = 15
         }
 
-        public const string DEF_NOREMAL_STRING = "正常";
-        public const string DEF_DISABLED_STRING = "不可";
+        public enum StockStatus {
+            New,
+            InstantAck,
+            NewAck,
+            Match,
+        }
+        public const string DEF_QUOTE_FILE = "Quotes.ini";
+        public const string DEF_NOREMAL_STR = "正常";
+        public const string DEF_DISABLED_STR = "不可";
+        public const string DEF_PRICE_STR = "price";
+        public const string DEF_AMOUNT_STR = "amount";
+        public const string DEF_TYPE_STR = "type";
         public const int DEF_TARGET_CODE_LEN = 4;
-        
+
 
         //XMLText = XML電文完整內容  XMLName = XML欄位值
         public static string GetXMLValue(string XMLText, string XMLName)
@@ -41,7 +52,7 @@ namespace AutoTrade
                 return ""; //無此欄位則回傳空白
             }
         }
-        
+
         // var cfg_string = File.OpenText(@"cfg\\settings.ini").ReadToEnd();
         // var cfg_toml = Toml.ToModel(cfg_string);
         // string strExeFilePath = Assembly.GetExecutingAssembly().Location;

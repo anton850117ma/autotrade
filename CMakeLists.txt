@@ -22,6 +22,9 @@ add_executable(${CMAKE_PROJECT_NAME}
 # Set the C# language version (defaults to 3.0).
 set(CMAKE_CSharp_FLAGS "/langversion:latest")
 
+# Disable warnings
+target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "/nowarn:8632")
+
 # Set the source file properties for Windows Forms use.
 # csharp_set_windows_forms_properties(
 #     Form1.cs
