@@ -1,90 +1,70 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.IO;
+using System.Text;
+using System.Threading;
+using System.Collections.Generic;
+using System.Net.Http;
 using Tomlyn;
 using Tomlyn.Model;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace AutoTrade
 {
     public class TargetT30
     {
-        string? name;
-        string? category;
-        Single? upperPrice;
-        Single? closePrice;
-        Single? lowerPrice;
-        string? tradeType;
-        bool? isDisposed;
-        bool? isMonitored;
-        bool? isLimited;
-        bool? isTradable;
+        public Utility.T30 type;
+        public Single? bullPrice;
+        public Single? ldcPrice;
+        public Single? bearPrice;
+        public char? dealType;
+        public char? disposeMark;
+        public char? monitorMark;
+        public char? limitMark;
+        public char? dayTradeMark;
 
-        public TargetT30(string name, string[] values)
+        public TargetT30(string values, Utility.T30 type)
         {
-            this.name = name;
-            this.category = values[(int)Utility.IndexT30.Category];
-            this.upperPrice = Convert.ToSingle(values[(int)Utility.IndexT30.UpperPrice]);
-            this.closePrice = Convert.ToSingle(values[(int)Utility.IndexT30.ClosePrice]);
-            this.lowerPrice = Convert.ToSingle(values[(int)Utility.IndexT30.LowerPrice]);
-            this.tradeType = values[(int)Utility.IndexT30.TradeType];
-
-            if (!values[(int)Utility.IndexT30.IsDisposed].Contains(Utility.DEF_NOREMAL_STR))
-                this.isDisposed = true;
-            else this.isDisposed = false;
-
-            if (values[(int)Utility.IndexT30.IsMonitored] != Utility.DEF_NOREMAL_STR)
-                this.isMonitored = true;
-            else this.isMonitored = false;
-
-            if (values[(int)Utility.IndexT30.IsLimited] != Utility.DEF_NOREMAL_STR)
-                this.isLimited = true;
-            else this.isLimited = false;
-
-            if (values[values.Length - 2] != Utility.DEF_DISABLED_STR)
-                this.isTradable = true;
-            else this.isTradable = false;
-
+            this.type = type;
+            this.bullPrice = Convert.ToSingle(values.Substring(6, 9)) / Utility.DEF_PRICE_FACTOR;
+            this.ldcPrice = Convert.ToSingle(values.Substring(15, 9)) / Utility.DEF_PRICE_FACTOR;
+            this.bearPrice = Convert.ToSingle(values.Substring(24, 9)) / Utility.DEF_PRICE_FACTOR;
+            this.dealType = values[41];
+            this.disposeMark = values[42];
+            this.monitorMark = values[43];
+            this.limitMark = values[44];
+            if (type == Utility.T30.TWSE)
+                this.dayTradeMark = values[86];
+            else this.dayTradeMark = values[87];
         }
     }
 
     public class Target
     {
-        Single? closePrice;
-        Single? upperPrice;
-        Single? lowerPrice;
-        Single? openPrice;
-        Single? maxPrice;
-        Single? minPrice;
-        Single? nowPrice;
-        int? totalAmount;
+        public Single? ldcPrice;
+        public Single? openPrice;
+        public Single? maxPrice;
+        public Single? minPrice;
+        public Single? nowPrice;
+        public int? totalAmount;
 
-        public void setTarget(Single today_price, Single upper_price, Single lower_price,
-                              Single open_price, Single max_price, Single min_price,
-                              Single now_price, int total_amount)
+        public void updateTarget(Single openPrice, Single maxPrice, Single minPrice,
+                                 Single nowPrice, int totalAmount)
         {
-            this.closePrice = today_price;
-            this.upperPrice = upper_price;
-            this.lowerPrice = lower_price;
-            this.openPrice = open_price;
-            this.maxPrice = max_price;
-            this.minPrice = min_price;
-            this.nowPrice = now_price;
-            this.totalAmount = total_amount;
+            this.openPrice = openPrice;
+            this.maxPrice = maxPrice;
+            this.minPrice = minPrice;
+            this.nowPrice = nowPrice;
+            this.totalAmount = totalAmount;
         }
 
         public Target(TomlTable table)
         {
-            this.closePrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["close"]);
-            this.upperPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["upper"]);
-            this.lowerPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["lower"]);
+            this.ldcPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["close"]);
             this.openPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["open"]);
             this.maxPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["max"]);
             this.minPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["min"]);
             this.totalAmount = Convert.ToInt32(table[Utility.DEF_AMOUNT_STR]);
-            this.nowPrice = this.closePrice;
+            // this.nowPrice = this.closePrice;
         }
     }
 
@@ -109,41 +89,47 @@ namespace AutoTrade
         Dictionary<string, Target>? targetQuoteMap;
         Dictionary<string, Stock>? targetStockMap;
 
-        public void initT30Map(string filename_T30)
+        public void initT30Map(DateTime time)
         {
-            var t30_path = Path.Combine(Directory.GetCurrentDirectory(), filename_T30);
-            var t30_reader = new StreamReader(t30_path, Encoding.GetEncoding("big5")); //950
+            // while (DateTime.Now.TimeOfDay.CompareTo(time.TimeOfDay) < 0)
+            // {
+            //     // Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+            //     // Console.Write("\rWaiting for T30 files...");
+            //     Thread.Sleep(1000);
+            // }
+            // var date = DateTime.Now.ToString("_yyyyMMdd");
             this.targetT30Map = new Dictionary<string, TargetT30>();
+            var date = "_20220801";
 
-            while (!t30_reader.EndOfStream)
+            var client = new HttpClient();
+
+            var responseT30S = client.GetAsync(Utility.DEF_T30_URL + "S" + date);
+            var contentT30S = responseT30S.Result.Content.ReadAsStreamAsync().Result;
+
+            var T30S = new StreamReader(contentT30S, Encoding.GetEncoding("big5")); //950
+            while (!T30S.EndOfStream)
             {
-                var first_line = t30_reader.ReadLine();
-                if (string.IsNullOrEmpty(first_line) ||
-                    string.IsNullOrWhiteSpace(first_line) ||
-                    first_line.Contains("結　束"))
+                var values = T30S.ReadLine();
+                if (!string.IsNullOrEmpty(values))
                 {
-                    continue;
-                }
-                else if (first_line.Contains("報表名稱"))
-                {
-                    for (var i = 0; i < 6; i++)
-                        t30_reader.ReadLine();
-                }
-                else
-                {
-                    var second_line = t30_reader.ReadLine();
-                    if (!string.IsNullOrEmpty(second_line))
-                    {
-                        var values = Regex.Split(first_line, @"\s{2,}");
-                        var name = Regex.Split(second_line, @"\s{8,}")[1];
-                        var code = values[(int)Utility.IndexT30.Code];
-                        if (code.Length == Utility.DEF_TARGET_CODE_LEN)
-                        {
-                            this.targetT30Map.Add(code, new TargetT30(name, values));
-                        }
-                    }
+                    this.targetT30Map.Add(values.Substring(0, 6), new TargetT30(values, Utility.T30.TWSE));
                 }
             }
+            Console.WriteLine(this.targetT30Map.Count);
+
+            var responseT30O = client.GetAsync(Utility.DEF_T30_URL + "O" + date);
+            var contentT30O = responseT30O.Result.Content.ReadAsStreamAsync().Result;
+
+            var T30O = new StreamReader(contentT30O, Encoding.GetEncoding("big5"));
+            while (!T30O.EndOfStream)
+            {
+                var values = T30O.ReadLine();
+                if (!string.IsNullOrEmpty(values))
+                {
+                    this.targetT30Map.Add(values.Substring(0, 6), new TargetT30(values, Utility.T30.TWSE));
+                }
+            }
+            Console.WriteLine(this.targetT30Map.Count);
         }
 
         public void initQuoteMap(string filename_quotes)
@@ -170,15 +156,12 @@ namespace AutoTrade
             }
         }
 
-        public DataHandler(string filename_T30, string filename_quotes, string filename_stocks)
+        public DataHandler(string filenameT30T, string filenameT30O,
+                           string filename_quotes, string filename_stocks)
         {
-            this.initT30Map(filename_T30);
+            this.initT30Map(new DateTime(2022, 8, 3, 8, 30, 0));
             this.initQuoteMap(filename_quotes);
             this.initStockMap(filename_stocks);
-
-            // Console.WriteLine(this.targetT30Map.Count);
-            // Console.WriteLine(this.targetQuoteMap.Count);
-            // Console.WriteLine(this.targetStockMap.Count);
         }
     }
 }

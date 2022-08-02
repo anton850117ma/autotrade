@@ -48,6 +48,7 @@ set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY
 # # Add in the .NET reference libraries.
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_DOTNET_REFERENCES
     "System"
+    "System.Net.Http"
     # "System.Threading"
     # "System.Runtime.InteropServices"
 )
