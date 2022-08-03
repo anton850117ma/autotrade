@@ -4,15 +4,69 @@ using System.Text;
 using System.Threading;
 using System.Collections.Generic;
 using System.Net.Http;
+using Newtonsoft.Json;
 using Tomlyn;
 using Tomlyn.Model;
 using System.Text.RegularExpressions;
 
 namespace AutoTrade
 {
-    public class TargetT30
+    public class Stock
     {
-        public Utility.T30 type;
+        public Utility.StockStatus? status;
+        public int? amount;
+        public int? buyTimes;
+        public int? sellTimes;
+        public Stock() { }
+        // public Stock(TomlTable table)
+        // {
+        //     this.amount = Convert.ToInt32(table[Utility.DEF_AMOUNT_STR]);
+        //     if (this.amount > 0)
+        //     {
+        //         this.buyTimes = 1;
+        //         this.sellTimes = 0;
+        //     }
+        //     else if (this.amount < 0)
+        //     {
+        //         this.buyTimes = 0;
+        //         this.sellTimes = 1;
+        //     }
+        //     else
+        //     {
+        //         this.buyTimes = 0;
+        //         this.sellTimes = 0;
+        //     }
+        // }
+
+        public Stock(dynamic stock)
+        {
+            this.amount = Convert.ToInt32(stock.amount);
+            if (this.amount > 0)
+            {
+                this.buyTimes = 1;
+                this.sellTimes = 0;
+            }
+            else if (this.amount < 0)
+            {
+                this.buyTimes = 0;
+                this.sellTimes = 1;
+            }
+            else
+            {
+                this.buyTimes = 0;
+                this.sellTimes = 0;
+            }
+        }
+    }
+    public class Target
+    {
+        public Utility.T30 marketType;
+        public Single? openPrice;
+        public Single? maxPrice;
+        public Single? minPrice;
+        public Single? nowPrice;
+        public int? totalAmount;
+        public Stock? stockData;
         public Single? bullPrice;
         public Single? ldcPrice;
         public Single? bearPrice;
@@ -22,9 +76,9 @@ namespace AutoTrade
         public char? limitMark;
         public char? dayTradeMark;
 
-        public TargetT30(string values, Utility.T30 type)
+        public Target(string values, Utility.T30 type)
         {
-            this.type = type;
+            this.marketType = type;
             this.bullPrice = Convert.ToSingle(values.Substring(6, 9)) / Utility.DEF_PRICE_FACTOR;
             this.ldcPrice = Convert.ToSingle(values.Substring(15, 9)) / Utility.DEF_PRICE_FACTOR;
             this.bearPrice = Convert.ToSingle(values.Substring(24, 9)) / Utility.DEF_PRICE_FACTOR;
@@ -35,20 +89,29 @@ namespace AutoTrade
             if (type == Utility.T30.TWSE)
                 this.dayTradeMark = values[86];
             else this.dayTradeMark = values[87];
+            this.stockData = new Stock();
         }
-    }
+        // public void updateFromRecord(TomlTable table)
+        // {
+        //     this.openPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["open"]);
+        //     this.maxPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["max"]);
+        //     this.minPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["min"]);
+        //     this.totalAmount = Convert.ToInt32(table[Utility.DEF_TOTAL_STR]);
+        //     this.stockData = new Stock((TomlTable)table[Utility.DEF_STOCK_STR]);
+        //     this.nowPrice = this.ldcPrice;
+        // }
+        public void updateFromRecord(dynamic target)
+        {
+            this.openPrice = Convert.ToSingle(target.price.open);
+            this.maxPrice = Convert.ToSingle(target.price.max);
+            this.minPrice = Convert.ToSingle(target.price.min);
+            this.totalAmount = Convert.ToInt32(target.total);
+            this.stockData = new Stock(target.stock);
+            this.nowPrice = this.ldcPrice;
+        }
 
-    public class Target
-    {
-        public Single? ldcPrice;
-        public Single? openPrice;
-        public Single? maxPrice;
-        public Single? minPrice;
-        public Single? nowPrice;
-        public int? totalAmount;
-
-        public void updateTarget(Single openPrice, Single maxPrice, Single minPrice,
-                                 Single nowPrice, int totalAmount)
+        public void updateFromQuote(Single openPrice, Single maxPrice, Single minPrice,
+                                    Single nowPrice, int totalAmount)
         {
             this.openPrice = openPrice;
             this.maxPrice = maxPrice;
@@ -56,50 +119,24 @@ namespace AutoTrade
             this.nowPrice = nowPrice;
             this.totalAmount = totalAmount;
         }
-
-        public Target(TomlTable table)
-        {
-            this.ldcPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["close"]);
-            this.openPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["open"]);
-            this.maxPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["max"]);
-            this.minPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["min"]);
-            this.totalAmount = Convert.ToInt32(table[Utility.DEF_AMOUNT_STR]);
-            // this.nowPrice = this.closePrice;
-        }
-    }
-
-    public class Stock
-    {
-        int? amount;
-        Single? matchPrice;
-        string? orderType;
-        Utility.StockStatus? status;
-
-        public Stock(TomlTable table)
-        {
-            this.amount = Convert.ToInt32(table[Utility.DEF_AMOUNT_STR]);
-            this.matchPrice = Convert.ToSingle(table[Utility.DEF_PRICE_STR]);
-            this.orderType = Convert.ToString(table[Utility.DEF_TYPE_STR]);
-        }
     }
 
     public class DataHandler
     {
-        Dictionary<string, TargetT30>? targetT30Map;
-        Dictionary<string, Target>? targetQuoteMap;
-        Dictionary<string, Stock>? targetStockMap;
+        public Dictionary<string, Target>? targetMap;
+        public dynamic? config;
 
-        public void initT30Map(DateTime time)
+        public void initTargetMap(TimeSpan time)
         {
-            // while (DateTime.Now.TimeOfDay.CompareTo(time.TimeOfDay) < 0)
-            // {
-            //     // Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
-            //     // Console.Write("\rWaiting for T30 files...");
-            //     Thread.Sleep(1000);
-            // }
-            // var date = DateTime.Now.ToString("_yyyyMMdd");
-            this.targetT30Map = new Dictionary<string, TargetT30>();
-            var date = "_20220801";
+            while (DateTime.Now.TimeOfDay.CompareTo(time) < 0)
+            {
+                // Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+                // Console.Write("\rWaiting for T30 files...");
+                Thread.Sleep(1000);
+            }
+            var date = DateTime.Now.ToString("_yyyyMMdd");
+            this.targetMap = new Dictionary<string, Target>();
+            // var date = "_20220801";
 
             var client = new HttpClient();
 
@@ -112,10 +149,9 @@ namespace AutoTrade
                 var values = T30S.ReadLine();
                 if (!string.IsNullOrEmpty(values))
                 {
-                    this.targetT30Map.Add(values.Substring(0, 6), new TargetT30(values, Utility.T30.TWSE));
+                    this.targetMap.Add(values.Substring(0, 6), new Target(values, Utility.T30.TWSE));
                 }
             }
-            Console.WriteLine(this.targetT30Map.Count);
 
             var responseT30O = client.GetAsync(Utility.DEF_T30_URL + "O" + date);
             var contentT30O = responseT30O.Result.Content.ReadAsStreamAsync().Result;
@@ -126,42 +162,46 @@ namespace AutoTrade
                 var values = T30O.ReadLine();
                 if (!string.IsNullOrEmpty(values))
                 {
-                    this.targetT30Map.Add(values.Substring(0, 6), new TargetT30(values, Utility.T30.TWSE));
+                    this.targetMap.Add(values.Substring(0, 6), new Target(values, Utility.T30.ROCO));
                 }
             }
-            Console.WriteLine(this.targetT30Map.Count);
         }
 
-        public void initQuoteMap(string filename_quotes)
+        public void fillTargetMap(string path_records)
         {
-            var targets = Toml.ToModel(File.ReadAllText(filename_quotes));
-            this.targetQuoteMap = new Dictionary<string, Target>();
+            dynamic? text = JsonConvert.DeserializeObject(File.ReadAllText(path_records));
+            if (text == null) return;
+            if (this.targetMap == null) return;
 
-            if (targets.Count > 0)
+            foreach (var target in text.targets)
             {
-                foreach (var target in targets)
-                    this.targetQuoteMap.Add(target.Key, new Target((TomlTable)target.Value));
+                var key = Convert.ToString(target.code);
+                if (this.targetMap.ContainsKey(key))
+                {
+                    this.targetMap[key].updateFromRecord(target);
+                }
             }
+
+            // var records = Toml.ToModel(File.ReadAllText(path_records));
+
+            // if (records.Count > 0 && this.targetMap != null)
+            // {
+            //     foreach (var record in records)
+            //     {
+            //         var key = record.Key.PadRight(6);
+            //         if (this.targetMap.ContainsKey(key))
+            //         {
+            //             this.targetMap[key].updateFromRecord((TomlTable)record.Value);
+            //         }
+            //     }
+            // }
         }
-
-        public void initStockMap(string filename_stocks)
+        public DataHandler(string path_settings, string path_records)
         {
-            var stocks = Toml.ToModel(File.ReadAllText(filename_stocks));
-            this.targetStockMap = new Dictionary<string, Stock>();
-
-            if (stocks.Count > 0)
-            {
-                foreach (var target in stocks)
-                    this.targetStockMap.Add(target.Key, new Stock((TomlTable)target.Value));
-            }
-        }
-
-        public DataHandler(string filenameT30T, string filenameT30O,
-                           string filename_quotes, string filename_stocks)
-        {
-            this.initT30Map(new DateTime(2022, 8, 3, 8, 30, 0));
-            this.initQuoteMap(filename_quotes);
-            this.initStockMap(filename_stocks);
+            this.config = JsonConvert.DeserializeObject(File.ReadAllText(path_settings));
+            if (this.config == null) return;
+            this.initTargetMap(TimeSpan.Parse(Convert.ToString(this.config.Login.time.download)));
+            this.fillTargetMap(path_records);
         }
     }
 }

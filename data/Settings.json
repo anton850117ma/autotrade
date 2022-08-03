@@ -1,0 +1,110 @@
+{
+  "Login": {
+    "host": "itstradeuat.pscnet.com.tw",
+    "port": 11002,
+    "account": "A100000261",
+    "password": "AA123456",
+    "time": {
+      "download": "08:30:00",
+      "start": "10:00:00",
+      "end": "17:00:00"
+    }
+  },
+  "Rules": {
+    "Exclude": {
+      "NotDayTrade": {
+        "enabled": true
+      },
+      "FullCash": {
+        "enabled": true
+      },
+      "Disposed": {
+        "enabled": true
+      },
+      "TradeAmount": {
+        "enabled": true,
+        "total": 200
+      },
+      "TradePrice": {
+        "enabled": true,
+        "price": {
+          "min": 10,
+          "max": 400
+        }
+      }
+    },
+    "Buy": {
+      "NowPrice": {
+        "enabled": true,
+        "time": {
+          "start": "09:00:00",
+          "end": "09:30:00"
+        },
+        "price": {
+          "close": {
+            "factor": 1.0666
+          },
+          "now": {
+            "compare": ">="
+          }
+        },
+        "stack": {
+          "amount": "zero"
+        },
+        "order": {
+          "cost": 400000,
+          "flag": "market",
+          "timeinforce": "ROD"
+        }
+      }
+    },
+    "Sell": {
+      "NowPrice1": {
+        "enabled": true,
+        "time": {
+          "start": "09:00:00",
+          "end": "13:30:00"
+        },
+        "price": {
+          "max": {
+            "factor": 0.9667
+          },
+          "now": {
+            "compare": "<="
+          }
+        },
+        "stack": {
+          "amount": "positive"
+        },
+        "order": {
+          "cost": -1,
+          "flag": "market",
+          "timeinforce": "ROD"
+        }
+      },
+      "NowPrice2": {
+        "enabled": true,
+        "time": {
+          "start": "10:00:00",
+          "end": "13:30:00"
+        },
+        "price": {
+          "bull": {
+            "factor": 1
+          },
+          "now": {
+            "compare": "<"
+          }
+        },
+        "stack": {
+          "amount": "positive"
+        },
+        "order": {
+          "cost": -1,
+          "flag": "market",
+          "timeinforce": "ROD"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "targets": [
+    {
+      "code": "2330  ",
+      "price": {
+        "open": 100,
+        "max": 110,
+        "min": 90
+      },
+      "total": 1000,
+      "stock": {
+        "amount": 0
+      }
+    },
+    {
+      "code": "0050  ",
+      "price": {
+        "open": 100,
+        "max": 110,
+        "min": 90
+      },
+      "total": 1000,
+      "stock": {
+        "amount": 10
+      }
+    }
+  ]
+}

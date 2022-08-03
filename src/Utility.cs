@@ -24,6 +24,8 @@ namespace AutoTrade
         public const string DEF_NOREMAL_STR = "正常";
         public const string DEF_DISABLED_STR = "不可";
         public const string DEF_PRICE_STR = "price";
+        public const string DEF_TOTAL_STR = "total";
+        public const string DEF_STOCK_STR = "stock";
         public const string DEF_AMOUNT_STR = "amount";
         public const string DEF_TYPE_STR = "type";
         public const int DEF_TARGET_CODE_LEN = 4;

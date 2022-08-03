@@ -49,10 +49,12 @@ set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_DOTNET_REFERENCES
     "System"
     "System.Net.Http"
+    "Microsoft.CSharp"
     # "System.Threading"
     # "System.Runtime.InteropServices"
 )
 
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_PACKAGE_REFERENCES 
-    "Tomlyn_0.15.0"
+    "Tomlyn_0.15.0",
+    "Newtonsoft.Json_13.0.1"
 )

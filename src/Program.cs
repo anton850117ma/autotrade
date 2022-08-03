@@ -10,18 +10,14 @@ namespace AutoTrade
     {
         static void Main(string[] args)
         {
+            var settings = @"data//Settings.json";
+            var records = @"data//Records.json";
+            var dataHandler = new DataHandler(settings, records);
             
-            string T30T = @"data//ASCT30S_20220801.txt";
-            string T30O = @"data//ASCT30O_20220801.txt";
-            string quotes = @"data//Quotes.ini";
-            string stocks = @"data//Stocks.ini";
-            DataHandler dataHandler = new DataHandler(T30T, T30O, quotes, stocks);
-
-            // EventHandler handler = new EventHandler();
-            // var login = handler.Login(true, 1000, "itstradeuat.pscnet.com.tw", 11002, "A100000261", "AA123456");
+            // var eventHandler = new EventHandler();
+            // var login = handler.Login(true, 1000, 
+            // "itstradeuat.pscnet.com.tw", 11002, "A100000261", "AA123456");
             // while(login);
-
-
 
         }
     }
