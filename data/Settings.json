@@ -2,6 +2,8 @@
   "Login": {
     "host": "itstradeuat.pscnet.com.tw",
     "port": 11002,
+    "debug": true,
+    "timeout": 5,
     "account": "A100000261",
     "password": "AA123456",
     "time": {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 // using System.Text.RegularExpressions;
 // using System.Runtime.InteropServices;
 
@@ -14,11 +13,15 @@ namespace AutoTrade
             var records = @"data//Records.json";
             var dataHandler = new DataHandler(settings, records);
             
-            // var eventHandler = new EventHandler();
-            // var login = handler.Login(true, 1000, 
-            // "itstradeuat.pscnet.com.tw", 11002, "A100000261", "AA123456");
-            // while(login);
+            if (dataHandler.config == null) return;
+            var eventHandler = new EventHandler(dataHandler.config.Login);
 
+            if (!eventHandler.login()) return;
+            while(!eventHandler.isLogined);
+            
+            if (!eventHandler.logout()) return;
+            
+            dataHandler.storeRecords();
         }
     }
 }

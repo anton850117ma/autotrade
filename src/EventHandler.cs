@@ -15,21 +15,23 @@ namespace AutoTrade
     }
     public class EventHandler : Status
     {
+        dynamic? config;
         RayinAPI.OnLoginEvent? onLogin;
         RayinAPI.OnConnectEvent? onConnect;
 
-        public EventHandler()
+        public EventHandler(dynamic? config)
         {
-            RegisterEvents();
+            this.config = config;
+            registerEvents();
         }
 
-        public void RegisterEvents()
+        public void registerEvents()
         {
-            onLogin = new RayinAPI.OnLoginEvent(OnLoginStatus);
+            onLogin = new RayinAPI.OnLoginEvent(onLoginStatus);
             RayinAPI.SetOnLoginEvent(onLogin);
         }
 
-        private void OnLoginStatus(string status)
+        private void onLoginStatus(string status)
         {
             if (status.IndexOf("<ret ") >= 0 &&
                 Utility.GetXMLValue(status, "status") != "OK")
@@ -38,12 +40,9 @@ namespace AutoTrade
                 return;
             }
 
-            isLogined = true;
-            // Interlocked.Exchange(ref isLogined, true);
-
+            this.isLogined = true;
             Console.WriteLine("Status: Login OK");
 
-            //下單連線 && 回報連線 && 行情連線
             if (RayinAPI.ConnectToOrderServer() &&
                 RayinAPI.ConnectToAckMatServer() &&
                 RayinAPI.ConnectToQuoteServer())
@@ -54,20 +53,27 @@ namespace AutoTrade
             Console.WriteLine("Status: Connect OK");
         }
 
-        public bool Login(bool use_debug, int timeout,
-                          string host, int port, string account,
-                          string password)
+        public bool login()
         {
+            if (this.config == null) return false;
             isLogined = false;
-            RayinAPI.SetDebugMode(use_debug); //是否產生除錯log
-            RayinAPI.SetRecvTimeout(timeout);
-            RayinAPI.SetServer(host, port);
-            return RayinAPI.Login(account, password);
+            RayinAPI.SetDebugMode(Convert.ToBoolean(this.config.debug));
+            RayinAPI.SetRecvTimeout(Convert.ToInt32(this.config.timeout));
+            RayinAPI.SetServer(
+                    Convert.ToString(this.config.host), Convert.ToInt32(this.config.port));
+            return RayinAPI.Login(
+                    Convert.ToString(this.config.account), Convert.ToString(this.config.password));
         }
 
-        public bool Logout()
+        public bool logout()
         {
-            return RayinAPI.Logout();
+            var result = RayinAPI.Logout();
+            if (result)
+            {
+                this.isLogined = false;
+                Console.WriteLine("Status: Logout OK");
+            }
+            return result;
         }
 
 

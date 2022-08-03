@@ -2,11 +2,10 @@ using System;
 using System.IO;
 using System.Text;
 using System.Threading;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
-using Tomlyn;
-using Tomlyn.Model;
 using System.Text.RegularExpressions;
 
 namespace AutoTrade
@@ -14,30 +13,15 @@ namespace AutoTrade
     public class Stock
     {
         public Utility.StockStatus? status;
-        public int? amount;
-        public int? buyTimes;
-        public int? sellTimes;
-        public Stock() { }
-        // public Stock(TomlTable table)
-        // {
-        //     this.amount = Convert.ToInt32(table[Utility.DEF_AMOUNT_STR]);
-        //     if (this.amount > 0)
-        //     {
-        //         this.buyTimes = 1;
-        //         this.sellTimes = 0;
-        //     }
-        //     else if (this.amount < 0)
-        //     {
-        //         this.buyTimes = 0;
-        //         this.sellTimes = 1;
-        //     }
-        //     else
-        //     {
-        //         this.buyTimes = 0;
-        //         this.sellTimes = 0;
-        //     }
-        // }
-
+        public int amount;
+        public int buyTimes;
+        public int sellTimes;
+        public Stock()
+        {
+            this.amount = 0;
+            this.buyTimes = 0;
+            this.sellTimes = 0;
+        }
         public Stock(dynamic stock)
         {
             this.amount = Convert.ToInt32(stock.amount);
@@ -58,27 +42,68 @@ namespace AutoTrade
             }
         }
     }
+
     public class Target
     {
+        public class price
+        {
+            public Single open;
+            public Single max;
+            public Single min;
+            public price(Target target)
+            {
+                this.open = target.openPrice;
+                this.max = target.maxPrice;
+                this.min = target.minPrice;
+            }
+        }
+        public class stock
+        {
+            public int amount;
+            public stock(Target target)
+            {
+                this.amount = target.stockData.amount;
+            }
+        }
+        public class Record
+        {
+            public string code;
+            public price price;
+            public int total;
+            public stock stock;
+
+            public Record(string code, Target target)
+            {
+                this.code = code;
+                this.price = new price(target);
+                this.total = target.totalAmount;
+                this.stock = new stock(target);
+            }
+        }
+
         public Utility.T30 marketType;
-        public Single? openPrice;
-        public Single? maxPrice;
-        public Single? minPrice;
-        public Single? nowPrice;
-        public int? totalAmount;
-        public Stock? stockData;
-        public Single? bullPrice;
-        public Single? ldcPrice;
-        public Single? bearPrice;
-        public char? dealType;
-        public char? disposeMark;
-        public char? monitorMark;
-        public char? limitMark;
-        public char? dayTradeMark;
+        public Single openPrice;
+        public Single maxPrice;
+        public Single minPrice;
+        public Single nowPrice;
+        public int totalAmount;
+        public Stock stockData;
+        public Single bullPrice;
+        public Single ldcPrice;
+        public Single bearPrice;
+        public char dealType;
+        public char disposeMark;
+        public char monitorMark;
+        public char limitMark;
+        public char dayTradeMark;
 
         public Target(string values, Utility.T30 type)
         {
             this.marketType = type;
+            this.openPrice = 0;
+            this.maxPrice = 0;
+            this.minPrice = 0;
+            this.totalAmount = 0;
             this.bullPrice = Convert.ToSingle(values.Substring(6, 9)) / Utility.DEF_PRICE_FACTOR;
             this.ldcPrice = Convert.ToSingle(values.Substring(15, 9)) / Utility.DEF_PRICE_FACTOR;
             this.bearPrice = Convert.ToSingle(values.Substring(24, 9)) / Utility.DEF_PRICE_FACTOR;
@@ -86,20 +111,12 @@ namespace AutoTrade
             this.disposeMark = values[42];
             this.monitorMark = values[43];
             this.limitMark = values[44];
+            this.nowPrice = this.ldcPrice;
             if (type == Utility.T30.TWSE)
                 this.dayTradeMark = values[86];
             else this.dayTradeMark = values[87];
             this.stockData = new Stock();
         }
-        // public void updateFromRecord(TomlTable table)
-        // {
-        //     this.openPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["open"]);
-        //     this.maxPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["max"]);
-        //     this.minPrice = Convert.ToSingle(((TomlTable)table[Utility.DEF_PRICE_STR])["min"]);
-        //     this.totalAmount = Convert.ToInt32(table[Utility.DEF_TOTAL_STR]);
-        //     this.stockData = new Stock((TomlTable)table[Utility.DEF_STOCK_STR]);
-        //     this.nowPrice = this.ldcPrice;
-        // }
         public void updateFromRecord(dynamic target)
         {
             this.openPrice = Convert.ToSingle(target.price.open);
@@ -107,7 +124,6 @@ namespace AutoTrade
             this.minPrice = Convert.ToSingle(target.price.min);
             this.totalAmount = Convert.ToInt32(target.total);
             this.stockData = new Stock(target.stock);
-            this.nowPrice = this.ldcPrice;
         }
 
         public void updateFromQuote(Single openPrice, Single maxPrice, Single minPrice,
@@ -125,6 +141,7 @@ namespace AutoTrade
     {
         public Dictionary<string, Target>? targetMap;
         public dynamic? config;
+        public string recordPath;
 
         public void initTargetMap(TimeSpan time)
         {
@@ -173,7 +190,7 @@ namespace AutoTrade
             if (text == null) return;
             if (this.targetMap == null) return;
 
-            foreach (var target in text.targets)
+            foreach (var target in text)
             {
                 var key = Convert.ToString(target.code);
                 if (this.targetMap.ContainsKey(key))
@@ -181,23 +198,29 @@ namespace AutoTrade
                     this.targetMap[key].updateFromRecord(target);
                 }
             }
+        }
+        public void storeRecords()
+        {
+            string strPath = Assembly.GetExecutingAssembly().Location;
+            string? strWorkPath = Path.GetDirectoryName(strPath);
+            if (strWorkPath == null) return;
 
-            // var records = Toml.ToModel(File.ReadAllText(path_records));
+            var path = Path.Combine(strWorkPath, "Records.json");
+            var records = new List<Target.Record>();
 
-            // if (records.Count > 0 && this.targetMap != null)
-            // {
-            //     foreach (var record in records)
-            //     {
-            //         var key = record.Key.PadRight(6);
-            //         if (this.targetMap.ContainsKey(key))
-            //         {
-            //             this.targetMap[key].updateFromRecord((TomlTable)record.Value);
-            //         }
-            //     }
-            // }
+            if (this.targetMap == null) return;
+
+            foreach (var target in this.targetMap)
+            {
+                records.Add(new Target.Record(target.Key, target.Value));
+            }
+
+            string text = JsonConvert.SerializeObject(records, Formatting.Indented);
+            File.WriteAllText(path, text);
         }
         public DataHandler(string path_settings, string path_records)
         {
+            this.recordPath = path_records;
             this.config = JsonConvert.DeserializeObject(File.ReadAllText(path_settings));
             if (this.config == null) return;
             this.initTargetMap(TimeSpan.Parse(Convert.ToString(this.config.Login.time.download)));
