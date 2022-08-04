@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
-using System.Text.RegularExpressions;
 
 namespace AutoTrade
 {
@@ -135,6 +134,19 @@ namespace AutoTrade
             this.nowPrice = nowPrice;
             this.totalAmount = totalAmount;
         }
+        public void updateFromQuoteEx(Single todayPrice, Single bullPrice, Single bearPrice,
+                                      Single openPrice, Single maxPrice, Single minPrice,
+                                      Single nowPrice, int totalAmount)
+        {
+            this.ldcPrice = todayPrice;
+            this.bullPrice = bullPrice;
+            this.bearPrice = bearPrice;
+            this.openPrice = openPrice;
+            this.maxPrice = maxPrice;
+            this.minPrice = minPrice;
+            this.nowPrice = nowPrice;
+            this.totalAmount = totalAmount;
+        }
     }
 
     public class DataHandler
@@ -148,7 +160,7 @@ namespace AutoTrade
             while (DateTime.Now.TimeOfDay.CompareTo(time) < 0)
             {
                 // Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
-                // Console.Write("\rWaiting for T30 files...");
+                Console.Write("\rWaiting for T30 files...");
                 Thread.Sleep(1000);
             }
             var date = DateTime.Now.ToString("_yyyyMMdd");
@@ -160,7 +172,10 @@ namespace AutoTrade
             var responseT30S = client.GetAsync(Utility.DEF_T30_URL + "S" + date);
             var contentT30S = responseT30S.Result.Content.ReadAsStreamAsync().Result;
 
-            var T30S = new StreamReader(contentT30S, Encoding.GetEncoding("big5")); //950
+            // var path = Path.Combine(Directory.GetCurrentDirectory(), @"data\\ASCT30S_20220801.txt");
+            // var T30S = new StreamReader(path); //950
+            // var T30S = new StreamReader(contentT30S, Encoding.GetEncoding("big5")); //950
+            var T30S = new StreamReader(contentT30S);
             while (!T30S.EndOfStream)
             {
                 var values = T30S.ReadLine();
@@ -173,7 +188,7 @@ namespace AutoTrade
             var responseT30O = client.GetAsync(Utility.DEF_T30_URL + "O" + date);
             var contentT30O = responseT30O.Result.Content.ReadAsStreamAsync().Result;
 
-            var T30O = new StreamReader(contentT30O, Encoding.GetEncoding("big5"));
+            var T30O = new StreamReader(contentT30O);
             while (!T30O.EndOfStream)
             {
                 var values = T30O.ReadLine();

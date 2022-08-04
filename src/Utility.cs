@@ -34,7 +34,7 @@ namespace AutoTrade
 
 
         //XMLText = XML電文完整內容  XMLName = XML欄位值
-        public static string GetXMLValue(string XMLText, string XMLName)
+        public static string getXMLValue(string XMLText, string XMLName)
         {
             int pos = XMLText.ToLower().IndexOf(XMLName.ToLower() + "='");
             if (pos > 0)
