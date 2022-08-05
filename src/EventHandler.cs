@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Rayin;
@@ -18,6 +19,7 @@ namespace AutoTrade
     {
         dynamic? config;
         List<string> logs;
+        int reportCount;
         RayinAPI.OnLoginEvent? onLogin;
         RayinAPI.OnConnectEvent? onOdrConnect;
         RayinAPI.OnConnectEvent? onAckMatConnect;
@@ -35,10 +37,10 @@ namespace AutoTrade
 
         private void addLog(string message)
         {
-            lock (logs)
-            {
-                logs.Add(DateTime.Now.ToString("HH:mm:ss.fff") + " " + message);
-            }
+            // lock (logs)
+            // {
+            //     logs.Add(DateTime.Now.ToString("HH:mm:ss.fff") + " " + message);
+            // }
         }
         private void OnLogin(string status)
         {
@@ -70,13 +72,13 @@ namespace AutoTrade
         private void OnOdrError(int errCode, string errMsg)
         {
             // TODO: should handle stock
-            addLog("下單線路異常: " + errCode.ToString() + "," + errMsg);
+            addLog("下單線路異常: " + errCode.ToString() + " " + errMsg);
         }
         private void OnAckMatConnect()
         {
             this.isAckMatConnected = true;
             // do not refill order report
-            RayinAPI.Recover("EXCEL");
+            RayinAPI.Recover(this.reportCount.ToString());
             addLog("主動回報線路已連線");
         }
         private void OnAckMatDisConnect()
@@ -86,7 +88,7 @@ namespace AutoTrade
         }
         private void OnAckMatError(int errCode, string errMsg)
         {
-            addLog("主動回報線路異常: " + errCode.ToString() + "," + errMsg);
+            addLog("主動回報線路異常: " + errCode.ToString() + " " + errMsg);
         }
         private void OnQuoteConnect()
         {
@@ -101,11 +103,69 @@ namespace AutoTrade
         private void OnNewQuote(string NewQuote)
         {
             string[] args = Regex.Split(NewQuote, @"\|\|", RegexOptions.IgnoreCase);
-            addLog("NewQuote:[" + NewQuote + "]");
+            // TODO: from here
+            // addLog("NewQuote:[" + NewQuote + "]");
+        }
+        public void OnInstantAck(string ExecType, string ClOrdId, string BranchId,
+                                 string Account, string OrderDate, string OrderTime,
+                                 string OrderID, string Symbol, int ExCode,
+                                 string Side, string OrdType, int PriceFlag, Single Price,
+                                 int OrderQty, int BeforeQty, int AfterQty,
+                                 string TimeInForce, string errCode, string errMsg)
+        {
+            // only handle new orders
+            if (ExecType == "O")
+            {
+                if (errCode != string.Empty && errCode != "00000000")
+                {
+                    //TODO: from here
+                    // restore orderAmount with OrderQty
+                    // restore buyTimes or sellTimes with Side
+                    addLog("InstantAck:" + OrderID + " " + errMsg);
+                }
+                else
+                {
+                    addLog("InstantAck:" + OrderID + " " + OrderDate + " " + OrderTime);
+                }
+            }
+        }
+        public void OnNewAck(string LineNo, string ClOrdId, string OrgClOrdId,
+                             string BranchId, string Account, string OrderDate,
+                             string OrderTime, string OrderID, string Symbol,
+                             int ExCode, string Side, string OrdType, int PriceFlag,
+                             Single Price, int OrderQty, string errCode, string errMsg,
+                             [MarshalAs(UnmanagedType.AnsiBStr)] string ExecType,
+                             int BeforeQty, int AfterQty, string TimeInForce, string UserData)
+        {
+            // only handle new orders
+            if (ExecType == "O")
+            {
+                if (errCode != string.Empty && errCode != "00000000")
+                {
+                    //TODO: from here
+                    // restore orderAmount with OrderQty
+                    // restore buyTimes or sellTimes with Side
+                    addLog("NewAck:" + OrderID + " " + errMsg);
+                }
+                else
+                {
+                    addLog("NewAck:" + OrderID + " " + OrderDate + " " + OrderTime);
+                }
+            }
+        }
+        public void OnNewMat(string LineNo, string BranchId, string Account,
+                             string OrderID, string Symbol, int ExCode,
+                             string Side, string OrdType, string MatTime,
+                             Single MatPrice, int MatQty, string MatSeq)
+        {
+            var quantity = MatQty / 1000;
+            //TODO: from here
+            // update matchAmount with quantity
+            addLog("NewMat:" + OrderID + " " + MatPrice.ToString() + " " + quantity.ToString());
         }
         private void OnMsgAlertEvent(int errCode, string errMsg)
         {
-            addLog("MsgAlert:" + errCode.ToString() + "," + errMsg);
+            addLog("MsgAlert:" + errCode.ToString() + " " + errMsg);
         }
         private void registerEvents()
         {
@@ -130,14 +190,14 @@ namespace AutoTrade
             onQuoteDisconnect = new RayinAPI.OnDisConnectEvent(OnQuoteDisConnect);
             RayinAPI.SetOnQuoteDisConnectEvent(onQuoteDisconnect);
 
-            // onInstantAck = new RayinAPI.OnInstantAckEvent(OnInstantAck);
-            // RayinAPI.SetOnInstantAckEvent(onInstantAck);
+            onInstantAck = new RayinAPI.OnInstantAckEvent(OnInstantAck);
+            RayinAPI.SetOnInstantAckEvent(onInstantAck);
 
-            // onNewAck = new RayinAPI.OnNewAckEvent(OnNewAck);
-            // RayinAPI.SetNewAckEvent(onNewAck);
+            onNewAck = new RayinAPI.OnNewAckEvent(OnNewAck);
+            RayinAPI.SetNewAckEvent(onNewAck);
 
-            // onNewMat = new RayinAPI.OnNewMatEvent(OnNewMat);
-            // RayinAPI.SetNewMatEvent(onNewMat);
+            onNewMat = new RayinAPI.OnNewMatEvent(OnNewMat);
+            RayinAPI.SetNewMatEvent(onNewMat);
 
             onNewQuote = new RayinAPI.OnNewQuoteEvent(OnNewQuote);
             RayinAPI.SetNewQuoteEvent(onNewQuote);
@@ -155,12 +215,24 @@ namespace AutoTrade
         {
             this.config = config;
             this.logs = new List<string>();
+            this.reportCount = 0;
             registerEvents();
         }
         public void registerTargets(dynamic rules, ref Dictionary<string, Target> targets)
         {
-            Console.WriteLine(targets.Count);
+            // 代號長度
+            if (Convert.ToBoolean(rules.Exclude.IDLength.enabled))
+            {
+                var length = Convert.ToInt32(rules.Exclude.IDLength.length);
+                List<string> removals = (from target in targets
+                                         where target.Key.Count(c => !Char.IsWhiteSpace(c)) > length
+                                         select target.Key).ToList();
 
+                foreach (var removal in removals)
+                {
+                    targets.Remove(removal);
+                }
+            }
             // 當沖註記
             if (Convert.ToBoolean(rules.Exclude.NotDayTrade.enabled))
             {
@@ -226,8 +298,6 @@ namespace AutoTrade
             //     }
             // }
 
-            Console.WriteLine(targets.Count);
-
             foreach (var target in targets)
             {
                 var errCode = Marshal.StringToHGlobalAnsi("");
@@ -237,7 +307,7 @@ namespace AutoTrade
                 var msg = Marshal.PtrToStringAnsi(errMsg);
                 if (code == "00" || code == " ")
                     Console.WriteLine("訂閱行情成功: " + target.Key);
-                else Console.WriteLine("訂閱行情失敗: " + code + " " + msg);
+                else Console.WriteLine("訂閱行情失敗: " + target.Key + " " + code + " " + msg);
             }
         }
         public bool login()
@@ -245,10 +315,9 @@ namespace AutoTrade
             if (this.config == null) return false;
             isLogined = false;
 
-            // From here
-            var time = Convert.ToDateTime(this.config.time.start);
-            Console.WriteLine(time);
-            // while(DateTime.Now.TimeOfDay.CompareTo(time) < 0)
+            var start = DateTime.ParseExact(Convert.ToString(this.config.time.start), "HH:mm:ss", null);
+            while (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) < 0)
+                Thread.Sleep(100);
 
             RayinAPI.SetDebugMode(Convert.ToBoolean(this.config.debug));
             RayinAPI.SetRecvTimeout(Convert.ToInt32(this.config.timeout));
@@ -257,7 +326,14 @@ namespace AutoTrade
             return RayinAPI.Login(
                     Convert.ToString(this.config.account), Convert.ToString(this.config.password));
         }
+        public bool shouldLogout()
+        {
 
+            if (this.config == null) return false;
+            var end = DateTime.ParseExact(Convert.ToString(this.config.time.end), "HH:mm:ss", null);
+            if (DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0) return false;
+            else return true;
+        }
         public bool logout()
         {
             var result = RayinAPI.Logout();

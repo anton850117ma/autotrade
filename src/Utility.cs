@@ -14,12 +14,6 @@ namespace AutoTrade
             ROCO
         }
 
-        public enum StockStatus {
-            New,
-            InstantAck,
-            NewAck,
-            Match,
-        }
         public const string DEF_QUOTE_FILE = "Quotes.ini";
         public const string DEF_NOREMAL_STR = "正常";
         public const string DEF_DISABLED_STR = "不可";

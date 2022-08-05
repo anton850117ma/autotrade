@@ -11,25 +11,27 @@ namespace AutoTrade
 {
     public class Stock
     {
-        public Utility.StockStatus? status;
-        public int amount;
+        public int orderAmount;
+        public int matchAmount;
         public int buyTimes;
         public int sellTimes;
         public Stock()
         {
-            this.amount = 0;
+            this.orderAmount = 0;
+            this.matchAmount = 0;
             this.buyTimes = 0;
             this.sellTimes = 0;
         }
         public Stock(dynamic stock)
         {
-            this.amount = Convert.ToInt32(stock.amount);
-            if (this.amount > 0)
+            this.orderAmount = Convert.ToInt32(stock.amount);
+            this.matchAmount = this.orderAmount;
+            if (this.orderAmount > 0)
             {
                 this.buyTimes = 1;
                 this.sellTimes = 0;
             }
-            else if (this.amount < 0)
+            else if (this.orderAmount < 0)
             {
                 this.buyTimes = 0;
                 this.sellTimes = 1;
@@ -61,7 +63,7 @@ namespace AutoTrade
             public int amount;
             public stock(Target target)
             {
-                this.amount = target.stockData.amount;
+                this.amount = target.stockData.matchAmount;
             }
         }
         public class Record
@@ -161,7 +163,7 @@ namespace AutoTrade
             {
                 // Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
                 Console.Write("\rWaiting for T30 files...");
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
             }
             var date = DateTime.Now.ToString("_yyyyMMdd");
             this.targetMap = new Dictionary<string, Target>();

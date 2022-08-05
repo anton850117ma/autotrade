@@ -16,7 +16,7 @@ namespace AutoTrade
             if (dataHandler.config == null) return;
             var eventHandler = new EventHandler(dataHandler.config.Login);
 
-            if (!eventHandler.login()) return;
+            eventHandler.login();
             // while(!eventHandler.isLogined);
 
             eventHandler.registerTargets(dataHandler.config.Rules, ref dataHandler.targetMap);
