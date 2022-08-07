@@ -4,13 +4,19 @@
     "port": 11002,
     "debug": true,
     "timeout": 5,
-    "account": "A100000261",
+    "username": "A100000261",
     "password": "AA123456",
+    "subcomp": "5850",
+    "account": "8888945",
     "time": {
       "download": "08:30:00",
       "start": "10:00:00",
       "end": "17:00:00"
     }
+  },
+  "T30" : {
+    "TSE": "http://download.pscnet.com.tw/download/ap/T30/ASCT30S_",
+    "OTC": "http://download.pscnet.com.tw/download/ap/T30/ASCT30O_"
   },
   "Rules": {
     "Exclude": {
@@ -46,6 +52,9 @@
           "start": "09:00:00",
           "end": "09:30:00"
         },
+        "stock": {
+          "amount": 0
+        },
         "price": {
           "close": {
             "factor": 1.0666
@@ -53,9 +62,6 @@
           "now": {
             "compare": ">="
           }
-        },
-        "stack": {
-          "amount": "zero"
         },
         "order": {
           "cost": 400000,
@@ -71,6 +77,9 @@
           "start": "09:00:00",
           "end": "13:30:00"
         },
+        "stock": {
+          "amount": 1
+        },
         "price": {
           "max": {
             "factor": 0.9667
@@ -78,9 +87,6 @@
           "now": {
             "compare": "<="
           }
-        },
-        "stack": {
-          "amount": "positive"
         },
         "order": {
           "cost": -1,
@@ -94,6 +100,9 @@
           "start": "10:00:00",
           "end": "13:30:00"
         },
+        "stock": {
+          "amount": 1
+        },
         "price": {
           "bull": {
             "factor": 1
@@ -101,9 +110,6 @@
           "now": {
             "compare": "<"
           }
-        },
-        "stack": {
-          "amount": "positive"
         },
         "order": {
           "cost": -1,

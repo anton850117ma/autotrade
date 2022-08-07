@@ -11,15 +11,12 @@ namespace AutoTrade
         {
             var settings = @"data//Settings.json";
             var records = @"data//Records.json";
-            var dataHandler = new DataHandler(settings, records);
-
-            if (dataHandler.config == null) return;
-            var eventHandler = new EventHandler(dataHandler.config.Login);
+            var eventHandler = new EventHandler(new DataHandler(settings, records));
 
             eventHandler.login();
             // while(!eventHandler.isLogined);
 
-            eventHandler.registerTargets(dataHandler.config.Rules, ref dataHandler.targetMap);
+            eventHandler.registerTargets();
 
             // if (!eventHandler.logout()) return;
 

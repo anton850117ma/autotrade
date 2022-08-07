@@ -157,21 +157,24 @@ namespace AutoTrade
         public dynamic? config;
         public string recordPath;
 
-        public void initTargetMap(TimeSpan time)
-        {
+        public void initTargetMap()
+        {   
+            if (this.config == null) return;
+            var time = TimeSpan.Parse(Convert.ToString(this.config.Login.time.download));
+
             while (DateTime.Now.TimeOfDay.CompareTo(time) < 0)
             {
                 // Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
                 Console.Write("\rWaiting for T30 files...");
                 Thread.Sleep(100);
             }
-            var date = DateTime.Now.ToString("_yyyyMMdd");
+            var date = DateTime.Now.ToString("yyyyMMdd");
             this.targetMap = new Dictionary<string, Target>();
             // var date = "_20220801";
 
             var client = new HttpClient();
 
-            var responseT30S = client.GetAsync(Utility.DEF_T30_URL + "S" + date);
+            var responseT30S = client.GetAsync(Convert.ToString(this.config.T30.TSE) + date);
             var contentT30S = responseT30S.Result.Content.ReadAsStreamAsync().Result;
 
             // var path = Path.Combine(Directory.GetCurrentDirectory(), @"data\\ASCT30S_20220801.txt");
@@ -187,7 +190,7 @@ namespace AutoTrade
                 }
             }
 
-            var responseT30O = client.GetAsync(Utility.DEF_T30_URL + "O" + date);
+            var responseT30O = client.GetAsync(Convert.ToString(this.config.T30.OTC) + date);
             var contentT30O = responseT30O.Result.Content.ReadAsStreamAsync().Result;
 
             var T30O = new StreamReader(contentT30O);
@@ -239,8 +242,7 @@ namespace AutoTrade
         {
             this.recordPath = path_records;
             this.config = JsonConvert.DeserializeObject(File.ReadAllText(path_settings));
-            if (this.config == null) return;
-            this.initTargetMap(TimeSpan.Parse(Convert.ToString(this.config.Login.time.download)));
+            this.initTargetMap();
             this.fillTargetMap(path_records);
         }
     }

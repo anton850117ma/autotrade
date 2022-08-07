@@ -24,7 +24,6 @@ namespace AutoTrade
         public const string DEF_TYPE_STR = "type";
         public const int DEF_TARGET_CODE_LEN = 4;
         public const int DEF_PRICE_FACTOR = 10000;
-        public const string DEF_T30_URL = "http://download.pscnet.com.tw/download/ap/T30/ASCT30";
 
 
         //XMLText = XML電文完整內容  XMLName = XML欄位值
