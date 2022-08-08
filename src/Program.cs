@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 // using System.Text.RegularExpressions;
 // using System.Runtime.InteropServices;
 
@@ -13,14 +14,20 @@ namespace AutoTrade
             var records = @"data//Records.json";
             var eventHandler = new EventHandler(new DataHandler(settings, records));
 
-            eventHandler.login();
-            // while(!eventHandler.isLogined);
+            while (!eventHandler.login())
+            {
+                Console.WriteLine("retry\n");
+                Thread.Sleep(1000);
+            }
 
-            eventHandler.registerTargets();
 
-            // if (!eventHandler.logout()) return;
+            while (!eventHandler.shouldLogout()) 
+            {
+                Thread.Sleep(1000);
+            }
 
-            // dataHandler.storeRecords();
+            eventHandler.logout();
+            eventHandler.storeRecords();
         }
     }
 }

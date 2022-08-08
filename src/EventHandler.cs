@@ -35,13 +35,15 @@ namespace AutoTrade
         RayinAPI.OnErrorEvent? onAckMatErr;
         RayinAPI.OnMsgAlertEvent? onMsgAlert;
 
-        public void createOrder(dynamic rule, string symbol, ref Target target)
+        public void createBuyOrder(dynamic rule, string symbol, ref Target target)
         {
             if (this.dataHandler.config == null) return;
             var subcomp = Convert.ToString(this.dataHandler.config.Login.subcomp);
             var account = Convert.ToString(this.dataHandler.config.Login.account);
             var timeinforce = Convert.ToString(rule.timeinforce);
             int quantity = Convert.ToInt32(rule.cost) / (target.bullPrice * 1000);
+
+            // TODO: deal with price flag
 
             var clOrdId = new IntPtr();
             var errCode = new IntPtr();
@@ -58,7 +60,7 @@ namespace AutoTrade
             }
             var id = Marshal.PtrToStringAnsi(clOrdId);
             if (id != null)
-                addLog("新單: " + id + " " + symbol + " " + quantity.ToString());
+                addLog("新單: " + id + " Buy " + symbol + " " + quantity.ToString());
         }
         public void ruleBuyNowPrice(dynamic rule, string[] values)
         {
@@ -66,49 +68,188 @@ namespace AutoTrade
 
             if (Convert.ToBoolean(rule.enabled))
             {
-                var start = TimeSpan.ParseExact(
+                var start = DateTime.ParseExact(
                                 Convert.ToString(rule.time.start), "HH:mm:ss", null);
-                var end = TimeSpan.ParseExact(
+                var end = DateTime.ParseExact(
                                 Convert.ToString(rule.time.end), "HH:mm:ss", null);
-                if (DateTime.Now.TimeOfDay.CompareTo(start) >= 0 &&
-                    DateTime.Now.TimeOfDay.CompareTo(end) <= 0)
+                if (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) >= 0 &&
+                    DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
                 {
                     var stockAmount = Convert.ToInt32(rule.stock.amount);
                     var target = this.dataHandler.targetMap[values[1]];
                     if (stockAmount == target.stockData.orderAmount)
                     {
                         var close = target.ldcPrice * Convert.ToSingle(rule.price.close.factor);
+                        var now = target.nowPrice;
                         var compare = Convert.ToString(rule.price.now.compare);
                         switch (compare)
                         {
                             case ">=":
-                                if (target.nowPrice >= close)
-                                    this.createOrder(rule.order, values[1], ref target);
+                                if (now >= close)
+                                    this.createBuyOrder(rule.order, values[1], ref target);
                                 break;
                             case ">":
-                                if (target.nowPrice > close)
-                                    this.createOrder(rule.order, values[1], ref target);
+                                if (now > close)
+                                    this.createBuyOrder(rule.order, values[1], ref target);
                                 break;
                             case "=":
-                                if (target.nowPrice == close)
-                                    this.createOrder(rule.order, values[1], ref target);
+                                if (now == close)
+                                    this.createBuyOrder(rule.order, values[1], ref target);
                                 break;
                             case "<=":
-                                if (target.nowPrice <= close)
-                                    this.createOrder(rule.order, values[1], ref target);
+                                if (now <= close)
+                                    this.createBuyOrder(rule.order, values[1], ref target);
                                 break;
                             case "<":
-                                if (target.nowPrice < close)
-                                    this.createOrder(rule.order, values[1], ref target);
+                                if (now < close)
+                                    this.createBuyOrder(rule.order, values[1], ref target);
                                 break;
                         }
                     }
                 }
             }
         }
+        public void createSellOrder(dynamic rule, string symbol, ref Target target)
+        {
+            if (this.dataHandler.config == null) return;
+            var subcomp = Convert.ToString(this.dataHandler.config.Login.subcomp);
+            var account = Convert.ToString(this.dataHandler.config.Login.account);
+            var timeinforce = Convert.ToString(rule.timeinforce);
 
+            var quantity = target.stockData.orderAmount;
+            var cost = Convert.ToInt32(rule.cost);
+            if (cost != -1)
+                quantity = cost / (target.bullPrice * 1000);
+
+            // TODO: deal with price flag
+
+            var clOrdId = new IntPtr();
+            var errCode = new IntPtr();
+            var errMsg = new IntPtr();
+            RayinAPI.NewGetClOrdId(ref clOrdId);
+            RayinAPI.NewOrder(subcomp, account, symbol, 1, "S", "0", 0, 4, quantity,
+                              timeinforce, "", ref clOrdId, ref errCode, ref errMsg);
+
+            var retVal = Marshal.PtrToStringAnsi(errCode);
+            if (retVal != null && (retVal.Length == 0 || retVal == "00"))
+            {
+                target.stockData.orderAmount -= quantity;
+                target.stockData.sellTimes += 1;
+            }
+            var id = Marshal.PtrToStringAnsi(clOrdId);
+            if (id != null)
+                addLog("新單: " + id + " Sell " + symbol + " " + quantity.ToString());
+        }
+        public void ruleSellNowPrice1(dynamic rule, string[] values)
+        {
+            if (this.dataHandler.targetMap == null) return;
+
+            if (Convert.ToBoolean(rule.enabled))
+            {
+                var start = DateTime.ParseExact(
+                                Convert.ToString(rule.time.start), "HH:mm:ss", null);
+                var end = DateTime.ParseExact(
+                                Convert.ToString(rule.time.end), "HH:mm:ss", null);
+                if (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) >= 0 &&
+                    DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
+                {
+                    var stockAmount = Convert.ToInt32(rule.stock.amount);
+                    var target = this.dataHandler.targetMap[values[1]];
+                    if (stockAmount <= target.stockData.orderAmount)
+                    {
+                        var max = target.maxPrice * Convert.ToSingle(rule.price.max.factor);
+                        var now = target.nowPrice;
+                        var compare = Convert.ToString(rule.price.now.compare);
+                        switch (compare)
+                        {
+                            case ">=":
+                                if (now >= max)
+                                    this.createSellOrder(rule.order, values[1], ref target);
+                                break;
+                            case ">":
+                                if (now > max)
+                                    this.createSellOrder(rule.order, values[1], ref target);
+                                break;
+                            case "=":
+                                if (now == max)
+                                    this.createSellOrder(rule.order, values[1], ref target);
+                                break;
+                            case "<=":
+                                if (now <= max)
+                                    this.createSellOrder(rule.order, values[1], ref target);
+                                break;
+                            case "<":
+                                if (now < max)
+                                    this.createSellOrder(rule.order, values[1], ref target);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+        public void ruleSellNowPrice2(dynamic rule, string[] values)
+        {
+            if (this.dataHandler.targetMap == null) return;
+
+            if (Convert.ToBoolean(rule.enabled))
+            {
+                var start = DateTime.ParseExact(
+                                Convert.ToString(rule.time.start), "HH:mm:ss", null);
+                var end = DateTime.ParseExact(
+                                Convert.ToString(rule.time.end), "HH:mm:ss", null);
+                if (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) >= 0 &&
+                    DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
+                {
+                    var stockAmount = Convert.ToInt32(rule.stock.amount);
+                    var target = this.dataHandler.targetMap[values[1]];
+                    if (stockAmount <= target.stockData.orderAmount)
+                    {
+                        var bull = target.bullPrice * Convert.ToSingle(rule.price.bull.factor);
+                        var now = target.nowPrice;
+                        var compare = Convert.ToString(rule.price.now.compare);
+                        switch (compare)
+                        {
+                            case ">=":
+                                if (now >= bull)
+                                    this.createSellOrder(rule.order, values[1], ref target);
+                                break;
+                            case ">":
+                                if (now > bull)
+                                    this.createSellOrder(rule.order, values[1], ref target);
+                                break;
+                            case "=":
+                                if (now == bull)
+                                    this.createSellOrder(rule.order, values[1], ref target);
+                                break;
+                            case "<=":
+                                if (now <= bull)
+                                    this.createSellOrder(rule.order, values[1], ref target);
+                                break;
+                            case "<":
+                                if (now < bull)
+                                    this.createSellOrder(rule.order, values[1], ref target);
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+        public bool updateTarget(string[] values)
+        {
+            if (this.dataHandler.targetMap == null) return false;
+            if (!this.dataHandler.targetMap.ContainsKey(values[1]))
+            {
+                addLog("Quote: " + values[1] + " not found!");
+                return false;
+            }
+
+            this.dataHandler.targetMap[values[1]].updateFromQuoteEx(
+                values[3], values[4], values[5], values[6], values[7], values[8], values[9], values[11]);
+            return true;
+        }
         public void addLog(string message)
         {
+            Console.WriteLine(message + "\n");
             // lock (logs)
             // {
             //     logs.Add(DateTime.Now.ToString("HH:mm:ss.fff") + " " + message);
@@ -116,6 +257,7 @@ namespace AutoTrade
         }
         public void OnLogin(string status)
         {
+            addLog("onlogin");
             if (status.IndexOf("<ret ") >= 0 &&
                 Utility.getXMLValue(status, "status") != "OK")
             {
@@ -164,6 +306,7 @@ namespace AutoTrade
         {
             this.isQuoteConnected = true;
             addLog("行情線路已連線");
+            this.registerTargets();
         }
         public void OnQuoteDisConnect()
         {
@@ -177,12 +320,18 @@ namespace AutoTrade
 
             string[] values = Regex.Split(NewQuote, @"\|\|", RegexOptions.IgnoreCase);
 
-            var rule = rules.Buy.NowPrice;
-            this.ruleBuyNowPrice(rule, values);
+            addLog("新行情: " + values[1] + " " + values[3] + " " + values[9] + " " + values[11] + "\n");
+            if (!this.updateTarget(values)) return;
 
+            var buyRule = rules.Buy.NowPrice;
+            this.ruleBuyNowPrice(buyRule, values);
 
+            var sellRule1 = rules.Sell.NowPrice1;
+            this.ruleSellNowPrice1(sellRule1, values);
 
-            // addLog("NewQuote:[" + NewQuote + "]");
+            var sellRule2 = rules.Sell.NowPrice2;
+            this.ruleSellNowPrice2(sellRule2, values);
+
         }
         public void OnInstantAck(string ExecType, string ClOrdId, string BranchId,
                                  string Account, string OrderDate, string OrderTime,
@@ -425,9 +574,12 @@ namespace AutoTrade
             if (config == null) return false;
             isLogined = false;
 
-            var start = TimeSpan.ParseExact(Convert.ToString(config.Login.time.start), "HH:mm:ss", null);
-            while (DateTime.Now.TimeOfDay.CompareTo(start) < 0)
-                Thread.Sleep(100);
+            var start = DateTime.ParseExact(Convert.ToString(config.Login.time.start), "HH:mm:ss", null);
+            while (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) < 0) 
+            {
+                Console.Write("Waiting for login time...\n");
+                Thread.Sleep(1000);
+            }
 
             RayinAPI.SetDebugMode(Convert.ToBoolean(config.Login.debug));
             RayinAPI.SetRecvTimeout(Convert.ToInt32(config.Login.timeout));
@@ -440,8 +592,8 @@ namespace AutoTrade
         {
             var config = this.dataHandler.config;
             if (config == null) return false;
-            var end = TimeSpan.ParseExact(Convert.ToString(config.Login.time.end), "HH:mm:ss", null);
-            if (DateTime.Now.TimeOfDay.CompareTo(end) <= 0) return false;
+            var end = DateTime.ParseExact(Convert.ToString(config.Login.time.end), "HH:mm:ss", null);
+            if (DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0) return false;
             else return true;
         }
         public bool logout()
@@ -453,6 +605,9 @@ namespace AutoTrade
                 Console.WriteLine("Status: Logout OK");
             }
             return result;
+        }
+        public void storeRecords(){
+            this.dataHandler.storeRecords();
         }
     }
 }

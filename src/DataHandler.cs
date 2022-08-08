@@ -127,27 +127,27 @@ namespace AutoTrade
             this.stockData = new Stock(target.stock);
         }
 
-        public void updateFromQuote(Single openPrice, Single maxPrice, Single minPrice,
-                                    Single nowPrice, int totalAmount)
+        public void updateFromQuote(string openPrice, string maxPrice, string minPrice,
+                                    string nowPrice, string totalAmount)
         {
-            this.openPrice = openPrice;
-            this.maxPrice = maxPrice;
-            this.minPrice = minPrice;
-            this.nowPrice = nowPrice;
-            this.totalAmount = totalAmount;
+            this.openPrice = Convert.ToSingle(openPrice);
+            this.maxPrice = Convert.ToSingle(maxPrice);
+            this.minPrice = Convert.ToSingle(minPrice);
+            this.nowPrice = Convert.ToSingle(nowPrice);
+            this.totalAmount = Convert.ToInt32(totalAmount);
         }
-        public void updateFromQuoteEx(Single todayPrice, Single bullPrice, Single bearPrice,
-                                      Single openPrice, Single maxPrice, Single minPrice,
-                                      Single nowPrice, int totalAmount)
+        public void updateFromQuoteEx(string todayPrice, string bullPrice, string bearPrice,
+                                      string openPrice, string maxPrice, string minPrice,
+                                      string nowPrice, string totalAmount)
         {
-            this.ldcPrice = todayPrice;
-            this.bullPrice = bullPrice;
-            this.bearPrice = bearPrice;
-            this.openPrice = openPrice;
-            this.maxPrice = maxPrice;
-            this.minPrice = minPrice;
-            this.nowPrice = nowPrice;
-            this.totalAmount = totalAmount;
+            this.ldcPrice = Convert.ToSingle(todayPrice);
+            this.bullPrice = Convert.ToSingle(bullPrice);
+            this.bearPrice = Convert.ToSingle(bearPrice);
+            this.openPrice = Convert.ToSingle(openPrice);
+            this.maxPrice = Convert.ToSingle(maxPrice);
+            this.minPrice = Convert.ToSingle(minPrice);
+            this.nowPrice = Convert.ToSingle(nowPrice);
+            this.totalAmount = Convert.ToInt32(totalAmount);
         }
     }
 
