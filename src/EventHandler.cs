@@ -43,8 +43,6 @@ namespace AutoTrade
             var timeinforce = Convert.ToString(rule.timeinforce);
             int quantity = Convert.ToInt32(rule.cost) / (target.bullPrice * 1000);
 
-            // TODO: deal with price flag
-
             var clOrdId = new IntPtr();
             var errCode = new IntPtr();
             var errMsg = new IntPtr();
@@ -56,11 +54,15 @@ namespace AutoTrade
             if (retVal != null && (retVal.Length == 0 || retVal == "00"))
             {
                 target.stockData.orderAmount += quantity;
-                target.stockData.buyTimes += 1;
+                target.stockData.sellTimes += 1;
+                Utility.addLogInfo(this.dataHandler.logger,
+                                   "新單買入成功 " + symbol + " " + quantity.ToString());
             }
-            var id = Marshal.PtrToStringAnsi(clOrdId);
-            if (id != null)
-                addLog("新單: " + id + " Buy " + symbol + " " + quantity.ToString());
+            else
+            {
+                Utility.addLogError(this.dataHandler.logger,
+                                    "新單買入失敗 " + symbol + " " + quantity.ToString());
+            }
         }
         public void ruleBuyNowPrice(dynamic rule, string[] values)
         {
@@ -121,8 +123,6 @@ namespace AutoTrade
             if (cost != -1)
                 quantity = cost / (target.bullPrice * 1000);
 
-            // TODO: deal with price flag
-
             var clOrdId = new IntPtr();
             var errCode = new IntPtr();
             var errMsg = new IntPtr();
@@ -135,10 +135,14 @@ namespace AutoTrade
             {
                 target.stockData.orderAmount -= quantity;
                 target.stockData.sellTimes += 1;
+                Utility.addLogInfo(this.dataHandler.logger,
+                                   "新單賣出成功 " + symbol + " " + quantity.ToString());
             }
-            var id = Marshal.PtrToStringAnsi(clOrdId);
-            if (id != null)
-                addLog("新單: " + id + " Sell " + symbol + " " + quantity.ToString());
+            else
+            {
+                Utility.addLogError(this.dataHandler.logger,
+                                    "新單賣出失敗 " + symbol + " " + quantity.ToString());
+            }
         }
         public void ruleSellNowPrice1(dynamic rule, string[] values)
         {
@@ -239,7 +243,8 @@ namespace AutoTrade
             if (this.dataHandler.targetMap == null) return false;
             if (!this.dataHandler.targetMap.ContainsKey(values[1]))
             {
-                addLog("Quote: " + values[1] + " not found!");
+                Utility.addLogWarning(this.dataHandler.logger,
+                                      "股票 " + values[1] + " 不在標的表中");
                 return false;
             }
 
@@ -247,71 +252,92 @@ namespace AutoTrade
                 values[3], values[4], values[5], values[6], values[7], values[8], values[9], values[11]);
             return true;
         }
-        public void addLog(string message)
-        {
-            Console.WriteLine(message + "\n");
-            // lock (logs)
-            // {
-            //     logs.Add(DateTime.Now.ToString("HH:mm:ss.fff") + " " + message);
-            // }
-        }
         public void OnLogin(string status)
         {
-            addLog("onlogin");
             if (status.IndexOf("<ret ") >= 0 &&
                 Utility.getXMLValue(status, "status") != "OK")
             {
-                addLog("登入失敗: " + Utility.getXMLValue(status, "msg"));
+                Utility.addLogCrtical(this.dataHandler.logger,
+                                      "登入失敗 " + Utility.getXMLValue(status, "msg"));
                 return;
             }
 
             this.isLogined = true;
-            addLog("登入成功");
+            Utility.addLogInfo(this.dataHandler.logger, "登入成功");
 
-            if (RayinAPI.ConnectToOrderServer() &&
-                RayinAPI.ConnectToAckMatServer() &&
-                RayinAPI.ConnectToQuoteServer()) addLog("嘗試連線伺服器成功");
-            else addLog("嘗試連線伺服器失敗");
+            if (RayinAPI.ConnectToOrderServer())
+                Utility.addLogInfo(this.dataHandler.logger, "請求連線下單線路成功");
+            else
+            {
+                Utility.addLogCrtical(this.dataHandler.logger, "請求連線下單線路失敗");
+                return;
+            }
+
+            if (RayinAPI.ConnectToAckMatServer())
+                Utility.addLogInfo(this.dataHandler.logger, "請求連線回報線路成功");
+            else
+            {
+                Utility.addLogCrtical(this.dataHandler.logger, "請求連線回報線路失敗");
+                return;
+            }
+
+            if (RayinAPI.ConnectToQuoteServer())
+                Utility.addLogInfo(this.dataHandler.logger, "請求連線行情線路成功");
+            else
+            {
+                Utility.addLogCrtical(this.dataHandler.logger, "請求連線行情線路失敗");
+                return;
+            }
         }
         public void OnOdrConnect()
         {
             this.isOrderConnected = true;
-            addLog("下單線路已連線");
+            Utility.addLogInfo(this.dataHandler.logger, "下單線路已連線");
         }
         public void OnOdrDisConnect()
         {
             this.isOrderConnected = false;
-            addLog("下單線路已斷線");
+            if (this.isLogined)
+                Utility.addLogCrtical(this.dataHandler.logger, "下單線路意外斷線");
+            else Utility.addLogInfo(this.dataHandler.logger, "下單線路已斷線");
         }
         public void OnOdrError(int errCode, string errMsg)
         {
-            addLog("下單線路異常: " + errCode.ToString() + " " + errMsg);
+            Utility.addLogCrtical(this.dataHandler.logger,
+                                  "下單線路異常 " + errMsg);
         }
         public void OnAckMatConnect()
         {
             this.isAckMatConnected = true;
-            RayinAPI.Recover(this.reportCount.ToString());
-            addLog("主動回報線路已連線");
+            //TODO: handle reportCount
+            // RayinAPI.Recover(this.reportCount.ToString());
+            RayinAPI.Recover("EXCEL");
+            Utility.addLogInfo(this.dataHandler.logger, "委託回報線路已連線");
         }
         public void OnAckMatDisConnect()
         {
             this.isAckMatConnected = false;
-            addLog("主動回報線路已斷線");
+            if (this.isLogined)
+                Utility.addLogCrtical(this.dataHandler.logger, "主動回報線路意外斷線");
+            else Utility.addLogInfo(this.dataHandler.logger, "委託回報線路已斷線");
         }
         public void OnAckMatError(int errCode, string errMsg)
         {
-            addLog("主動回報線路異常: " + errCode.ToString() + " " + errMsg);
+            Utility.addLogCrtical(this.dataHandler.logger,
+                                  "委託回報線路異常 " + errMsg);
         }
         public void OnQuoteConnect()
         {
             this.isQuoteConnected = true;
-            addLog("行情線路已連線");
+            Utility.addLogInfo(this.dataHandler.logger, "行情線路已連線");
             this.registerTargets();
         }
         public void OnQuoteDisConnect()
         {
             this.isQuoteConnected = false;
-            addLog("行情線路已斷線");
+            if (this.isLogined)
+                Utility.addLogCrtical(this.dataHandler.logger, "行情線路意外斷線");
+            else Utility.addLogInfo(this.dataHandler.logger, "行情線路已斷線");
         }
         public void OnNewQuote(string NewQuote)
         {
@@ -320,8 +346,8 @@ namespace AutoTrade
 
             string[] values = Regex.Split(NewQuote, @"\|\|", RegexOptions.IgnoreCase);
 
-            addLog("新行情: " + values[1] + " " + values[3] + " " + values[9] + " " + values[11] + "\n");
             if (!this.updateTarget(values)) return;
+            if (!this.isOrderConnected) return;
 
             var buyRule = rules.Buy.NowPrice;
             this.ruleBuyNowPrice(buyRule, values);
@@ -332,6 +358,9 @@ namespace AutoTrade
             var sellRule2 = rules.Sell.NowPrice2;
             this.ruleSellNowPrice2(sellRule2, values);
 
+            Utility.addLogInfo(this.dataHandler.logger,
+                               "新行情 " + values[1] + " " + values[3] + " " +
+                               values[9] + " " + values[11]);
         }
         public void OnInstantAck(string ExecType, string ClOrdId, string BranchId,
                                  string Account, string OrderDate, string OrderTime,
@@ -357,11 +386,13 @@ namespace AutoTrade
                         this.dataHandler.targetMap[Symbol].stockData.orderAmount += OrderQty;
                         this.dataHandler.targetMap[Symbol].stockData.sellTimes -= 1;
                     }
-                    addLog("InstantAck:" + OrderID + " " + errMsg);
+                    Utility.addLogError(this.dataHandler.logger,
+                                       "及時回報失敗 :" + OrderID + " " + errMsg);
                 }
                 else
                 {
-                    addLog("InstantAck:" + OrderID + " " + OrderDate + " " + OrderTime);
+                    Utility.addLogInfo(this.dataHandler.logger,
+                                       "及時回報成功 " + OrderID + " " + OrderDate + " " + OrderTime);
                 }
             }
         }
@@ -390,11 +421,13 @@ namespace AutoTrade
                         this.dataHandler.targetMap[Symbol].stockData.orderAmount += OrderQty;
                         this.dataHandler.targetMap[Symbol].stockData.sellTimes -= 1;
                     }
-                    addLog("NewAck:" + OrderID + " " + errMsg);
+                    Utility.addLogError(this.dataHandler.logger,
+                                        "委託回報錯誤 " + OrderID + " " + errMsg);
                 }
                 else
                 {
-                    addLog("NewAck:" + OrderID + " " + OrderDate + " " + OrderTime);
+                    Utility.addLogInfo(this.dataHandler.logger,
+                                       "委託回報成功 " + OrderID + " " + OrderDate + " " + OrderTime);
                 }
             }
         }
@@ -414,14 +447,17 @@ namespace AutoTrade
             {
                 this.dataHandler.targetMap[Symbol].stockData.matchAmount -= quantity;
             }
-            addLog("NewMat:" + OrderID + " " + MatPrice.ToString() + " " + quantity.ToString());
+            Utility.addLogInfo(this.dataHandler.logger,
+                               "成交回報 " + OrderID + " " + MatPrice.ToString() + " " + quantity.ToString());
         }
         public void OnMsgAlertEvent(int errCode, string errMsg)
         {
-            addLog("MsgAlert:" + errCode.ToString() + " " + errMsg);
+            Utility.addLogWarning(this.dataHandler.logger, "訊息提醒 " + errMsg);
         }
         public void registerEvents()
         {
+            Utility.addLogDebug(this.dataHandler.logger, "開始註冊事件...");
+
             onLogin = new RayinAPI.OnLoginEvent(OnLogin);
             RayinAPI.SetOnLoginEvent(onLogin);
 
@@ -463,12 +499,17 @@ namespace AutoTrade
 
             onMsgAlert = new RayinAPI.OnMsgAlertEvent(OnMsgAlertEvent);
             RayinAPI.SetMsgAlertEvent(onMsgAlert);
+
+            Utility.addLogDebug(this.dataHandler.logger, "完成註冊事件...");
         }
         public EventHandler(DataHandler handler)
         {
             this.dataHandler = handler;
             this.logs = new List<string>();
             this.reportCount = 0;
+            this.isLogined = false;
+            this.isOrderConnected = false;
+            this.isQuoteConnected = false;
             registerEvents();
         }
         public void registerTargets()
@@ -477,6 +518,8 @@ namespace AutoTrade
             if (this.dataHandler.targetMap == null) return;
             var rules = this.dataHandler.config.Rules;
             var targets = this.dataHandler.targetMap;
+
+            Utility.addLogInfo(this.dataHandler.logger, "開始過濾行情...");
 
             // 代號長度
             if (Convert.ToBoolean(rules.Exclude.IDLength.enabled))
@@ -556,6 +599,10 @@ namespace AutoTrade
             //     }
             // }
 
+            Utility.addLogInfo(this.dataHandler.logger, "開始訂閱行情...");
+
+            int success = 0, failed = 0;
+
             foreach (var target in targets)
             {
                 var errCode = Marshal.StringToHGlobalAnsi("");
@@ -564,29 +611,53 @@ namespace AutoTrade
                 var code = Marshal.PtrToStringAnsi(errCode);
                 var msg = Marshal.PtrToStringAnsi(errMsg);
                 if (code == "00" || code == " ")
-                    Console.WriteLine("訂閱行情成功: " + target.Key);
-                else Console.WriteLine("訂閱行情失敗: " + target.Key + " " + code + " " + msg);
+                {
+                    success++;
+                    Utility.addLogDebug(this.dataHandler.logger, "成功訂閱 " + target.Key);
+                }
+                else
+                {
+                    failed++;
+                    Utility.addLogDebug(this.dataHandler.logger,
+                                         "失敗訂閱 " + target.Key + " " + code + " " + msg);
+                }
+
             }
+            Utility.addLogInfo(this.dataHandler.logger, "完成行情訂閱" +
+                               " 成功: " + success.ToString() +
+                               " 失敗: " + failed.ToString());
+
         }
         public bool login()
         {
+            if (this.isLogined) return true;
             var config = this.dataHandler.config;
             if (config == null) return false;
-            isLogined = false;
 
             var start = DateTime.ParseExact(Convert.ToString(config.Login.time.start), "HH:mm:ss", null);
-            while (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) < 0) 
+            Utility.addLogInfo(this.dataHandler.logger, "等待登入時刻...");
+            while (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) < 0)
             {
-                Console.Write("Waiting for login time...\n");
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
             }
 
             RayinAPI.SetDebugMode(Convert.ToBoolean(config.Login.debug));
             RayinAPI.SetRecvTimeout(Convert.ToInt32(config.Login.timeout));
             RayinAPI.SetServer(
                     Convert.ToString(config.Login.host), Convert.ToInt32(config.Login.port));
-            return RayinAPI.Login(
-                    Convert.ToString(config.Login.username), Convert.ToString(config.Login.password));
+
+            var result = RayinAPI.Login(
+                            Convert.ToString(config.Login.username),
+                            Convert.ToString(config.Login.password));
+            if (result)
+            {
+                Utility.addLogInfo(this.dataHandler.logger, "發出登入請求成功");
+            }
+            else
+            {
+                Utility.addLogInfo(this.dataHandler.logger, "發出登入請求失敗");
+            }
+            return result;
         }
         public bool shouldLogout()
         {
@@ -602,11 +673,22 @@ namespace AutoTrade
             if (result)
             {
                 this.isLogined = false;
-                Console.WriteLine("Status: Logout OK");
+                Utility.addLogInfo(this.dataHandler.logger, "請求登出成功");
+            }
+            else
+            {
+                Utility.addLogInfo(this.dataHandler.logger, "請求登出失敗");
             }
             return result;
         }
-        public void storeRecords(){
+        public void storeRecords()
+        {
+            Utility.addLogInfo(this.dataHandler.logger, "等待完全登出...");
+            while (this.isLogined || this.isQuoteConnected ||
+                   this.isOrderConnected || this.isAckMatConnected)
+            {
+                Thread.Sleep(1000);
+            }
             this.dataHandler.storeRecords();
         }
     }

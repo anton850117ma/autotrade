@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace AutoTrade
 {
@@ -42,38 +41,62 @@ namespace AutoTrade
                 return ""; //無此欄位則回傳空白
             }
         }
+        public static void addLogDebug(StreamWriter? logger, string msg)
+        {
+            if (logger != null)
+            {
+                lock (logger)
+                {
+                    logger.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff") + " [DEBUG]: " + msg);
+                    logger.Flush();
+                }
+            }
 
-        // var cfg_string = File.OpenText(@"cfg\\settings.ini").ReadToEnd();
-        // var cfg_toml = Toml.ToModel(cfg_string);
-        // string strExeFilePath = Assembly.GetExecutingAssembly().Location;
-        // string strWorkPath = Path.GetDirectoryName(strExeFilePath);
-        // var path = Path.Combine(Directory.GetCurrentDirectory(), "\\fileName.txt");
+        }
+        public static void addLogInfo(StreamWriter? logger, string msg)
+        {
+            if (logger != null)
+            {
+                lock (logger)
+                {
+                    logger.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff") + " [INFO]: " + msg);
+                    logger.Flush();
+                }
+            }
 
-        // Console.WriteLine(strWorkPath);
-        // string strSettingsXmlFilePath = Path.Combine(strWorkPath, "Settings.xml");
-        // var path = Path.Combine(Application.StartupPath, "\\fileName.txt");
-        // string contents = File.ReadAllText(path);
-
-
-        // foreach (string file in Directory.EnumerateFiles("Release", "*.xml"))
-        // {
-        //     string contents = File.ReadAllText(file);
-        // }
-        // var login_args = (TomlTable)cfg_toml["Login"];
-        // Console.WriteLine(login_args["host"]);
-        // Console.WriteLine(login_args["port"]);
-        // Console.WriteLine(login_args["account"]);
-        // Console.WriteLine(login_args["start"]);
-
-        // var rules = (TomlTable)cfg_toml["Rule"];
-        // var rule1 = (TomlTable)rules["ExcludeNotDayTradeTarget"];
-        // Console.WriteLine(rule1["enabled"]);
-
-        //Console.WriteLine(model["global"]);
-        // // Prints "1"
-        // Console.WriteLine(((TomlTable)model["my_table"]!)["key"]);
-        // // Prints 4, 5, 6
-        // Console.WriteLine(string.Join(", ", (TomlArray)((TomlTable)model["my_table"]!)["list"]));
-
+        }
+        public static void addLogWarning(StreamWriter? logger, string msg)
+        {
+            if (logger != null)
+            {
+                lock (logger)
+                {
+                    logger.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff") + " [WARNING]: " + msg);
+                    logger.Flush();
+                }
+            }
+        }
+        public static void addLogError(StreamWriter? logger, string msg)
+        {
+            if (logger != null)
+            {
+                lock (logger)
+                {
+                    logger.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff") + " [ERROR]: " + msg);
+                    logger.Flush();
+                }
+            }
+        }
+        public static void addLogCrtical(StreamWriter? logger, string msg)
+        {
+            if (logger != null)
+            {
+                lock (logger)
+                {
+                    logger.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff") + " [CRITICAL]: " + msg);
+                    logger.Flush();
+                }
+            }
+        }
     }
 }

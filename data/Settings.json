@@ -11,13 +11,14 @@
     "time": {
       "download": "08:30:00",
       "start": "10:00:00",
-      "end": "17:00:00"
+      "end": "23:00:00"
     }
   },
   "T30" : {
     "TSE": "http://download.pscnet.com.tw/download/ap/T30/ASCT30S_",
     "OTC": "http://download.pscnet.com.tw/download/ap/T30/ASCT30O_"
   },
+  "LogDir": "Logs",
   "Rules": {
     "Exclude": {
       "IDLength": {
@@ -65,7 +66,6 @@
         },
         "order": {
           "cost": 400000,
-          "flag": "market",
           "timeinforce": "ROD"
         }
       }
@@ -90,7 +90,6 @@
         },
         "order": {
           "cost": -1,
-          "flag": "market",
           "timeinforce": "ROD"
         }
       },
@@ -113,7 +112,6 @@
         },
         "order": {
           "cost": -1,
-          "flag": "market",
           "timeinforce": "ROD"
         }
       }

@@ -156,16 +156,19 @@ namespace AutoTrade
         public Dictionary<string, Target>? targetMap;
         public dynamic? config;
         public string recordPath;
+        public StreamWriter? logger;
 
         public void initTargetMap()
-        {   
+        {
             if (this.config == null) return;
+            
+            Utility.addLogDebug(this.logger, "開始初始化標的表");
             var time = TimeSpan.Parse(Convert.ToString(this.config.Login.time.download));
 
+            Utility.addLogDebug(this.logger, "等待盤前檔準備好...");
             while (DateTime.Now.TimeOfDay.CompareTo(time) < 0)
             {
                 // Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
-                Console.Write("\rWaiting for T30 files...");
                 Thread.Sleep(100);
             }
             var date = DateTime.Now.ToString("yyyyMMdd");
@@ -181,6 +184,7 @@ namespace AutoTrade
             // var T30S = new StreamReader(path); //950
             // var T30S = new StreamReader(contentT30S, Encoding.GetEncoding("big5")); //950
             var T30S = new StreamReader(contentT30S);
+            Utility.addLogDebug(this.logger, "正在處理上市盤前檔...");
             while (!T30S.EndOfStream)
             {
                 var values = T30S.ReadLine();
@@ -194,6 +198,7 @@ namespace AutoTrade
             var contentT30O = responseT30O.Result.Content.ReadAsStreamAsync().Result;
 
             var T30O = new StreamReader(contentT30O);
+            Utility.addLogDebug(this.logger, "正在處理上櫃盤前檔...");
             while (!T30O.EndOfStream)
             {
                 var values = T30O.ReadLine();
@@ -202,11 +207,13 @@ namespace AutoTrade
                     this.targetMap.Add(values.Substring(0, 6), new Target(values, Utility.T30.ROCO));
                 }
             }
+            Utility.addLogDebug(this.logger, "完成初始化標的表");
         }
 
-        public void fillTargetMap(string path_records)
+        public void fillTargetMap()
         {
-            dynamic? text = JsonConvert.DeserializeObject(File.ReadAllText(path_records));
+            Utility.addLogDebug(this.logger, "讀取記錄檔...");
+            dynamic? text = JsonConvert.DeserializeObject(File.ReadAllText(this.recordPath));
             if (text == null) return;
             if (this.targetMap == null) return;
 
@@ -218,13 +225,32 @@ namespace AutoTrade
                     this.targetMap[key].updateFromRecord(target);
                 }
             }
+            Utility.addLogDebug(this.logger, "完成更新標的表");
         }
-        public void storeRecords()
+        public void initLogger()
         {
             string strPath = Assembly.GetExecutingAssembly().Location;
             string? strWorkPath = Path.GetDirectoryName(strPath);
             if (strWorkPath == null) return;
+            if (this.config == null) return;
 
+            var logDir = Convert.ToString(this.config.LogDir);
+            var pathDir = Path.Combine(strWorkPath, logDir);
+            Directory.CreateDirectory(pathDir);
+
+            var logPath = Path.Combine(pathDir, DateTime.Now.ToString("yyyy-MM-dd") + ".log");
+            FileStream file = File.Open(logPath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+            this.logger = new StreamWriter(file, Encoding.GetEncoding("big5"));
+        }
+
+        public void storeRecords()
+        {
+            Utility.addLogDebug(this.logger, "準備回寫紀錄...");
+            string strPath = Assembly.GetExecutingAssembly().Location;
+            string? strWorkPath = Path.GetDirectoryName(strPath);
+            if (strWorkPath == null) return;
+
+            // TODO: should modify when passing tests
             var path = Path.Combine(strWorkPath, "Records.json");
             var records = new List<Target.Record>();
 
@@ -237,13 +263,18 @@ namespace AutoTrade
 
             string text = JsonConvert.SerializeObject(records, Formatting.Indented);
             File.WriteAllText(path, text);
+
+            Utility.addLogDebug(this.logger, "完成回寫紀錄");
+
+            if (this.logger != null) this.logger.Close();
         }
         public DataHandler(string path_settings, string path_records)
         {
             this.recordPath = path_records;
             this.config = JsonConvert.DeserializeObject(File.ReadAllText(path_settings));
+            this.initLogger();
             this.initTargetMap();
-            this.fillTargetMap(path_records);
+            this.fillTargetMap();
         }
     }
 }
