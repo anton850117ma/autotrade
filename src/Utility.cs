@@ -60,7 +60,7 @@ namespace AutoTrade
                 lock (logger)
                 {
                     logger.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff") + " [INFO]: " + msg);
-                    logger.Flush();
+                    // logger.Flush();
                 }
             }
 
@@ -72,7 +72,7 @@ namespace AutoTrade
                 lock (logger)
                 {
                     logger.WriteLine(DateTime.Now.ToString("HH:mm:ss.fff") + " [WARNING]: " + msg);
-                    logger.Flush();
+                    // logger.Flush();
                 }
             }
         }

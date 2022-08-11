@@ -19,7 +19,7 @@ namespace AutoTrade
     {
         DataHandler dataHandler;
         List<string> logs;
-        int reportCount;
+        int newAckCount, newMatCount;
         RayinAPI.OnLoginEvent? onLogin;
         RayinAPI.OnConnectEvent? onOdrConnect;
         RayinAPI.OnConnectEvent? onAckMatConnect;
@@ -90,7 +90,7 @@ namespace AutoTrade
 
             return true;
         }
-        public void createBuyOrder(dynamic rule, string symbol, ref Target target)
+        public void createBuyOrder(dynamic rule, string symbol, Target target)
         {
             if (this.dataHandler.config == null) return;
             string subcomp = Convert.ToString(this.dataHandler.config.Login.subcomp);
@@ -115,8 +115,8 @@ namespace AutoTrade
             }
             else
             {
-                Utility.addLogError(this.dataHandler.logger,
-                                    "新單買入失敗 " + symbol + " " + quantity.ToString());
+                Utility.addLogWarning(this.dataHandler.logger,
+                                      "新單買入失敗 " + symbol + " " + quantity.ToString());
             }
         }
         public void ruleBuyNowPrice(dynamic rule, string[] values)
@@ -143,30 +143,30 @@ namespace AutoTrade
                         {
                             case ">=":
                                 if (now >= close)
-                                    this.createBuyOrder(rule.order, values[1], ref target);
+                                    this.createBuyOrder(rule.order, values[1], target);
                                 break;
                             case ">":
                                 if (now > close)
-                                    this.createBuyOrder(rule.order, values[1], ref target);
+                                    this.createBuyOrder(rule.order, values[1], target);
                                 break;
                             case "=":
                                 if (now == close)
-                                    this.createBuyOrder(rule.order, values[1], ref target);
+                                    this.createBuyOrder(rule.order, values[1], target);
                                 break;
                             case "<=":
                                 if (now <= close)
-                                    this.createBuyOrder(rule.order, values[1], ref target);
+                                    this.createBuyOrder(rule.order, values[1], target);
                                 break;
                             case "<":
                                 if (now < close)
-                                    this.createBuyOrder(rule.order, values[1], ref target);
+                                    this.createBuyOrder(rule.order, values[1], target);
                                 break;
                         }
                     }
                 }
             }
         }
-        public void createSellOrder(dynamic rule, string symbol, ref Target target)
+        public void createSellOrder(dynamic rule, string symbol, Target target)
         {
             if (this.dataHandler.config == null) return;
             string subcomp = Convert.ToString(this.dataHandler.config.Login.subcomp);
@@ -195,8 +195,8 @@ namespace AutoTrade
             }
             else
             {
-                Utility.addLogError(this.dataHandler.logger,
-                                    "新單賣出失敗 " + symbol + " " + quantity.ToString());
+                Utility.addLogWarning(this.dataHandler.logger,
+                                      "新單賣出失敗 " + symbol + " " + quantity.ToString());
             }
         }
         public void ruleSellNowPrice1(dynamic rule, string[] values)
@@ -223,23 +223,23 @@ namespace AutoTrade
                         {
                             case ">=":
                                 if (now >= max)
-                                    this.createSellOrder(rule.order, values[1], ref target);
+                                    this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case ">":
                                 if (now > max)
-                                    this.createSellOrder(rule.order, values[1], ref target);
+                                    this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "=":
                                 if (now == max)
-                                    this.createSellOrder(rule.order, values[1], ref target);
+                                    this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "<=":
                                 if (now <= max)
-                                    this.createSellOrder(rule.order, values[1], ref target);
+                                    this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "<":
                                 if (now < max)
-                                    this.createSellOrder(rule.order, values[1], ref target);
+                                    this.createSellOrder(rule.order, values[1], target);
                                 break;
                         }
                     }
@@ -270,23 +270,23 @@ namespace AutoTrade
                         {
                             case ">=":
                                 if (now >= bull)
-                                    this.createSellOrder(rule.order, values[1], ref target);
+                                    this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case ">":
                                 if (now > bull)
-                                    this.createSellOrder(rule.order, values[1], ref target);
+                                    this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "=":
                                 if (now == bull)
-                                    this.createSellOrder(rule.order, values[1], ref target);
+                                    this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "<=":
                                 if (now <= bull)
-                                    this.createSellOrder(rule.order, values[1], ref target);
+                                    this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "<":
                                 if (now < bull)
-                                    this.createSellOrder(rule.order, values[1], ref target);
+                                    this.createSellOrder(rule.order, values[1], target);
                                 break;
                         }
                     }
@@ -309,7 +309,7 @@ namespace AutoTrade
         }
         public void OnLogin(string status)
         {
-            Console.WriteLine("recv login response");
+            // Console.WriteLine("recv login response");
 
             if (status.IndexOf("<ret ") >= 0 &&
                 Utility.getXMLValue(status, "status") != "OK")
@@ -320,10 +320,10 @@ namespace AutoTrade
             }
 
             this.isLogined = true;
-            Utility.addLogInfo(this.dataHandler.logger, "登入成功");
+            Utility.addLogDebug(this.dataHandler.logger, "登入成功");
 
             if (RayinAPI.ConnectToOrderServer())
-                Utility.addLogInfo(this.dataHandler.logger, "請求連線下單線路成功");
+                Utility.addLogDebug(this.dataHandler.logger, "請求連線下單線路成功");
             else
             {
                 Utility.addLogCrtical(this.dataHandler.logger, "請求連線下單線路失敗");
@@ -331,7 +331,7 @@ namespace AutoTrade
             }
 
             if (RayinAPI.ConnectToAckMatServer())
-                Utility.addLogInfo(this.dataHandler.logger, "請求連線回報線路成功");
+                Utility.addLogDebug(this.dataHandler.logger, "請求連線回報線路成功");
             else
             {
                 Utility.addLogCrtical(this.dataHandler.logger, "請求連線回報線路失敗");
@@ -339,7 +339,7 @@ namespace AutoTrade
             }
 
             if (RayinAPI.ConnectToQuoteServer())
-                Utility.addLogInfo(this.dataHandler.logger, "請求連線行情線路成功");
+                Utility.addLogDebug(this.dataHandler.logger, "請求連線行情線路成功");
             else
             {
                 Utility.addLogCrtical(this.dataHandler.logger, "請求連線行情線路失敗");
@@ -349,52 +349,50 @@ namespace AutoTrade
         public void OnOdrConnect()
         {
             this.isOrderConnected = true;
-            Utility.addLogInfo(this.dataHandler.logger, "下單線路已連線");
+            Utility.addLogDebug(this.dataHandler.logger, "下單線路已連線");
         }
         public void OnOdrDisConnect()
         {
             this.isOrderConnected = false;
             if (this.isLogined)
-                Utility.addLogCrtical(this.dataHandler.logger, "下單線路意外斷線");
-            else Utility.addLogInfo(this.dataHandler.logger, "下單線路已斷線");
+                Utility.addLogCrtical(this.dataHandler.logger, "下單線路非正常斷線");
+            else Utility.addLogDebug(this.dataHandler.logger, "下單線路已斷線");
         }
         public void OnOdrError(int errCode, string errMsg)
         {
-            Utility.addLogCrtical(this.dataHandler.logger,
-                                  "下單線路異常 " + errMsg);
+            Utility.addLogError(this.dataHandler.logger,
+                                "下單線路異常 " + errMsg);
         }
         public void OnAckMatConnect()
         {
             this.isAckMatConnected = true;
-            //TODO: handle reportCount
-            // RayinAPI.Recover(this.reportCount.ToString());
-            RayinAPI.Recover("EXCEL");
-            Utility.addLogInfo(this.dataHandler.logger, "委託回報線路已連線");
+            RayinAPI.Recover((this.newAckCount + this.newMatCount).ToString());
+            Utility.addLogDebug(this.dataHandler.logger, "委託回報線路已連線");
         }
         public void OnAckMatDisConnect()
         {
             this.isAckMatConnected = false;
             if (this.isLogined)
-                Utility.addLogCrtical(this.dataHandler.logger, "主動回報線路意外斷線");
-            else Utility.addLogInfo(this.dataHandler.logger, "委託回報線路已斷線");
+                Utility.addLogCrtical(this.dataHandler.logger, "主動回報線路非正常斷線");
+            else Utility.addLogDebug(this.dataHandler.logger, "委託回報線路已斷線");
         }
         public void OnAckMatError(int errCode, string errMsg)
         {
-            Utility.addLogCrtical(this.dataHandler.logger,
-                                  "委託回報線路異常 " + errMsg);
+            Utility.addLogError(this.dataHandler.logger,
+                                "委託回報線路異常 " + errMsg);
         }
         public void OnQuoteConnect()
         {
             this.isQuoteConnected = true;
-            Utility.addLogInfo(this.dataHandler.logger, "行情線路已連線");
+            Utility.addLogDebug(this.dataHandler.logger, "行情線路已連線");
             this.registerTargets();
         }
         public void OnQuoteDisConnect()
         {
             this.isQuoteConnected = false;
             if (this.isLogined)
-                Utility.addLogCrtical(this.dataHandler.logger, "行情線路意外斷線");
-            else Utility.addLogInfo(this.dataHandler.logger, "行情線路已斷線");
+                Utility.addLogCrtical(this.dataHandler.logger, "行情線路非正常斷線");
+            else Utility.addLogDebug(this.dataHandler.logger, "行情線路已斷線");
         }
         public void OnNewQuote(string NewQuote)
         {
@@ -444,8 +442,8 @@ namespace AutoTrade
                         this.dataHandler.targetMap[Symbol].stockData.orderAmount += OrderQty;
                         this.dataHandler.targetMap[Symbol].stockData.sellTimes -= 1;
                     }
-                    Utility.addLogError(this.dataHandler.logger,
-                                       "及時回報失敗 :" + OrderID + " " + errMsg);
+                    Utility.addLogWarning(this.dataHandler.logger,
+                                          "及時回報失敗 :" + OrderID + " " + errMsg);
                 }
                 else
                 {
@@ -463,8 +461,9 @@ namespace AutoTrade
                              int BeforeQty, int AfterQty, string TimeInForce, string UserData)
         {
             // only handle new orders
+            this.newAckCount++;
             if (ExecType == "O")
-            {
+            {   
                 if (errCode != string.Empty && errCode != "00000000")
                 {
                     if (this.dataHandler.targetMap == null) return;
@@ -479,8 +478,8 @@ namespace AutoTrade
                         this.dataHandler.targetMap[Symbol].stockData.orderAmount += OrderQty;
                         this.dataHandler.targetMap[Symbol].stockData.sellTimes -= 1;
                     }
-                    Utility.addLogError(this.dataHandler.logger,
-                                        "委託回報錯誤 " + OrderID + " " + errMsg);
+                    Utility.addLogWarning(this.dataHandler.logger,
+                                          "委託回報錯誤 " + OrderID + " " + errMsg);
                 }
                 else
                 {
@@ -494,6 +493,7 @@ namespace AutoTrade
                              string Side, string OrdType, string MatTime,
                              Single MatPrice, int MatQty, string MatSeq)
         {
+            this.newMatCount++;
             if (this.dataHandler.targetMap == null) return;
             var quantity = MatQty / 1000;
 
@@ -564,7 +564,8 @@ namespace AutoTrade
         {
             this.dataHandler = handler;
             this.logs = new List<string>();
-            this.reportCount = 0;
+            this.newAckCount = 0;
+            this.newMatCount = 0;
             this.isLogined = false;
             this.isOrderConnected = false;
             this.isQuoteConnected = false;
@@ -578,7 +579,7 @@ namespace AutoTrade
 
             int success = 0, failed = 0;
 
-            Utility.addLogInfo(this.dataHandler.logger, "開始訂閱行情...");
+            Utility.addLogDebug(this.dataHandler.logger, "開始訂閱行情...");
 
             foreach (var target in targets)
             {
@@ -590,19 +591,19 @@ namespace AutoTrade
                 if (code == "00" || code == " ")
                 {
                     success++;
-                    Utility.addLogDebug(this.dataHandler.logger, "成功訂閱 " + target.Key);
+                    Utility.addLogInfo(this.dataHandler.logger, "成功訂閱 " + target.Key);
                 }
                 else
                 {
                     failed++;
-                    Utility.addLogDebug(this.dataHandler.logger,
-                                         "失敗訂閱 " + target.Key + " " + code + " " + msg);
+                    Utility.addLogWarning(this.dataHandler.logger,
+                                          "失敗訂閱 " + target.Key + " " + code + " " + msg);
                 }
 
             }
-            Utility.addLogInfo(this.dataHandler.logger, "完成行情訂閱" +
-                               " 成功: " + success.ToString() +
-                               " 失敗: " + failed.ToString());
+            Utility.addLogDebug(this.dataHandler.logger, "完成行情訂閱" +
+                                " 成功: " + success.ToString() +
+                                " 失敗: " + failed.ToString());
 
         }
         public bool login()
@@ -612,7 +613,7 @@ namespace AutoTrade
             if (config == null) return false;
 
             DateTime start = DateTime.ParseExact(Convert.ToString(config.Login.time.start), "HH:mm:ss", null);
-            Utility.addLogInfo(this.dataHandler.logger, "等待登入時刻...");
+            Utility.addLogDebug(this.dataHandler.logger, "等待登入時刻...");
             while (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) < 0)
             {
                 Thread.Sleep(100);
@@ -628,11 +629,11 @@ namespace AutoTrade
                             Convert.ToString(config.Login.password));
             if (result)
             {
-                Utility.addLogInfo(this.dataHandler.logger, "發出登入請求成功");
+                Utility.addLogDebug(this.dataHandler.logger, "發出登入請求成功");
             }
             else
             {
-                Utility.addLogInfo(this.dataHandler.logger, "發出登入請求失敗");
+                Utility.addLogError(this.dataHandler.logger, "發出登入請求失敗");
             }
             return result;
         }
@@ -650,17 +651,29 @@ namespace AutoTrade
             if (result)
             {
                 this.isLogined = false;
-                Utility.addLogInfo(this.dataHandler.logger, "請求登出成功");
+                Utility.addLogDebug(this.dataHandler.logger, "請求登出成功");
             }
             else
             {
-                Utility.addLogInfo(this.dataHandler.logger, "請求登出失敗");
+                Utility.addLogError(this.dataHandler.logger, "請求登出失敗");
+                if (RayinAPI.DisconnecrQuoteServer())
+                    this.isQuoteConnected = false;
+                if (RayinAPI.DisconnecrOrderServer())
+                    this.isOrderConnected = false;
+                if (RayinAPI.DisconnecrAckMatServer())
+                    this.isAckMatConnected = false;
+                if (!this.isQuoteConnected && !this.isOrderConnected && !this.isAckMatConnected)
+                {
+                    this.isLogined = false;
+                    Utility.addLogDebug(this.dataHandler.logger, "主動登出成功");
+                    return true;
+                }
             }
             return result;
         }
         public void storeRecords()
         {
-            Utility.addLogInfo(this.dataHandler.logger, "等待完全登出...");
+            Utility.addLogDebug(this.dataHandler.logger, "等待完全登出...");
             while (this.isLogined || this.isQuoteConnected ||
                    this.isOrderConnected || this.isAckMatConnected)
             {
