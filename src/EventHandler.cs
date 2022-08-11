@@ -35,12 +35,67 @@ namespace AutoTrade
         RayinAPI.OnErrorEvent? onAckMatErr;
         RayinAPI.OnMsgAlertEvent? onMsgAlert;
 
+        public bool checkConditions(dynamic rule, string symbol)
+        {
+            if (this.dataHandler.targetMap == null) return false;
+            if (!this.dataHandler.targetMap.ContainsKey(symbol)) return false;
+
+            var target = this.dataHandler.targetMap[symbol];
+
+            // 代號長度
+            if (Convert.ToBoolean(rule.IDLength.enabled))
+            {
+                int length = Convert.ToInt32(rule.IDLength.length);
+                if (symbol.Length > length) return false;
+            }
+
+            // 當沖註記
+            if (Convert.ToBoolean(rule.NotDayTrade.enabled))
+            {
+                if (target.dayTradeMark == ' ') return false;
+            }
+
+            // 全額交割 (透過變更交易)
+            if (Convert.ToBoolean(rule.FullCash.enabled))
+            {
+                if (target.dealType != '0') return false;
+            }
+            // 處置註記
+            if (Convert.ToBoolean(rule.Disposed.enabled))
+            {
+                if (target.dealType != '0') return false;
+            }
+
+            // 資本額
+            if (Convert.ToBoolean(rule.Capital.enabled))
+            {
+                string amount = Convert.ToString(rule.Capital.amount);
+                if (target.capital.CompareTo(amount) >= 0) return false;
+            }
+
+            // 交易量
+            if (Convert.ToBoolean(rule.TradeAmount.enabled))
+            {
+                int expect = Convert.ToInt32(rule.TradeAmount.total);
+                if (target.totalAmount < expect) return false;
+            }
+
+            // 收盤價
+            if (Convert.ToBoolean(rule.TradePrice.enabled))
+            {
+                Single low = Convert.ToSingle(rule.TradePrice.price.min);
+                Single high = Convert.ToSingle(rule.TradePrice.price.max);
+                if (target.ldcPrice < low || target.ldcPrice > high) return false;
+            }
+
+            return true;
+        }
         public void createBuyOrder(dynamic rule, string symbol, ref Target target)
         {
             if (this.dataHandler.config == null) return;
-            var subcomp = Convert.ToString(this.dataHandler.config.Login.subcomp);
-            var account = Convert.ToString(this.dataHandler.config.Login.account);
-            var timeinforce = Convert.ToString(rule.timeinforce);
+            string subcomp = Convert.ToString(this.dataHandler.config.Login.subcomp);
+            string account = Convert.ToString(this.dataHandler.config.Login.account);
+            string timeinforce = Convert.ToString(rule.timeinforce);
             int quantity = Convert.ToInt32(rule.cost) / (target.bullPrice * 1000);
 
             var clOrdId = new IntPtr();
@@ -70,20 +125,20 @@ namespace AutoTrade
 
             if (Convert.ToBoolean(rule.enabled))
             {
-                var start = DateTime.ParseExact(
+                DateTime start = DateTime.ParseExact(
                                 Convert.ToString(rule.time.start), "HH:mm:ss", null);
-                var end = DateTime.ParseExact(
+                DateTime end = DateTime.ParseExact(
                                 Convert.ToString(rule.time.end), "HH:mm:ss", null);
                 if (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) >= 0 &&
                     DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
                 {
-                    var stockAmount = Convert.ToInt32(rule.stock.amount);
+                    int stockAmount = Convert.ToInt32(rule.stock.amount);
                     var target = this.dataHandler.targetMap[values[1]];
                     if (stockAmount == target.stockData.orderAmount)
                     {
-                        var close = target.ldcPrice * Convert.ToSingle(rule.price.close.factor);
+                        Single close = target.ldcPrice * Convert.ToSingle(rule.price.close.factor);
                         var now = target.nowPrice;
-                        var compare = Convert.ToString(rule.price.now.compare);
+                        string compare = Convert.ToString(rule.price.now.compare);
                         switch (compare)
                         {
                             case ">=":
@@ -114,9 +169,9 @@ namespace AutoTrade
         public void createSellOrder(dynamic rule, string symbol, ref Target target)
         {
             if (this.dataHandler.config == null) return;
-            var subcomp = Convert.ToString(this.dataHandler.config.Login.subcomp);
-            var account = Convert.ToString(this.dataHandler.config.Login.account);
-            var timeinforce = Convert.ToString(rule.timeinforce);
+            string subcomp = Convert.ToString(this.dataHandler.config.Login.subcomp);
+            string account = Convert.ToString(this.dataHandler.config.Login.account);
+            string timeinforce = Convert.ToString(rule.timeinforce);
 
             var quantity = target.stockData.orderAmount;
             var cost = Convert.ToInt32(rule.cost);
@@ -150,20 +205,20 @@ namespace AutoTrade
 
             if (Convert.ToBoolean(rule.enabled))
             {
-                var start = DateTime.ParseExact(
+                DateTime start = DateTime.ParseExact(
                                 Convert.ToString(rule.time.start), "HH:mm:ss", null);
-                var end = DateTime.ParseExact(
+                DateTime end = DateTime.ParseExact(
                                 Convert.ToString(rule.time.end), "HH:mm:ss", null);
                 if (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) >= 0 &&
                     DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
                 {
-                    var stockAmount = Convert.ToInt32(rule.stock.amount);
+                    int stockAmount = Convert.ToInt32(rule.stock.amount);
                     var target = this.dataHandler.targetMap[values[1]];
                     if (stockAmount <= target.stockData.orderAmount)
                     {
-                        var max = target.maxPrice * Convert.ToSingle(rule.price.max.factor);
+                        Single max = target.maxPrice * Convert.ToSingle(rule.price.max.factor);
                         var now = target.nowPrice;
-                        var compare = Convert.ToString(rule.price.now.compare);
+                        string compare = Convert.ToString(rule.price.now.compare);
                         switch (compare)
                         {
                             case ">=":
@@ -197,20 +252,20 @@ namespace AutoTrade
 
             if (Convert.ToBoolean(rule.enabled))
             {
-                var start = DateTime.ParseExact(
+                DateTime start = DateTime.ParseExact(
                                 Convert.ToString(rule.time.start), "HH:mm:ss", null);
-                var end = DateTime.ParseExact(
+                DateTime end = DateTime.ParseExact(
                                 Convert.ToString(rule.time.end), "HH:mm:ss", null);
                 if (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) >= 0 &&
                     DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
                 {
-                    var stockAmount = Convert.ToInt32(rule.stock.amount);
+                    int stockAmount = Convert.ToInt32(rule.stock.amount);
                     var target = this.dataHandler.targetMap[values[1]];
                     if (stockAmount <= target.stockData.orderAmount)
                     {
-                        var bull = target.bullPrice * Convert.ToSingle(rule.price.bull.factor);
+                        Single bull = target.bullPrice * Convert.ToSingle(rule.price.bull.factor);
                         var now = target.nowPrice;
-                        var compare = Convert.ToString(rule.price.now.compare);
+                        string compare = Convert.ToString(rule.price.now.compare);
                         switch (compare)
                         {
                             case ">=":
@@ -254,6 +309,8 @@ namespace AutoTrade
         }
         public void OnLogin(string status)
         {
+            Console.WriteLine("recv login response");
+
             if (status.IndexOf("<ret ") >= 0 &&
                 Utility.getXMLValue(status, "status") != "OK")
             {
@@ -348,6 +405,7 @@ namespace AutoTrade
 
             if (!this.updateTarget(values)) return;
             if (!this.isOrderConnected) return;
+            if (!this.checkConditions(rules.Exclude, values[1])) return;
 
             var buyRule = rules.Buy.NowPrice;
             this.ruleBuyNowPrice(buyRule, values);
@@ -516,92 +574,11 @@ namespace AutoTrade
         {
             if (this.dataHandler.config == null) return;
             if (this.dataHandler.targetMap == null) return;
-            var rules = this.dataHandler.config.Rules;
             var targets = this.dataHandler.targetMap;
 
-            Utility.addLogInfo(this.dataHandler.logger, "開始過濾行情...");
-
-            // 代號長度
-            if (Convert.ToBoolean(rules.Exclude.IDLength.enabled))
-            {
-                var length = Convert.ToInt32(rules.Exclude.IDLength.length);
-                List<string> removals = (from target in targets
-                                         where target.Key.Count(c => !Char.IsWhiteSpace(c)) > length
-                                         select target.Key).ToList();
-
-                foreach (var removal in removals)
-                {
-                    targets.Remove(removal);
-                }
-            }
-            // 當沖註記
-            if (Convert.ToBoolean(rules.Exclude.NotDayTrade.enabled))
-            {
-                List<string> removals = (from target in targets
-                                         where target.Value.dayTradeMark == ' '
-                                         select target.Key).ToList();
-
-                foreach (var removal in removals)
-                {
-                    targets.Remove(removal);
-                }
-            }
-            // 全額交割 (透過變更交易)
-            if (Convert.ToBoolean(rules.Exclude.FullCash.enabled))
-            {
-                List<string> removals = (from target in targets
-                                         where target.Value.dealType != '0'
-                                         select target.Key).ToList();
-
-                foreach (var removal in removals)
-                {
-                    targets.Remove(removal);
-                }
-            }
-            // 處置註記
-            if (Convert.ToBoolean(rules.Exclude.Disposed.enabled))
-            {
-                List<string> removals = (from target in targets
-                                         where target.Value.disposeMark != '0'
-                                         select target.Key).ToList();
-
-                foreach (var removal in removals)
-                {
-                    targets.Remove(removal);
-                }
-            }
-            // // 交易量
-            // if (Convert.ToBoolean(rules.Exclude.TradeAmount.enabled))
-            // {
-            //     var expect = Convert.ToInt32(rules.Exclude.TradeAmount.total);
-            //     List<string> removals = (from target in targets
-            //                              where target.Value.totalAmount < expect
-            //                              select target.Key).ToList();
-
-            //     foreach (var removal in removals)
-            //     {
-            //         targets.Remove(removal);
-            //     }
-            // }
-            // // 收盤價
-            // if (Convert.ToBoolean(rules.Exclude.TradePrice.enabled))
-            // {
-            //     var low = Convert.ToSingle(rules.Exclude.TradePrice.price.min);
-            //     var high = Convert.ToSingle(rules.Exclude.TradePrice.price.max);
-            //     List<string> removals = (from target in targets
-            //                              where target.Value.ldcPrice < low || 
-            //                                    target.Value.ldcPrice > high
-            //                              select target.Key).ToList();
-
-            //     foreach (var removal in removals)
-            //     {
-            //         targets.Remove(removal);
-            //     }
-            // }
+            int success = 0, failed = 0;
 
             Utility.addLogInfo(this.dataHandler.logger, "開始訂閱行情...");
-
-            int success = 0, failed = 0;
 
             foreach (var target in targets)
             {
@@ -634,7 +611,7 @@ namespace AutoTrade
             var config = this.dataHandler.config;
             if (config == null) return false;
 
-            var start = DateTime.ParseExact(Convert.ToString(config.Login.time.start), "HH:mm:ss", null);
+            DateTime start = DateTime.ParseExact(Convert.ToString(config.Login.time.start), "HH:mm:ss", null);
             Utility.addLogInfo(this.dataHandler.logger, "等待登入時刻...");
             while (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) < 0)
             {
@@ -663,7 +640,7 @@ namespace AutoTrade
         {
             var config = this.dataHandler.config;
             if (config == null) return false;
-            var end = DateTime.ParseExact(Convert.ToString(config.Login.time.end), "HH:mm:ss", null);
+            DateTime end = DateTime.ParseExact(Convert.ToString(config.Login.time.end), "HH:mm:ss", null);
             if (DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0) return false;
             else return true;
         }

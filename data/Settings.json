@@ -10,15 +10,24 @@
     "account": "8888945",
     "time": {
       "download": "08:30:00",
-      "start": "10:00:00",
+      "start": "09:00:00",
       "end": "23:00:00"
     }
   },
-  "T30" : {
-    "TSE": "http://download.pscnet.com.tw/download/ap/T30/ASCT30S_",
-    "OTC": "http://download.pscnet.com.tw/download/ap/T30/ASCT30O_"
+  "Urls": {
+    "T30": {
+      "TSE": "http://download.pscnet.com.tw/download/ap/T30/ASCT30S_",
+      "OTC": "http://download.pscnet.com.tw/download/ap/T30/ASCT30O_"
+    },
+    "Info": {
+      "url": "https://mops.twse.com.tw/mops/web/index",
+      "update": true
+    }
   },
-  "LogDir": "Logs",
+  "Paths": {
+    "Records": "data//Records.json",
+    "LogDir": "Logs"
+  },
   "Rules": {
     "Exclude": {
       "IDLength": {
@@ -33,6 +42,10 @@
       },
       "Disposed": {
         "enabled": true
+      },
+      "Capital": {
+        "enabled": true,
+        "amount": "10000000000"
       },
       "TradeAmount": {
         "enabled": true,

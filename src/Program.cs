@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Threading;
 
 namespace AutoTrade
@@ -10,9 +9,11 @@ namespace AutoTrade
         {
             Console.WriteLine("Program starts!");
 
+            //TODO: make all files with the exe
             var settings = @"data//Settings.json";
-            var records = @"data//Records.json";
-            var eventHandler = new EventHandler(new DataHandler(settings, records));
+            var eventHandler = new EventHandler(new DataHandler(settings));
+
+            return;
 
             Console.WriteLine("Waiting to login...");
             while (!eventHandler.login())
@@ -20,17 +21,18 @@ namespace AutoTrade
                 Thread.Sleep(1000);
             }
 
-            Console.WriteLine("Trading...");
-            while (!eventHandler.shouldLogout()) 
-            {
-                Thread.Sleep(1000);
-            }
+            // Console.WriteLine("Trading...");
+            // while (!eventHandler.shouldLogout()) 
+            // {
+            //     Thread.Sleep(1000);
+            // }
 
-            Console.WriteLine("Logout and waiting to store data...");
-            eventHandler.logout();
-            eventHandler.storeRecords();
+            // Console.WriteLine("Logout and waiting to store data...");
+            // eventHandler.logout();
+            // eventHandler.storeRecords();
 
-            Console.WriteLine("Program ends!");
+            Console.WriteLine("Program ends! Type any keys to close.");
+            Console.ReadLine();
         }
     }
 }

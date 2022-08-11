@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
+using AngleSharp;
+using AngleSharp.Dom;
 
 namespace AutoTrade
 {
@@ -68,14 +70,16 @@ namespace AutoTrade
         }
         public class Record
         {
-            public string code;
+            public string symbol;
+            public string capital;
             public price price;
             public int total;
             public stock stock;
 
-            public Record(string code, Target target)
+            public Record(string symbol, Target target)
             {
-                this.code = code;
+                this.symbol = symbol;
+                this.capital = target.capital;
                 this.price = new price(target);
                 this.total = target.totalAmount;
                 this.stock = new stock(target);
@@ -97,6 +101,7 @@ namespace AutoTrade
         public char monitorMark;
         public char limitMark;
         public char dayTradeMark;
+        public string capital;
 
         public Target(string values, Utility.T30 type)
         {
@@ -116,6 +121,7 @@ namespace AutoTrade
             if (type == Utility.T30.TWSE)
                 this.dayTradeMark = values[86];
             else this.dayTradeMark = values[87];
+            this.capital = "0";
             this.stockData = new Stock();
         }
         public void updateFromRecord(dynamic target)
@@ -126,7 +132,10 @@ namespace AutoTrade
             this.totalAmount = Convert.ToInt32(target.total);
             this.stockData = new Stock(target.stock);
         }
-
+        public void updateFromSymbol(dynamic target)
+        {
+            this.capital = Convert.ToString(target.capital);
+        }
         public void updateFromQuote(string openPrice, string maxPrice, string minPrice,
                                     string nowPrice, string totalAmount)
         {
@@ -155,15 +164,14 @@ namespace AutoTrade
     {
         public Dictionary<string, Target>? targetMap;
         public dynamic? config;
-        public string recordPath;
         public StreamWriter? logger;
 
         public void initTargetMap()
         {
             if (this.config == null) return;
-            
+
             Utility.addLogDebug(this.logger, "開始初始化標的表");
-            var time = TimeSpan.Parse(Convert.ToString(this.config.Login.time.download));
+            TimeSpan time = TimeSpan.Parse(Convert.ToString(this.config.Login.time.download));
 
             Utility.addLogDebug(this.logger, "等待盤前檔準備好...");
             while (DateTime.Now.TimeOfDay.CompareTo(time) < 0)
@@ -177,7 +185,7 @@ namespace AutoTrade
 
             var client = new HttpClient();
 
-            var responseT30S = client.GetAsync(Convert.ToString(this.config.T30.TSE) + date);
+            var responseT30S = client.GetAsync(Convert.ToString(this.config.Urls.T30.TSE) + date);
             var contentT30S = responseT30S.Result.Content.ReadAsStreamAsync().Result;
 
             // var path = Path.Combine(Directory.GetCurrentDirectory(), @"data\\ASCT30S_20220801.txt");
@@ -194,7 +202,7 @@ namespace AutoTrade
                 }
             }
 
-            var responseT30O = client.GetAsync(Convert.ToString(this.config.T30.OTC) + date);
+            var responseT30O = client.GetAsync(Convert.ToString(this.config.Urls.T30.OTC) + date);
             var contentT30O = responseT30O.Result.Content.ReadAsStreamAsync().Result;
 
             var T30O = new StreamReader(contentT30O);
@@ -212,14 +220,17 @@ namespace AutoTrade
 
         public void fillTargetMap()
         {
+            if (this.config == null) return;
             Utility.addLogDebug(this.logger, "讀取記錄檔...");
-            dynamic? text = JsonConvert.DeserializeObject(File.ReadAllText(this.recordPath));
+
+            string recordPath = Convert.ToString(this.config.Paths.Records);
+            dynamic? text = JsonConvert.DeserializeObject(File.ReadAllText(recordPath));
             if (text == null) return;
             if (this.targetMap == null) return;
 
             foreach (var target in text)
             {
-                var key = Convert.ToString(target.code);
+                var key = Convert.ToString(target.symbol);
                 if (this.targetMap.ContainsKey(key))
                 {
                     this.targetMap[key].updateFromRecord(target);
@@ -234,13 +245,44 @@ namespace AutoTrade
             if (strWorkPath == null) return;
             if (this.config == null) return;
 
-            var logDir = Convert.ToString(this.config.LogDir);
-            var pathDir = Path.Combine(strWorkPath, logDir);
+            string logDir = Convert.ToString(this.config.Paths.LogDir);
+            string pathDir = Path.Combine(strWorkPath, logDir);
             Directory.CreateDirectory(pathDir);
 
             var logPath = Path.Combine(pathDir, DateTime.Now.ToString("yyyy-MM-dd") + ".log");
             FileStream file = File.Open(logPath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
             this.logger = new StreamWriter(file, Encoding.GetEncoding("big5"));
+        }
+        public void updateCapitals()
+        {
+            if (this.config == null) return;
+
+            // Utility.addLogDebug(this.logger, "read capitals");
+
+            // var capitalPath = Convert.ToString(this.config.Paths.Capitals);
+            // dynamic? text = JsonConvert.DeserializeObject(File.ReadAllText(capitalPath));
+            // if (text == null) return;
+            // if (this.targetMap == null) return;
+
+            // foreach (var target in text)
+            // {
+            //     var key = Convert.ToString(target.symbol);
+            //     if (this.targetMap.ContainsKey(key))
+            //     {
+            //         this.targetMap[key].updateFromSymbol(target);
+            //     }
+            // }
+            // Utility.addLogDebug(this.logger, "complete capitals");
+
+            // TODO: read symbols, check if need to update and store back
+            // var cfg = Configuration.Default.WithDefaultLoader();
+            // var browser = BrowsingContext.New(cfg);
+            // var url = new Url(Convert.ToString(this.config.Urls.Info.url));
+            // var document = browser.OpenAsync(url).Result;
+            // var input = document.QuerySelector(".textbox");
+            // var div = document.DoubleClick()
+            // div.DoClick();
+            // Console.WriteLine(input?.GetAttribute("placeholder"));
         }
 
         public void storeRecords()
@@ -249,8 +291,9 @@ namespace AutoTrade
             string strPath = Assembly.GetExecutingAssembly().Location;
             string? strWorkPath = Path.GetDirectoryName(strPath);
             if (strWorkPath == null) return;
+            if (this.config == null) return;
 
-            // TODO: should modify when passing tests
+            // var recordPath = Convert.ToString(this.config.Paths.Records);
             var path = Path.Combine(strWorkPath, "Records.json");
             var records = new List<Target.Record>();
 
@@ -268,13 +311,13 @@ namespace AutoTrade
 
             if (this.logger != null) this.logger.Close();
         }
-        public DataHandler(string path_settings, string path_records)
+        public DataHandler(string path_settings)
         {
-            this.recordPath = path_records;
             this.config = JsonConvert.DeserializeObject(File.ReadAllText(path_settings));
             this.initLogger();
             this.initTargetMap();
             this.fillTargetMap();
+            this.updateCapitals();
         }
     }
 }
