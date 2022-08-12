@@ -46,7 +46,9 @@ namespace AutoTrade
             if (Convert.ToBoolean(rule.IDLength.enabled))
             {
                 int length = Convert.ToInt32(rule.IDLength.length);
-                if (symbol.Length > length) return false;
+                if (symbol.Count(c => !Char.IsWhiteSpace(c)) > length) return false;
+                string fund = Convert.ToString(rule.IDLength.fund);
+                if (symbol.CompareTo(fund) <= 0) return false;
             }
 
             // 當沖註記

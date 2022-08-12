@@ -9,7 +9,7 @@
     "subcomp": "5850",
     "account": "8888945",
     "time": {
-      "download": "08:30:00",
+      "download": "00:00:00",
       "start": "09:00:00",
       "end": "23:00:00"
     }
@@ -32,7 +32,8 @@
     "Exclude": {
       "IDLength": {
         "enabled": true,
-        "length": 4
+        "length": 4,
+        "fund": "0061  "
       },
       "NotDayTrade": {
         "enabled": true

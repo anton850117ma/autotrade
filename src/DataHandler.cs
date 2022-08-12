@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace AutoTrade
 {
@@ -179,7 +180,7 @@ namespace AutoTrade
             }
             var date = DateTime.Now.ToString("yyyyMMdd");
             this.targetMap = new Dictionary<string, Target>();
-            // var date = "_20220801";
+            date = "20220812";
 
             var client = new HttpClient();
 
@@ -248,31 +249,67 @@ namespace AutoTrade
             Directory.CreateDirectory(pathDir);
 
             var logPath = Path.Combine(pathDir, DateTime.Now.ToString("yyyy-MM-dd") + ".log");
-            FileStream file = File.Open(logPath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+            FileStream file = File.Open(logPath, FileMode.Create, FileAccess.Write, FileShare.Read);
             this.logger = new StreamWriter(file, Encoding.GetEncoding("big5"));
         }
         public void updateCapitals()
         {
             if (this.config == null) return;
+            if (this.targetMap == null) return;
 
-            var url = "https://mops.twse.com.tw/mops/web/t146sb05";
+            bool toUpdate = Convert.ToBoolean(this.config.Urls.Info.update);
+            if (toUpdate == false) return;
+
+            string fund = Convert.ToString(this.config.Rules.Exclude.IDLength.fund);
+            string url = "https://mops.twse.com.tw/mops/web/t146sb05";
             var client = new HttpClient();
             var parameters = new Dictionary<string, string> {
-                { "step", "1" }, { "run", "" }, {"firstin", "1"}, {"co_id", "2330"} };
-            var encodedContent = new FormUrlEncodedContent(parameters);
-            var response = client.PostAsync(url, encodedContent).Result;
-            var stream = new StreamReader(response.Content.ReadAsStreamAsync().Result);
+                { "step", "1" }, { "run", "" }, {"firstin", "1"}, {"co_id", "0"} };
 
-            while (!stream.EndOfStream)
+            foreach (var target in this.targetMap)
             {
-                var line = stream.ReadLine();
-                if (line.Contains("實收資本額"))
+                if (target.Key.Count(c => !Char.IsWhiteSpace(c)) != 4) continue;
+                if (target.Key.CompareTo(fund) <= 0) continue;
+
+                parameters["co_id"] = target.Key;
+                bool getData = false;
+                int counter = 0;
+
+                while (true)
                 {
-                    for (var i = 0; i < 5; i++)
-                        line = stream.ReadLine();
-                    var capital = line.Replace("<td>", "").Replace("</td>", "").Replace(" ", "").Replace(",", "");
-                    Console.WriteLine(capital);
-                    break;
+                    Thread.Sleep(3000);
+                    using (var encodedContent = new FormUrlEncodedContent(parameters))
+                    {
+                        if (encodedContent == null) continue;
+                        using (var response = client.PostAsync(url, encodedContent).Result)
+                        {
+                            if (response == null) continue;
+                            using (var stream = new StreamReader(response.Content.ReadAsStreamAsync().Result))
+                            {
+                                if (stream == null) continue;
+
+                                counter++;
+                                while (!stream.EndOfStream)
+                                {
+                                    var line = stream.ReadLine();
+                                    if (line != null && line.Contains("實收資本額"))
+                                    {
+                                        for (var i = 0; i < 5; i++)
+                                            line = stream.ReadLine();
+                                        if (line == null) break;
+                                        target.Value.capital =
+                                            line.Replace("<td>", "").Replace("</td>", "").Replace(" ", "").Replace(",", "");
+                                        getData = true;
+                                        Utility.addLogDebug(this.logger, 
+                                                           "更新資本額成功 " + target.Key + " " + target.Value.capital);
+                                        break;
+                                    }
+                                    else if (line != null && line.Contains("Overrun")) break;
+                                }
+                                if (getData || counter == 3) break;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -306,9 +343,9 @@ namespace AutoTrade
         public DataHandler(string path_settings)
         {
             this.config = JsonConvert.DeserializeObject(File.ReadAllText(path_settings));
-            // this.initLogger();
-            // this.initTargetMap();
-            // this.fillTargetMap();
+            this.initLogger();
+            this.initTargetMap();
+            this.fillTargetMap();
             this.updateCapitals();
         }
     }
