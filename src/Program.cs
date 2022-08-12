@@ -13,8 +13,6 @@ namespace AutoTrade
             var settings = @"data//Settings.json";
             var eventHandler = new EventHandler(new DataHandler(settings));
 
-            return;
-
             // Console.WriteLine("Waiting to login...");
             // while (!eventHandler.login())
             // {
@@ -32,7 +30,7 @@ namespace AutoTrade
             // eventHandler.storeRecords();
 
             Console.WriteLine("Program ends! Type any keys to close.");
-            Console.ReadLine();
+            Console.ReadKey(true);
         }
     }
 }

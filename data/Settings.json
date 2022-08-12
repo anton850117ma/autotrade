@@ -21,7 +21,7 @@
     },
     "Info": {
       "url": "https://mops.twse.com.tw/mops/web/index",
-      "update": true
+      "update": false
     }
   },
   "Paths": {
