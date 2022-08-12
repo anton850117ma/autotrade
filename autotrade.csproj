@@ -13,7 +13,6 @@
 		</Reference>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="AngleSharp" Version="0.17.1" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 </Project>

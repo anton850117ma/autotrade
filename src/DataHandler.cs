@@ -6,8 +6,6 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
-using AngleSharp;
-using AngleSharp.Dom;
 
 namespace AutoTrade
 {
@@ -257,32 +255,26 @@ namespace AutoTrade
         {
             if (this.config == null) return;
 
-            // Utility.addLogDebug(this.logger, "read capitals");
+            var url = "https://mops.twse.com.tw/mops/web/t146sb05";
+            var client = new HttpClient();
+            var parameters = new Dictionary<string, string> {
+                { "step", "1" }, { "run", "" }, {"firstin", "1"}, {"co_id", "2330"} };
+            var encodedContent = new FormUrlEncodedContent(parameters);
+            var response = client.PostAsync(url, encodedContent).Result;
+            var stream = new StreamReader(response.Content.ReadAsStreamAsync().Result);
 
-            // var capitalPath = Convert.ToString(this.config.Paths.Capitals);
-            // dynamic? text = JsonConvert.DeserializeObject(File.ReadAllText(capitalPath));
-            // if (text == null) return;
-            // if (this.targetMap == null) return;
-
-            // foreach (var target in text)
-            // {
-            //     var key = Convert.ToString(target.symbol);
-            //     if (this.targetMap.ContainsKey(key))
-            //     {
-            //         this.targetMap[key].updateFromSymbol(target);
-            //     }
-            // }
-            // Utility.addLogDebug(this.logger, "complete capitals");
-
-            // TODO: read symbols, check if need to update and store back
-            // var cfg = Configuration.Default.WithDefaultLoader();
-            // var browser = BrowsingContext.New(cfg);
-            // var url = new Url(Convert.ToString(this.config.Urls.Info.url));
-            // var document = browser.OpenAsync(url).Result;
-            // var input = document.QuerySelector(".textbox");
-            // var div = document.DoubleClick()
-            // div.DoClick();
-            // Console.WriteLine(input?.GetAttribute("placeholder"));
+            while (!stream.EndOfStream)
+            {
+                var line = stream.ReadLine();
+                if (line.Contains("實收資本額"))
+                {
+                    for (var i = 0; i < 5; i++)
+                        line = stream.ReadLine();
+                    var capital = line.Replace("<td>", "").Replace("</td>", "").Replace(" ", "").Replace(",", "");
+                    Console.WriteLine(capital);
+                    break;
+                }
+            }
         }
 
         public void storeRecords()
@@ -314,9 +306,9 @@ namespace AutoTrade
         public DataHandler(string path_settings)
         {
             this.config = JsonConvert.DeserializeObject(File.ReadAllText(path_settings));
-            this.initLogger();
-            this.initTargetMap();
-            this.fillTargetMap();
+            // this.initLogger();
+            // this.initTargetMap();
+            // this.fillTargetMap();
             this.updateCapitals();
         }
     }

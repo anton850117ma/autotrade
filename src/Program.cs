@@ -15,11 +15,11 @@ namespace AutoTrade
 
             return;
 
-            Console.WriteLine("Waiting to login...");
-            while (!eventHandler.login())
-            {
-                Thread.Sleep(1000);
-            }
+            // Console.WriteLine("Waiting to login...");
+            // while (!eventHandler.login())
+            // {
+            //     Thread.Sleep(1000);
+            // }
 
             // Console.WriteLine("Trading...");
             // while (!eventHandler.shouldLogout()) 

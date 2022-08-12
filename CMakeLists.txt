@@ -48,6 +48,7 @@ set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY
 # # Add in the .NET reference libraries.
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_DOTNET_REFERENCES
     "System"
+    "System.Web"
     "System.Net.Http"
     "Microsoft.CSharp"
     # "System.Threading"
@@ -56,5 +57,4 @@ set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_DOTNET_REFERENCES
 
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_PACKAGE_REFERENCES 
     "Newtonsoft.Json_13.0.1"
-    "AngleSharp_0.17.1"
 )
