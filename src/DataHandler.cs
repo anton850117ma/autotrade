@@ -3,10 +3,10 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Reflection;
+using System.Linq;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
-using System.Linq;
 
 namespace AutoTrade
 {
@@ -171,9 +171,7 @@ namespace AutoTrade
             string? strWorkPath = Path.GetDirectoryName(strPath);
             if (strWorkPath == null) return false;
 
-            // TODO: use strWorkPath instead
-            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), 
-                                                "Settings.json", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(strWorkPath, "Settings.json", SearchOption.AllDirectories);
 
             if (files.Length == 0)
             {
@@ -205,6 +203,8 @@ namespace AutoTrade
             }
             var date = DateTime.Now.ToString("yyyyMMdd");
             this.targetMap = new Dictionary<string, Target>();
+            
+            // TODO: remove this line
             date = "20220812";
 
             var client = new HttpClient();
@@ -212,8 +212,6 @@ namespace AutoTrade
             var responseT30S = client.GetAsync(Convert.ToString(this.config.Urls.T30.TSE) + date);
             var contentT30S = responseT30S.Result.Content.ReadAsStreamAsync().Result;
 
-            // var path = Path.Combine(Directory.GetCurrentDirectory(), @"data\\ASCT30S_20220801.txt");
-            // var T30S = new StreamReader(path); //950
             // var T30S = new StreamReader(contentT30S, Encoding.GetEncoding("big5")); //950
             var T30S = new StreamReader(contentT30S);
             Utility.addLogDebug(this.logger, "正在處理上市盤前檔...");
@@ -297,7 +295,7 @@ namespace AutoTrade
             if (toUpdate == false) return;
 
             string url = Convert.ToString(this.config.Urls.Info.url);
-            string fund = Convert.ToString(this.config.Rules.Exclude.IDLength.fund);
+            bool fund = Convert.ToBoolean(this.config.Rules.Exclude.IDLength.fund);
             var client = new HttpClient();
             var parameters = new Dictionary<string, string> {
                 { "step", "1" }, { "run", "" }, {"firstin", "1"}, {"co_id", "0"} };
@@ -305,7 +303,7 @@ namespace AutoTrade
             foreach (var target in this.targetMap)
             {
                 if (target.Key.Count(c => !Char.IsWhiteSpace(c)) != 4) continue;
-                if (target.Key.CompareTo(fund) <= 0) continue;
+                if (fund && target.Key.CompareTo(Utility.DEF_FUND_CODE) <= 0) continue;
 
                 parameters["co_id"] = target.Key;
                 bool getData = false;

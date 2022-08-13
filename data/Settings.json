@@ -21,11 +21,11 @@
     },
     "Info": {
       "url": "https://mops.twse.com.tw/mops/web/t146sb05",
-      "update": true
+      "update": false
     }
   },
   "Paths": {
-    "Records": "Data/Records.json",
+    "Records": "Records.json",
     "LogDir": "Logs"
   },
   "Rules": {
@@ -33,7 +33,7 @@
       "IDLength": {
         "enabled": true,
         "length": 4,
-        "fund": "0061  "
+        "fund": true
       },
       "NotDayTrade": {
         "enabled": true

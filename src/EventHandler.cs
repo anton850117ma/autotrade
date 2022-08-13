@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Rayin;
@@ -47,8 +47,8 @@ namespace AutoTrade
             {
                 int length = Convert.ToInt32(rule.IDLength.length);
                 if (symbol.Count(c => !Char.IsWhiteSpace(c)) > length) return false;
-                string fund = Convert.ToString(rule.IDLength.fund);
-                if (symbol.CompareTo(fund) <= 0) return false;
+                bool fund = Convert.ToBoolean(rule.IDLength.fund);
+                if (fund && symbol.CompareTo(Utility.DEF_FUND_CODE) <= 0) return false;
             }
 
             // 當沖註記

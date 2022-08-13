@@ -51,10 +51,18 @@ set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_DOTNET_REFERENCES
     "System.Web"
     "System.Net.Http"
     "Microsoft.CSharp"
-    # "System.Threading"
-    # "System.Runtime.InteropServices"
 )
 
 set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY VS_PACKAGE_REFERENCES 
     "Newtonsoft.Json_13.0.1"
+)
+
+add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory 
+                           ${PROJECT_BINARY_DIR}/Release ${CMAKE_SOURCE_DIR}/autotrade
+                   COMMAND ${CMAKE_COMMAND} -E copy_directory 
+                           ${CMAKE_SOURCE_DIR}/data ${CMAKE_SOURCE_DIR}/autotrade
+                   COMMAND ${CMAKE_COMMAND} -E copy 
+                           ${CMAKE_SOURCE_DIR}/RayinVTS.dll ${CMAKE_SOURCE_DIR}/autotrade
+                   COMMENT "Pack files completed!"
 )
