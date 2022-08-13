@@ -165,6 +165,31 @@ namespace AutoTrade
         public dynamic? config;
         public StreamWriter? logger;
 
+        public bool initConfig()
+        {
+            string strPath = Assembly.GetExecutingAssembly().Location;
+            string? strWorkPath = Path.GetDirectoryName(strPath);
+            if (strWorkPath == null) return false;
+
+            // TODO: use strWorkPath instead
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory(), 
+                                                "Settings.json", SearchOption.AllDirectories);
+
+            if (files.Length == 0)
+            {
+                Console.WriteLine("Error: Settings.json not found");
+                return false;
+            }
+            else if (files.Length > 1)
+            {
+                Console.WriteLine("Error: multiple Settings.json found");
+                return false;
+            }
+
+            this.config = JsonConvert.DeserializeObject(File.ReadAllText(files[0]));
+            return true;
+        }
+
         public void initTargetMap()
         {
             if (this.config == null) return;
@@ -220,9 +245,20 @@ namespace AutoTrade
         public void fillTargetMap()
         {
             if (this.config == null) return;
-            Utility.addLogDebug(this.logger, "讀取記錄檔...");
+            Utility.addLogDebug(this.logger, "嘗試讀取記錄檔...");
 
-            string recordPath = Convert.ToString(this.config.Paths.Records);
+            string tempPath = Convert.ToString(this.config.Paths.Records);
+            string strPath = Assembly.GetExecutingAssembly().Location;
+            string? strWorkPath = Path.GetDirectoryName(strPath);
+            if (strWorkPath == null) return;
+
+            var recordPath = Path.Combine(strWorkPath, tempPath);
+            if (!File.Exists(recordPath))
+            {
+                Utility.addLogDebug(this.logger, "記錄檔不存在");
+                return;
+            }
+
             dynamic? text = JsonConvert.DeserializeObject(File.ReadAllText(recordPath));
             if (text == null) return;
             if (this.targetMap == null) return;
@@ -239,10 +275,10 @@ namespace AutoTrade
         }
         public void initLogger()
         {
+            if (this.config == null) return;
             string strPath = Assembly.GetExecutingAssembly().Location;
             string? strWorkPath = Path.GetDirectoryName(strPath);
             if (strWorkPath == null) return;
-            if (this.config == null) return;
 
             string logDir = Convert.ToString(this.config.Paths.LogDir);
             string pathDir = Path.Combine(strWorkPath, logDir);
@@ -260,8 +296,8 @@ namespace AutoTrade
             bool toUpdate = Convert.ToBoolean(this.config.Urls.Info.update);
             if (toUpdate == false) return;
 
+            string url = Convert.ToString(this.config.Urls.Info.url);
             string fund = Convert.ToString(this.config.Rules.Exclude.IDLength.fund);
-            string url = "https://mops.twse.com.tw/mops/web/t146sb05";
             var client = new HttpClient();
             var parameters = new Dictionary<string, string> {
                 { "step", "1" }, { "run", "" }, {"firstin", "1"}, {"co_id", "0"} };
@@ -300,7 +336,7 @@ namespace AutoTrade
                                         target.Value.capital =
                                             line.Replace("<td>", "").Replace("</td>", "").Replace(" ", "").Replace(",", "");
                                         getData = true;
-                                        Utility.addLogDebug(this.logger, 
+                                        Utility.addLogDebug(this.logger,
                                                            "更新資本額成功 " + target.Key + " " + target.Value.capital);
                                         break;
                                     }
@@ -322,8 +358,8 @@ namespace AutoTrade
             if (strWorkPath == null) return;
             if (this.config == null) return;
 
-            // var recordPath = Convert.ToString(this.config.Paths.Records);
-            var path = Path.Combine(strWorkPath, "Records.json");
+            var recordPath = Convert.ToString(this.config.Paths.Records);
+            var path = Path.Combine(strWorkPath, recordPath);
             var records = new List<Target.Record>();
 
             if (this.targetMap == null) return;
@@ -334,15 +370,16 @@ namespace AutoTrade
             }
 
             string text = JsonConvert.SerializeObject(records, Formatting.Indented);
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
             File.WriteAllText(path, text);
 
             Utility.addLogDebug(this.logger, "完成回寫紀錄");
 
             if (this.logger != null) this.logger.Close();
         }
-        public DataHandler(string path_settings)
+        public DataHandler()
         {
-            this.config = JsonConvert.DeserializeObject(File.ReadAllText(path_settings));
+            if (!this.initConfig()) return;
             this.initLogger();
             this.initTargetMap();
             this.fillTargetMap();

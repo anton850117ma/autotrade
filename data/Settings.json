@@ -20,12 +20,12 @@
       "OTC": "http://download.pscnet.com.tw/download/ap/T30/ASCT30O_"
     },
     "Info": {
-      "url": "https://mops.twse.com.tw/mops/web/index",
-      "update": false
+      "url": "https://mops.twse.com.tw/mops/web/t146sb05",
+      "update": true
     }
   },
   "Paths": {
-    "Records": "data//Records.json",
+    "Records": "Data/Records.json",
     "LogDir": "Logs"
   },
   "Rules": {

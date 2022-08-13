@@ -9,9 +9,7 @@ namespace AutoTrade
         {
             Console.WriteLine("Program starts!");
 
-            //TODO: make all files with the exe
-            var settings = @"data//Settings.json";
-            var eventHandler = new EventHandler(new DataHandler(settings));
+            var eventHandler = new EventHandler(new DataHandler());
 
             // Console.WriteLine("Waiting to login...");
             // while (!eventHandler.login())
@@ -27,7 +25,7 @@ namespace AutoTrade
 
             // Console.WriteLine("Logout and waiting to store data...");
             // eventHandler.logout();
-            // eventHandler.storeRecords();
+            eventHandler.storeRecords();
 
             Console.WriteLine("Program ends! Type any keys to close.");
             Console.ReadKey(true);
