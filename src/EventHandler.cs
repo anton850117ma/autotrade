@@ -111,7 +111,7 @@ namespace AutoTrade
             if (retVal != null && (retVal.Length == 0 || retVal == "00"))
             {
                 target.stockData.orderAmount += quantity;
-                target.stockData.sellTimes += 1;
+                target.stockData.buyTimes += 1;
                 Utility.addLogInfo(this.dataHandler.logger,
                                    "新單買入成功 " + symbol + " " + quantity.ToString());
             }
@@ -127,31 +127,31 @@ namespace AutoTrade
 
             if (Convert.ToBoolean(rule.enabled))
             {
-                DateTime start = DateTime.ParseExact(
-                                Convert.ToString(rule.time.start), "HH:mm:ss", null);
+                DateTime begin = DateTime.ParseExact(
+                                Convert.ToString(rule.time.begin), "HH:mm:ss", null);
                 DateTime end = DateTime.ParseExact(
                                 Convert.ToString(rule.time.end), "HH:mm:ss", null);
-                if (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) >= 0 &&
+                if (DateTime.Now.TimeOfDay.CompareTo(begin.TimeOfDay) >= 0 &&
                     DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
                 {
                     int stockAmount = Convert.ToInt32(rule.stock.amount);
                     var target = this.dataHandler.targetMap[values[1]];
-                    if (stockAmount == target.stockData.orderAmount)
+                    if (stockAmount >= target.stockData.orderAmount)
                     {
                         Single close = target.ldcPrice * Convert.ToSingle(rule.price.close.factor);
                         var now = target.nowPrice;
                         string compare = Convert.ToString(rule.price.now.compare);
                         switch (compare)
                         {
-                            case ">=":
-                                if (now >= close)
-                                    this.createBuyOrder(rule.order, values[1], target);
-                                break;
                             case ">":
                                 if (now > close)
                                     this.createBuyOrder(rule.order, values[1], target);
                                 break;
-                            case "=":
+                            case ">=":
+                                if (now >= close)
+                                    this.createBuyOrder(rule.order, values[1], target);
+                                break;
+                            case "==":
                                 if (now == close)
                                     this.createBuyOrder(rule.order, values[1], target);
                                 break;
@@ -161,6 +161,10 @@ namespace AutoTrade
                                 break;
                             case "<":
                                 if (now < close)
+                                    this.createBuyOrder(rule.order, values[1], target);
+                                break;
+                            case "!=":
+                                if (now != close)
                                     this.createBuyOrder(rule.order, values[1], target);
                                 break;
                         }
@@ -177,7 +181,7 @@ namespace AutoTrade
 
             var quantity = target.stockData.orderAmount;
             var cost = Convert.ToInt32(rule.cost);
-            if (cost != -1)
+            if (cost >= 0)
                 quantity = cost / (target.bullPrice * 1000);
 
             var clOrdId = new IntPtr();
@@ -207,11 +211,11 @@ namespace AutoTrade
 
             if (Convert.ToBoolean(rule.enabled))
             {
-                DateTime start = DateTime.ParseExact(
-                                Convert.ToString(rule.time.start), "HH:mm:ss", null);
+                DateTime begin = DateTime.ParseExact(
+                                Convert.ToString(rule.time.begin), "HH:mm:ss", null);
                 DateTime end = DateTime.ParseExact(
                                 Convert.ToString(rule.time.end), "HH:mm:ss", null);
-                if (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) >= 0 &&
+                if (DateTime.Now.TimeOfDay.CompareTo(begin.TimeOfDay) >= 0 &&
                     DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
                 {
                     int stockAmount = Convert.ToInt32(rule.stock.amount);
@@ -223,15 +227,15 @@ namespace AutoTrade
                         string compare = Convert.ToString(rule.price.now.compare);
                         switch (compare)
                         {
-                            case ">=":
-                                if (now >= max)
-                                    this.createSellOrder(rule.order, values[1], target);
-                                break;
                             case ">":
                                 if (now > max)
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
-                            case "=":
+                            case ">=":
+                                if (now >= max)
+                                    this.createSellOrder(rule.order, values[1], target);
+                                break;
+                            case "==":
                                 if (now == max)
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
@@ -241,6 +245,10 @@ namespace AutoTrade
                                 break;
                             case "<":
                                 if (now < max)
+                                    this.createSellOrder(rule.order, values[1], target);
+                                break;
+                            case "!=":
+                                if (now != max)
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                         }
@@ -254,11 +262,11 @@ namespace AutoTrade
 
             if (Convert.ToBoolean(rule.enabled))
             {
-                DateTime start = DateTime.ParseExact(
-                                Convert.ToString(rule.time.start), "HH:mm:ss", null);
+                DateTime begin = DateTime.ParseExact(
+                                Convert.ToString(rule.time.begin), "HH:mm:ss", null);
                 DateTime end = DateTime.ParseExact(
                                 Convert.ToString(rule.time.end), "HH:mm:ss", null);
-                if (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) >= 0 &&
+                if (DateTime.Now.TimeOfDay.CompareTo(begin.TimeOfDay) >= 0 &&
                     DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
                 {
                     int stockAmount = Convert.ToInt32(rule.stock.amount);
@@ -278,7 +286,7 @@ namespace AutoTrade
                                 if (now > bull)
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
-                            case "=":
+                            case "==":
                                 if (now == bull)
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
@@ -288,6 +296,10 @@ namespace AutoTrade
                                 break;
                             case "<":
                                 if (now < bull)
+                                    this.createSellOrder(rule.order, values[1], target);
+                                break;
+                            case "!=":
+                                if (now != bull)
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                         }
@@ -614,9 +626,9 @@ namespace AutoTrade
             var config = this.dataHandler.config;
             if (config == null) return false;
 
-            DateTime start = DateTime.ParseExact(Convert.ToString(config.Login.time.start), "HH:mm:ss", null);
+            DateTime begin = DateTime.ParseExact(Convert.ToString(config.Login.time.begin), "HH:mm:ss", null);
             Utility.addLogDebug(this.dataHandler.logger, "等待登入時刻...");
-            while (DateTime.Now.TimeOfDay.CompareTo(start.TimeOfDay) < 0)
+            while (DateTime.Now.TimeOfDay.CompareTo(begin.TimeOfDay) < 0)
             {
                 Thread.Sleep(100);
             }

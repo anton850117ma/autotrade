@@ -10,7 +10,7 @@
     "account": "8888945",
     "time": {
       "download": "00:00:00",
-      "start": "09:00:00",
+      "begin": "09:00:00",
       "end": "23:00:00"
     }
   },
@@ -64,23 +64,23 @@
       "NowPrice": {
         "enabled": true,
         "time": {
-          "start": "09:00:00",
+          "begin": "09:00:00",
           "end": "09:30:00"
         },
         "stock": {
           "amount": 0
         },
         "price": {
-          "close": {
-            "factor": 1.0666
-          },
           "now": {
             "compare": ">="
+          },
+          "close": {
+            "factor": 1.0666
           }
         },
         "order": {
           "cost": 400000,
-          "timeinforce": "ROD"
+          "timeinforce": "R"
         }
       }
     },
@@ -88,45 +88,45 @@
       "NowPrice1": {
         "enabled": true,
         "time": {
-          "start": "09:00:00",
+          "begin": "09:00:00",
           "end": "13:30:00"
         },
         "stock": {
           "amount": 1
         },
         "price": {
-          "max": {
-            "factor": 0.9667
-          },
           "now": {
             "compare": "<="
+          },
+          "max": {
+            "factor": 0.9667
           }
         },
         "order": {
           "cost": -1,
-          "timeinforce": "ROD"
+          "timeinforce": "R"
         }
       },
       "NowPrice2": {
         "enabled": true,
         "time": {
-          "start": "10:00:00",
+          "begin": "10:30:00",
           "end": "13:30:00"
         },
         "stock": {
           "amount": 1
         },
         "price": {
-          "bull": {
-            "factor": 1
-          },
           "now": {
             "compare": "<"
+          },
+          "bull": {
+            "factor": 1
           }
         },
         "order": {
           "cost": -1,
-          "timeinforce": "ROD"
+          "timeinforce": "R"
         }
       }
     }

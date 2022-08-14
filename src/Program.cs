@@ -6,7 +6,7 @@ namespace AutoTrade
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Program starts!");
+            Console.WriteLine("Program begins!");
 
             var eventHandler = new EventHandler(new DataHandler());
 
