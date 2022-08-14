@@ -32,6 +32,12 @@ namespace AutoTrade
                 return ""; //無此欄位則回傳空白
             }
         }
+        public static bool nearlyEqual(float a, float b)
+        {
+            if (Math.Abs(a - b) < Single.Epsilon * 2) return true;
+            else return false;
+        }
+
         public static void addLogDebug(StreamWriter? logger, string msg)
         {
             if (logger != null)
@@ -42,7 +48,6 @@ namespace AutoTrade
                     logger.Flush();
                 }
             }
-
         }
         public static void addLogInfo(StreamWriter? logger, string msg)
         {
@@ -54,7 +59,6 @@ namespace AutoTrade
                     // logger.Flush();
                 }
             }
-
         }
         public static void addLogWarning(StreamWriter? logger, string msg)
         {

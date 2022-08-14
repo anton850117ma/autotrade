@@ -64,5 +64,7 @@ add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
                            ${CMAKE_SOURCE_DIR}/data ${CMAKE_SOURCE_DIR}/autotrade
                    COMMAND ${CMAKE_COMMAND} -E copy 
                            ${CMAKE_SOURCE_DIR}/RayinVTS.dll ${CMAKE_SOURCE_DIR}/autotrade
+                   COMMAND ${CMAKE_COMMAND} -E copy 
+                           ${CMAKE_SOURCE_DIR}/README.md ${CMAKE_SOURCE_DIR}/autotrade
                    COMMENT "Pack files completed!"
 )

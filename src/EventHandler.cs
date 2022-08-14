@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Threading;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using Rayin;
@@ -18,7 +17,6 @@ namespace AutoTrade
     public class EventHandler : Status
     {
         DataHandler dataHandler;
-        List<string> logs;
         int newAckCount, newMatCount;
         RayinAPI.OnLoginEvent? onLogin;
         RayinAPI.OnConnectEvent? onOdrConnect;
@@ -148,15 +146,15 @@ namespace AutoTrade
                                     this.createBuyOrder(rule.order, values[1], target);
                                 break;
                             case ">=":
-                                if (now >= close)
+                                if (now > close || Utility.nearlyEqual(now, close))
                                     this.createBuyOrder(rule.order, values[1], target);
                                 break;
                             case "==":
-                                if (now == close)
+                                if (Utility.nearlyEqual(now, close))
                                     this.createBuyOrder(rule.order, values[1], target);
                                 break;
                             case "<=":
-                                if (now <= close)
+                                if (now < close || Utility.nearlyEqual(now, close))
                                     this.createBuyOrder(rule.order, values[1], target);
                                 break;
                             case "<":
@@ -164,7 +162,7 @@ namespace AutoTrade
                                     this.createBuyOrder(rule.order, values[1], target);
                                 break;
                             case "!=":
-                                if (now != close)
+                                if (!Utility.nearlyEqual(now, close))
                                     this.createBuyOrder(rule.order, values[1], target);
                                 break;
                         }
@@ -232,15 +230,15 @@ namespace AutoTrade
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case ">=":
-                                if (now >= max)
+                                if (now > max || Utility.nearlyEqual(now, max))
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "==":
-                                if (now == max)
+                                if (Utility.nearlyEqual(now, max))
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "<=":
-                                if (now <= max)
+                                if (now < max || Utility.nearlyEqual(now, max))
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "<":
@@ -248,7 +246,7 @@ namespace AutoTrade
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "!=":
-                                if (now != max)
+                                if (!Utility.nearlyEqual(now, max))
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                         }
@@ -278,20 +276,20 @@ namespace AutoTrade
                         string compare = Convert.ToString(rule.price.now.compare);
                         switch (compare)
                         {
-                            case ">=":
-                                if (now >= bull)
-                                    this.createSellOrder(rule.order, values[1], target);
-                                break;
                             case ">":
                                 if (now > bull)
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
+                            case ">=":
+                                if (now > bull || Utility.nearlyEqual(now, bull))
+                                    this.createSellOrder(rule.order, values[1], target);
+                                break;
                             case "==":
-                                if (now == bull)
+                                if (Utility.nearlyEqual(now, bull))
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "<=":
-                                if (now <= bull)
+                                if (now < bull || Utility.nearlyEqual(now, bull))
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "<":
@@ -299,7 +297,7 @@ namespace AutoTrade
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                             case "!=":
-                                if (now != bull)
+                                if (!Utility.nearlyEqual(now, bull))
                                     this.createSellOrder(rule.order, values[1], target);
                                 break;
                         }
@@ -477,7 +475,7 @@ namespace AutoTrade
             // only handle new orders
             this.newAckCount++;
             if (ExecType == "O")
-            {   
+            {
                 if (errCode != string.Empty && errCode != "00000000")
                 {
                     if (this.dataHandler.targetMap == null) return;
@@ -577,7 +575,6 @@ namespace AutoTrade
         public EventHandler(DataHandler handler)
         {
             this.dataHandler = handler;
-            this.logs = new List<string>();
             this.newAckCount = 0;
             this.newMatCount = 0;
             this.isLogined = false;
@@ -619,6 +616,10 @@ namespace AutoTrade
                                 " 成功: " + success.ToString() +
                                 " 失敗: " + failed.ToString());
 
+        }
+        public bool updateCapitalOnly()
+        {
+            return this.dataHandler.updateCapitalOnly();
         }
         public bool login()
         {

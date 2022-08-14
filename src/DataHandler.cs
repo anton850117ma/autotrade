@@ -125,6 +125,7 @@ namespace AutoTrade
         }
         public void updateFromRecord(dynamic target)
         {
+            this.capital = Convert.ToString(target.capital);
             this.openPrice = Convert.ToSingle(target.price.open);
             this.maxPrice = Convert.ToSingle(target.price.max);
             this.minPrice = Convert.ToSingle(target.price.min);
@@ -187,32 +188,47 @@ namespace AutoTrade
             this.config = JsonConvert.DeserializeObject(File.ReadAllText(files[0]));
             return true;
         }
-
+        public bool updateCapitalOnly()
+        {
+            if (this.config == null) return false;
+            return Convert.ToBoolean(this.config.Urls.Info.update);
+        }
         public void initTargetMap()
         {
             if (this.config == null) return;
+            this.targetMap = new Dictionary<string, Target>();
 
             Utility.addLogDebug(this.logger, "開始初始化標的表");
             TimeSpan time = TimeSpan.Parse(Convert.ToString(this.config.Login.time.download));
-
             Utility.addLogDebug(this.logger, "等待盤前檔準備好...");
-            while (DateTime.Now.TimeOfDay.CompareTo(time) < 0)
+
+            var date = DateTime.Today.ToString("yyyyMMdd");
+            if (!this.updateCapitalOnly())
             {
-                // Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
-                Thread.Sleep(100);
+                while (DateTime.Now.TimeOfDay.CompareTo(time) < 0)
+                {
+                    Thread.Sleep(100);
+                }
             }
-            var date = DateTime.Now.ToString("yyyyMMdd");
-            this.targetMap = new Dictionary<string, Target>();
-            
-            // TODO: remove this line
-            date = "20220812";
+            else if (DateTime.Today.DayOfWeek == DayOfWeek.Sunday)
+            {
+                date = DateTime.Today.AddDays(-1).ToString("yyyyMMdd");
+            }
 
             var client = new HttpClient();
 
-            var responseT30S = client.GetAsync(Convert.ToString(this.config.Urls.T30.TSE) + date);
-            var contentT30S = responseT30S.Result.Content.ReadAsStreamAsync().Result;
+            HttpResponseMessage responseT30S =
+                client.GetAsync(Convert.ToString(this.config.Urls.T30.TSE) + date).Result;
 
-            // var T30S = new StreamReader(contentT30S, Encoding.GetEncoding("big5")); //950
+            if (!responseT30S.IsSuccessStatusCode)
+            {
+                Utility.addLogCrtical(this.logger, "無法取得上市盤前檔");
+                return;
+            }
+
+            var contentT30S = responseT30S.Content.ReadAsStreamAsync().Result;
+
+            // Encoding.GetEncoding("big5")); //950
             var T30S = new StreamReader(contentT30S);
             Utility.addLogDebug(this.logger, "正在處理上市盤前檔...");
             while (!T30S.EndOfStream)
@@ -224,8 +240,16 @@ namespace AutoTrade
                 }
             }
 
-            var responseT30O = client.GetAsync(Convert.ToString(this.config.Urls.T30.OTC) + date);
-            var contentT30O = responseT30O.Result.Content.ReadAsStreamAsync().Result;
+            HttpResponseMessage responseT30O =
+                client.GetAsync(Convert.ToString(this.config.Urls.T30.OTC) + date).Result;
+
+            if (!responseT30O.IsSuccessStatusCode)
+            {
+                Utility.addLogCrtical(this.logger, "無法取得上櫃盤前檔");
+                return;
+            }
+
+            var contentT30O = responseT30O.Content.ReadAsStreamAsync().Result;
 
             var T30O = new StreamReader(contentT30O);
             Utility.addLogDebug(this.logger, "正在處理上櫃盤前檔...");
@@ -267,6 +291,10 @@ namespace AutoTrade
                 if (this.targetMap.ContainsKey(key))
                 {
                     this.targetMap[key].updateFromRecord(target);
+                }
+                else
+                {
+                    Utility.addLogDebug(this.logger, "盤前檔中不存在紀錄的股票 " + key);
                 }
             }
             Utility.addLogDebug(this.logger, "完成更新標的表");
@@ -315,39 +343,48 @@ namespace AutoTrade
                     using (var encodedContent = new FormUrlEncodedContent(parameters))
                     {
                         if (encodedContent == null) continue;
-                        using (var response = client.PostAsync(url, encodedContent).Result)
+                        try
                         {
-                            if (response == null) continue;
-                            using (var stream = new StreamReader(response.Content.ReadAsStreamAsync().Result))
+                            using (var response = client.PostAsync(url, encodedContent).Result)
                             {
-                                if (stream == null) continue;
-
-                                counter++;
-                                while (!stream.EndOfStream)
+                                if (response == null || !response.IsSuccessStatusCode) continue;
+                                using (var stream = new StreamReader(response.Content.ReadAsStreamAsync().Result))
                                 {
-                                    var line = stream.ReadLine();
-                                    if (line != null && line.Contains("實收資本額"))
+                                    if (stream == null) continue;
+
+                                    counter++;
+                                    while (!stream.EndOfStream)
                                     {
-                                        for (var i = 0; i < 5; i++)
-                                            line = stream.ReadLine();
-                                        if (line == null) break;
-                                        target.Value.capital =
-                                            line.Replace("<td>", "").Replace("</td>", "").Replace(" ", "").Replace(",", "");
-                                        getData = true;
-                                        Utility.addLogDebug(this.logger,
-                                                           "更新資本額成功 " + target.Key + " " + target.Value.capital);
-                                        break;
+                                        var line = stream.ReadLine();
+                                        if (line != null && line.Contains("實收資本額"))
+                                        {
+                                            for (var i = 0; i < 5; i++)
+                                                line = stream.ReadLine();
+                                            if (line == null) break;
+                                            target.Value.capital =
+                                                line.Replace("<td>", "").Replace("</td>", "").Replace(" ", "").Replace(",", "");
+                                            getData = true;
+                                            Utility.addLogDebug(this.logger,
+                                                                "更新資本額成功 " + target.Key + " " + target.Value.capital);
+                                            break;
+                                        }
+                                        // else if (line != null && line.Contains("Overrun")) break;
                                     }
-                                    else if (line != null && line.Contains("Overrun")) break;
+                                    if (getData || counter == 3) break;
                                 }
-                                if (getData || counter == 3) break;
+                            }
+                        }
+                        catch (AggregateException err)
+                        {
+                            foreach (var errInner in err.InnerExceptions)
+                            {
+                                // Console.WriteLine(errInner.ToString());
                             }
                         }
                     }
                 }
             }
         }
-
         public void storeRecords()
         {
             Utility.addLogDebug(this.logger, "準備回寫紀錄...");

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace AutoTrade
 {
@@ -10,20 +11,24 @@ namespace AutoTrade
 
             var eventHandler = new EventHandler(new DataHandler());
 
-            // Console.WriteLine("Waiting to login...");
-            // while (!eventHandler.login())
-            // {
-            //     Thread.Sleep(1000);
-            // }
+            if (!eventHandler.updateCapitalOnly())
+            {
+                Console.WriteLine("Waiting to login...");
+                while (!eventHandler.login())
+                {
+                    Thread.Sleep(1000);
+                }
 
-            // Console.WriteLine("Trading...");
-            // while (!eventHandler.shouldLogout()) 
-            // {
-            //     Thread.Sleep(1000);
-            // }
+                Console.WriteLine("Trading...");
+                while (!eventHandler.shouldLogout()) 
+                {
+                    Thread.Sleep(1000);
+                }
 
-            // Console.WriteLine("Logout and waiting to store data...");
-            // eventHandler.logout();
+                Console.WriteLine("Logout and waiting to store data...");
+                eventHandler.logout();
+            }
+            
             eventHandler.storeRecords();
 
             Console.WriteLine("Program ends! Type any keys to close.");
