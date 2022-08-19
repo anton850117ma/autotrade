@@ -18,7 +18,7 @@ add_executable(${CMAKE_PROJECT_NAME}
 # Set the .NET Framework version for the executable.
 # set_property(TARGET PROEJECT_NAME PROPERTY DOTNET_TARGET_FRAMEWORK_VERSION "v4.8")
 # Set the executable to be 32-bit.
-# set_property(TARGET MyWinFormApp PROPERTY WIN32_EXECUTABLE TRUE)
+# set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY WIN32_EXECUTABLE TRUE)
 # Set the C# language version (defaults to 3.0).
 set(CMAKE_CSharp_FLAGS "/langversion:latest")
 
@@ -66,5 +66,7 @@ add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
                            ${CMAKE_SOURCE_DIR}/RayinVTS.dll ${CMAKE_SOURCE_DIR}/autotrade
                    COMMAND ${CMAKE_COMMAND} -E copy 
                            ${CMAKE_SOURCE_DIR}/README.md ${CMAKE_SOURCE_DIR}/autotrade
+                   COMMAND ${CMAKE_COMMAND} -E copy 
+                           ${CMAKE_SOURCE_DIR}/data/Settings.json ${CMAKE_BINARY_DIR}/Release
                    COMMENT "Pack files completed!"
 )
