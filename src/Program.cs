@@ -14,6 +14,7 @@ namespace AutoTrade
             if (!eventHandler.updateCapitalOnly())
             {
                 Console.WriteLine("Waiting to login...");
+                // TODO: make login also check logout time
                 while (!eventHandler.login())
                 {
                     Thread.Sleep(1000);

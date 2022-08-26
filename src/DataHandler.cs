@@ -12,27 +12,26 @@ namespace AutoTrade
 {
     public class Stock
     {
-        public int orderAmount;
+        //public int orderAmount;
         public int matchAmount;
         public int buyTimes;
         public int sellTimes;
         public Stock()
         {
-            this.orderAmount = 0;
+            //this.orderAmount = 0;
             this.matchAmount = 0;
             this.buyTimes = 0;
             this.sellTimes = 0;
         }
         public Stock(dynamic stock)
         {
-            this.orderAmount = Convert.ToInt32(stock.amount);
-            this.matchAmount = this.orderAmount;
-            if (this.orderAmount > 0)
+            this.matchAmount = Convert.ToInt32(stock);
+            if (this.matchAmount > 0)
             {
                 this.buyTimes = 1;
                 this.sellTimes = 0;
             }
-            else if (this.orderAmount < 0)
+            else if (this.matchAmount < 0)
             {
                 this.buyTimes = 0;
                 this.sellTimes = 1;
@@ -47,60 +46,39 @@ namespace AutoTrade
 
     public class Target
     {
-        public class price
-        {
-            public Single open;
-            public Single max;
-            public Single min;
-            public price(Target target)
-            {
-                this.open = target.openPrice;
-                this.max = target.maxPrice;
-                this.min = target.minPrice;
-            }
-        }
-        public class stock
-        {
-            public int amount;
-            public stock(Target target)
-            {
-                this.amount = target.stockData.matchAmount;
-            }
-        }
         public class Record
         {
             public string symbol;
             public string capital;
-            public price price;
             public int total;
-            public stock stock;
+            public int stock;
 
             public Record(string symbol, Target target)
             {
                 this.symbol = symbol;
                 this.capital = target.capital;
-                this.price = new price(target);
                 this.total = target.totalAmount;
-                this.stock = new stock(target);
+                this.stock = target.stockData.matchAmount;
             }
         }
 
         public Utility.T30 marketType;
-        public Single openPrice;
-        public Single maxPrice;
-        public Single minPrice;
-        public Single nowPrice;
+        public float openPrice;
+        public float maxPrice;
+        public float minPrice;
+        public float nowPrice;
         public int totalAmount;
         public Stock stockData;
-        public Single bullPrice;
-        public Single ldcPrice;
-        public Single bearPrice;
+        public float bullPrice;
+        public float ldcPrice;
+        public float bearPrice;
         public char dealType;
         public char disposeMark;
         public char monitorMark;
         public char limitMark;
         public char dayTradeMark;
         public string capital;
+        public bool registered;
 
         public Target(string values, Utility.T30 type)
         {
@@ -122,13 +100,29 @@ namespace AutoTrade
             else this.dayTradeMark = values[87];
             this.capital = "0";
             this.stockData = new Stock();
+            this.registered = false;
+        }
+        public Target(dynamic target)
+        {
+            this.capital = Convert.ToString(target.capital);
+            this.totalAmount = Convert.ToInt32(target.total);
+            this.stockData = new Stock(target.stock);
+
+            /*
+            this.bullPrice = 0;
+            this.ldcPrice = 0;
+            this.bearPrice = 0;
+            this.dealType = values[41];
+            this.disposeMark = values[42];
+            this.monitorMark = values[43];
+            this.limitMark = values[44];
+            this.dayTradeMark = values[87];
+            this.nowPrice = this.ldcPrice;
+            */
         }
         public void updateFromRecord(dynamic target)
         {
             this.capital = Convert.ToString(target.capital);
-            this.openPrice = Convert.ToSingle(target.price.open);
-            this.maxPrice = Convert.ToSingle(target.price.max);
-            this.minPrice = Convert.ToSingle(target.price.min);
             this.totalAmount = Convert.ToInt32(target.total);
             this.stockData = new Stock(target.stock);
         }
@@ -162,27 +156,25 @@ namespace AutoTrade
 
     public class DataHandler
     {
-        public Dictionary<string, Target>? targetMap;
-        public dynamic? config;
-        public StreamWriter? logger;
+        public Dictionary<string, Target> targetMap;
+        public dynamic config;
+        public StreamWriter logger;
 
         public bool initConfig()
         {
             string strPath = Assembly.GetExecutingAssembly().Location;
-            string? strWorkPath = Path.GetDirectoryName(strPath);
+            string strWorkPath = Path.GetDirectoryName(strPath);
             if (strWorkPath == null) return false;
 
             string[] files = Directory.GetFiles(strWorkPath, "Settings.json", SearchOption.AllDirectories);
 
             if (files.Length == 0)
             {
-                Console.WriteLine("Error: Settings.json not found");
-                return false;
+                throw new FileNotFoundException("Cannot find a \"Settings.json\" to load!");
             }
             else if (files.Length > 1)
             {
-                Console.WriteLine("Error: multiple Settings.json found");
-                return false;
+                throw new FileLoadException("Cannot load from Multiple \"Settings.json\" files!");
             }
 
             this.config = JsonConvert.DeserializeObject(File.ReadAllText(files[0]));
@@ -198,9 +190,9 @@ namespace AutoTrade
             if (this.config == null) return;
             this.targetMap = new Dictionary<string, Target>();
 
-            Utility.addLogDebug(this.logger, "開始初始化標的表");
+            Utility.addLogDebug(this.logger, string.Format("{0}", "開始初始化標的表"));
             TimeSpan time = TimeSpan.Parse(Convert.ToString(this.config.Login.time.download));
-            Utility.addLogDebug(this.logger, "等待盤前檔準備好...");
+            Utility.addLogDebug(this.logger, string.Format("{0}", "等待盤前檔準備好"));
 
             var date = DateTime.Today.ToString("yyyyMMdd");
             if (!this.updateCapitalOnly())
@@ -222,7 +214,7 @@ namespace AutoTrade
 
             if (!responseT30S.IsSuccessStatusCode)
             {
-                Utility.addLogCrtical(this.logger, "無法取得上市盤前檔");
+                Utility.addLogWarning(this.logger, string.Format("{0}", "無法取得上市盤前檔"));
                 return;
             }
 
@@ -230,13 +222,14 @@ namespace AutoTrade
 
             // Encoding.GetEncoding("big5")); //950
             var T30S = new StreamReader(contentT30S);
-            Utility.addLogDebug(this.logger, "正在處理上市盤前檔...");
+            Utility.addLogDebug(this.logger, string.Format("{0}", "正在處理上市盤前檔"));
             while (!T30S.EndOfStream)
             {
                 var values = T30S.ReadLine();
                 if (!string.IsNullOrEmpty(values))
                 {
-                    this.targetMap.Add(values.Substring(0, 6), new Target(values, Utility.T30.TWSE));
+                    if (values.Substring(0, 6).Count(c => !char.IsWhiteSpace(c)) == 4)
+                        this.targetMap.Add(values.Substring(0, 6), new Target(values, Utility.T30.TWSE));
                 }
             }
 
@@ -245,48 +238,57 @@ namespace AutoTrade
 
             if (!responseT30O.IsSuccessStatusCode)
             {
-                Utility.addLogCrtical(this.logger, "無法取得上櫃盤前檔");
+                Utility.addLogWarning(this.logger, string.Format("{0}", "無法取得上櫃盤前檔"));
                 return;
             }
 
             var contentT30O = responseT30O.Content.ReadAsStreamAsync().Result;
 
             var T30O = new StreamReader(contentT30O);
-            Utility.addLogDebug(this.logger, "正在處理上櫃盤前檔...");
+            Utility.addLogDebug(this.logger, string.Format("{0}", "正在處理上櫃盤前檔"));
             while (!T30O.EndOfStream)
             {
                 var values = T30O.ReadLine();
                 if (!string.IsNullOrEmpty(values))
                 {
-                    this.targetMap.Add(values.Substring(0, 6), new Target(values, Utility.T30.ROCO));
+                    if (values.Substring(0, 6).Count(c => !char.IsWhiteSpace(c)) == 4)
+                        this.targetMap.Add(values.Substring(0, 6), new Target(values, Utility.T30.ROCO));
                 }
             }
-            Utility.addLogDebug(this.logger, "完成初始化標的表");
+            Utility.addLogDebug(this.logger, string.Format("{0}", "完成初始化標的表"));
         }
 
         public void fillTargetMap()
         {
             if (this.config == null) return;
-            Utility.addLogDebug(this.logger, "嘗試讀取記錄檔...");
+            Utility.addLogDebug(this.logger, string.Format("{0}", "嘗試讀取記錄檔"));
 
             string tempPath = Convert.ToString(this.config.Paths.Records);
             string strPath = Assembly.GetExecutingAssembly().Location;
-            string? strWorkPath = Path.GetDirectoryName(strPath);
+            string strWorkPath = Path.GetDirectoryName(strPath);
             if (strWorkPath == null) return;
 
             var recordPath = Path.Combine(strWorkPath, tempPath);
             if (!File.Exists(recordPath))
             {
-                Utility.addLogDebug(this.logger, "記錄檔不存在");
+                Utility.addLogDebug(this.logger, string.Format("{0}", "記錄檔不存在"));
                 return;
             }
 
-            dynamic? text = JsonConvert.DeserializeObject(File.ReadAllText(recordPath));
+            Utility.addLogDebug(this.logger, string.Format("{0}", "開始更新標的表"));
+
+            dynamic text = JsonConvert.DeserializeObject(File.ReadAllText(recordPath));
             if (text == null) return;
             if (this.targetMap == null) return;
+            if (this.targetMap.Count == 0)
+            {
+                Utility.addLogWarning(this.logger, string.Format("{0}", "標的表無法更新"));
+                return;
+            }
 
             foreach (var target in text)
             {
+                // TODO: UPDATE TABLE WITH RECORDS FORCELY
                 var key = Convert.ToString(target.symbol);
                 if (this.targetMap.ContainsKey(key))
                 {
@@ -294,16 +296,17 @@ namespace AutoTrade
                 }
                 else
                 {
-                    Utility.addLogDebug(this.logger, "盤前檔中不存在紀錄的股票 " + key);
+                    this.targetMap.Add(key, new Target(target));
+                    Utility.addLogWarning(this.logger, string.Format("{0} [股票:{1,-6}]", "盤前檔中不存在的紀錄", key));
                 }
             }
-            Utility.addLogDebug(this.logger, "完成更新標的表");
+            Utility.addLogDebug(this.logger, string.Format("{0}", "完成更新標的表"));
         }
         public void initLogger()
         {
             if (this.config == null) return;
             string strPath = Assembly.GetExecutingAssembly().Location;
-            string? strWorkPath = Path.GetDirectoryName(strPath);
+            string strWorkPath = Path.GetDirectoryName(strPath);
             if (strWorkPath == null) return;
 
             string logDir = Convert.ToString(this.config.Paths.LogDir);
@@ -318,9 +321,6 @@ namespace AutoTrade
         {
             if (this.config == null) return;
             if (this.targetMap == null) return;
-
-            bool toUpdate = Convert.ToBoolean(this.config.Urls.Info.update);
-            if (toUpdate == false) return;
 
             string url = Convert.ToString(this.config.Urls.Info.url);
             bool fund = Convert.ToBoolean(this.config.Rules.Exclude.IDLength.fund);
@@ -365,7 +365,8 @@ namespace AutoTrade
                                                 line.Replace("<td>", "").Replace("</td>", "").Replace(" ", "").Replace(",", "");
                                             getData = true;
                                             Utility.addLogDebug(this.logger,
-                                                                "更新資本額成功 " + target.Key + " " + target.Value.capital);
+                                                string.Format("{0} | 股票:{1,-6} 資本額:{2,-15}", 
+                                                              "更新資本額成功", target.Key, target.Value.capital));
                                             break;
                                         }
                                         // else if (line != null && line.Contains("Overrun")) break;
@@ -387,9 +388,9 @@ namespace AutoTrade
         }
         public void storeRecords()
         {
-            Utility.addLogDebug(this.logger, "準備回寫紀錄...");
+            Utility.addLogDebug(this.logger, string.Format("{0}", "準備回寫紀錄"));
             string strPath = Assembly.GetExecutingAssembly().Location;
-            string? strWorkPath = Path.GetDirectoryName(strPath);
+            string strWorkPath = Path.GetDirectoryName(strPath);
             if (strWorkPath == null) return;
             if (this.config == null) return;
 
@@ -401,6 +402,9 @@ namespace AutoTrade
 
             foreach (var target in this.targetMap)
             {
+                if (target.Value.stockData.matchAmount != 0)
+                    Utility.addLogInfo(this.logger, string.Format("{0} | 股票:{1,-6} 庫存:{2,-3}", 
+                                       "今日總結", target.Key, target.Value.stockData.matchAmount));
                 records.Add(new Target.Record(target.Key, target.Value));
             }
 
@@ -408,7 +412,7 @@ namespace AutoTrade
             Directory.CreateDirectory(Path.GetDirectoryName(path));
             File.WriteAllText(path, text);
 
-            Utility.addLogDebug(this.logger, "完成回寫紀錄");
+            Utility.addLogDebug(this.logger, string.Format("{0}", "完成回寫紀錄"));
 
             if (this.logger != null) this.logger.Close();
         }
@@ -418,7 +422,7 @@ namespace AutoTrade
             this.initLogger();
             this.initTargetMap();
             this.fillTargetMap();
-            this.updateCapitals();
+            //this.updateCapitals();
         }
     }
 }

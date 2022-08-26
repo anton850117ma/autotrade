@@ -3,15 +3,14 @@
     "host": "itstradeuat.pscnet.com.tw",
     "port": 11002,
     "debug": true,
-    "timeout": 5,
     "username": "A100000261",
     "password": "AA123456",
     "subcomp": "5850",
     "account": "8888945",
     "time": {
-      "download": "00:00:00",
+      "download": "08:30:00",
       "begin": "09:00:00",
-      "end": "23:00:00"
+      "end": "13:30:00"
     }
   },
   "Urls": {
@@ -25,7 +24,7 @@
     }
   },
   "Paths": {
-    "Records": "Records.json",
+    "Records": "data/Records.json",
     "LogDir": "Logs"
   },
   "Rules": {
@@ -68,7 +67,7 @@
           "end": "09:30:00"
         },
         "stock": {
-          "amount": 0
+          "times": 1
         },
         "price": {
           "now": {

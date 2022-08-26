@@ -13,25 +13,26 @@ namespace AutoTrade
         public bool isOrderConnected;
         public bool isAckMatConnected;
         public bool isQuoteConnected;
+        public bool isLogouted;
     }
     public class EventHandler : Status
     {
         DataHandler dataHandler;
         int newAckCount, newMatCount;
-        RayinAPI.OnLoginEvent? onLogin;
-        RayinAPI.OnConnectEvent? onOdrConnect;
-        RayinAPI.OnConnectEvent? onAckMatConnect;
-        RayinAPI.OnConnectEvent? onQuoteConnect;
-        RayinAPI.OnDisConnectEvent? onOdrDisConnect;
-        RayinAPI.OnDisConnectEvent? onAckMatDisconnect;
-        RayinAPI.OnDisConnectEvent? onQuoteDisconnect;
-        RayinAPI.OnInstantAckEvent? onInstantAck;
-        RayinAPI.OnNewAckEvent? onNewAck;
-        RayinAPI.OnNewMatEvent? onNewMat;
-        RayinAPI.OnNewQuoteEvent? onNewQuote;
-        RayinAPI.OnErrorEvent? onOdrErr;
-        RayinAPI.OnErrorEvent? onAckMatErr;
-        RayinAPI.OnMsgAlertEvent? onMsgAlert;
+        RayinAPI.OnLoginEvent onLogin;
+        RayinAPI.OnConnectEvent onOdrConnect;
+        RayinAPI.OnConnectEvent onAckMatConnect;
+        RayinAPI.OnConnectEvent onQuoteConnect;
+        RayinAPI.OnDisConnectEvent onOdrDisConnect;
+        RayinAPI.OnDisConnectEvent onAckMatDisconnect;
+        RayinAPI.OnDisConnectEvent onQuoteDisconnect;
+        RayinAPI.OnInstantAckEvent onInstantAck;
+        RayinAPI.OnNewAckEvent onNewAck;
+        RayinAPI.OnNewMatEvent onNewMat;
+        RayinAPI.OnNewQuoteEvent onNewQuote;
+        RayinAPI.OnErrorEvent onOdrErr;
+        RayinAPI.OnErrorEvent onAckMatErr;
+        RayinAPI.OnMsgAlertEvent onMsgAlert;
 
         public bool checkConditions(dynamic rule, string symbol)
         {
@@ -44,7 +45,7 @@ namespace AutoTrade
             if (Convert.ToBoolean(rule.IDLength.enabled))
             {
                 int length = Convert.ToInt32(rule.IDLength.length);
-                if (symbol.Count(c => !Char.IsWhiteSpace(c)) > length) return false;
+                if (symbol.Count(c => !char.IsWhiteSpace(c)) > length) return false;
                 bool fund = Convert.ToBoolean(rule.IDLength.fund);
                 if (fund && symbol.CompareTo(Utility.DEF_FUND_CODE) <= 0) return false;
             }
@@ -70,7 +71,7 @@ namespace AutoTrade
             if (Convert.ToBoolean(rule.Capital.enabled))
             {
                 string amount = Convert.ToString(rule.Capital.amount);
-                if (target.capital.CompareTo(amount) >= 0) return false;
+                if (Utility.compareNumbers(target.capital, amount) >= 0) return false;
             }
 
             // 交易量
@@ -83,20 +84,20 @@ namespace AutoTrade
             // 收盤價
             if (Convert.ToBoolean(rule.TradePrice.enabled))
             {
-                Single low = Convert.ToSingle(rule.TradePrice.price.min);
-                Single high = Convert.ToSingle(rule.TradePrice.price.max);
+                float low = Convert.ToSingle(rule.TradePrice.price.min);
+                float high = Convert.ToSingle(rule.TradePrice.price.max);
                 if (target.ldcPrice < low || target.ldcPrice > high) return false;
             }
 
             return true;
         }
-        public void createBuyOrder(dynamic rule, string symbol, Target target)
+        public bool createBuyOrder(dynamic rule, string symbol, Target target, string tag)
         {
-            if (this.dataHandler.config == null) return;
+            if (this.dataHandler.config == null) return false;
             string subcomp = Convert.ToString(this.dataHandler.config.Login.subcomp);
             string account = Convert.ToString(this.dataHandler.config.Login.account);
             string timeinforce = Convert.ToString(rule.timeinforce);
-            int quantity = Convert.ToInt32(rule.cost) / (target.bullPrice * 1000);
+            int quantity = Convert.ToInt32(Convert.ToInt32(rule.cost) / (target.bullPrice * 1000));
 
             var clOrdId = new IntPtr();
             var errCode = new IntPtr();
@@ -108,20 +109,24 @@ namespace AutoTrade
             var retVal = Marshal.PtrToStringAnsi(errCode);
             if (retVal != null && (retVal.Length == 0 || retVal == "00"))
             {
-                target.stockData.orderAmount += quantity;
-                target.stockData.buyTimes += 1;
-                Utility.addLogInfo(this.dataHandler.logger,
-                                   "新單買入成功 " + symbol + " " + quantity.ToString());
+                //target.stockData.orderAmount += quantity;
+                Interlocked.Increment(ref target.stockData.buyTimes);
+                Utility.addLogInfo(this.dataHandler.logger, 
+                    string.Format("{0} | 條件:{1,-10} 序號:{2,-9} 股票:{3,-6} 數量:{4,-3}", 
+                                  "新單買進成功", tag, clOrdId, symbol, quantity.ToString()));
+                return true;
             }
             else
             {
                 Utility.addLogWarning(this.dataHandler.logger,
-                                      "新單買入失敗 " + symbol + " " + quantity.ToString());
+                     string.Format("{0} | 條件:{1,-10} 序號:{2,-12} 股票:{3,-6} 數量:{4,-3} 原因:{5}",
+                                   "新單買進失敗", tag, clOrdId, symbol, quantity.ToString(), errMsg));
+                return false;
             }
         }
-        public void ruleBuyNowPrice(dynamic rule, string[] values)
+        public bool ruleBuyNowPrice(dynamic rule, string[] values)
         {
-            if (this.dataHandler.targetMap == null) return;
+            if (this.dataHandler.targetMap == null) return false;
 
             if (Convert.ToBoolean(rule.enabled))
             {
@@ -132,55 +137,58 @@ namespace AutoTrade
                 if (DateTime.Now.TimeOfDay.CompareTo(begin.TimeOfDay) >= 0 &&
                     DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
                 {
-                    int stockAmount = Convert.ToInt32(rule.stock.amount);
-                    var target = this.dataHandler.targetMap[values[1]];
-                    if (stockAmount >= target.stockData.orderAmount)
+                    int times = Convert.ToInt32(rule.stock.times);
+                    var symbol = Utility.addPading(values[1]);
+                    var target = this.dataHandler.targetMap[symbol];
+
+                    if (times > Interlocked.CompareExchange(ref target.stockData.buyTimes, 0, 0))
                     {
-                        Single close = target.ldcPrice * Convert.ToSingle(rule.price.close.factor);
+                        float close = target.ldcPrice * Convert.ToSingle(rule.price.close.factor);
                         var now = target.nowPrice;
                         string compare = Convert.ToString(rule.price.now.compare);
                         switch (compare)
                         {
                             case ">":
                                 if (now > close)
-                                    this.createBuyOrder(rule.order, values[1], target);
+                                    return this.createBuyOrder(rule.order, symbol, target, "NowPrice");
                                 break;
                             case ">=":
                                 if (now > close || Utility.nearlyEqual(now, close))
-                                    this.createBuyOrder(rule.order, values[1], target);
+                                    return this.createBuyOrder(rule.order, symbol, target, "NowPrice");
                                 break;
                             case "==":
                                 if (Utility.nearlyEqual(now, close))
-                                    this.createBuyOrder(rule.order, values[1], target);
+                                    return this.createBuyOrder(rule.order, symbol, target, "NowPrice");
                                 break;
                             case "<=":
                                 if (now < close || Utility.nearlyEqual(now, close))
-                                    this.createBuyOrder(rule.order, values[1], target);
+                                    return this.createBuyOrder(rule.order, symbol, target, "NowPrice");
                                 break;
                             case "<":
                                 if (now < close)
-                                    this.createBuyOrder(rule.order, values[1], target);
+                                    return this.createBuyOrder(rule.order, symbol, target, "NowPrice");
                                 break;
                             case "!=":
                                 if (!Utility.nearlyEqual(now, close))
-                                    this.createBuyOrder(rule.order, values[1], target);
+                                    return this.createBuyOrder(rule.order, symbol, target, "NowPrice");
                                 break;
                         }
                     }
                 }
             }
+            return false;
         }
-        public void createSellOrder(dynamic rule, string symbol, Target target)
+        public bool createSellOrder(dynamic rule, string symbol, Target target, string tag)
         {
-            if (this.dataHandler.config == null) return;
+            if (this.dataHandler.config == null) return false;
             string subcomp = Convert.ToString(this.dataHandler.config.Login.subcomp);
             string account = Convert.ToString(this.dataHandler.config.Login.account);
             string timeinforce = Convert.ToString(rule.timeinforce);
 
-            var quantity = target.stockData.orderAmount;
-            var cost = Convert.ToInt32(rule.cost);
+            var quantity = target.stockData.matchAmount;
+            int cost = Convert.ToInt32(rule.cost);
             if (cost >= 0)
-                quantity = cost / (target.bullPrice * 1000);
+                quantity = Convert.ToInt32(cost / (target.bullPrice * 1000));
 
             var clOrdId = new IntPtr();
             var errCode = new IntPtr();
@@ -192,20 +200,24 @@ namespace AutoTrade
             var retVal = Marshal.PtrToStringAnsi(errCode);
             if (retVal != null && (retVal.Length == 0 || retVal == "00"))
             {
-                target.stockData.orderAmount -= quantity;
-                target.stockData.sellTimes += 1;
+                Interlocked.Add(ref target.stockData.matchAmount, -quantity);
+                //Interlocked.Increment(ref target.stockData.sellTimes);
                 Utility.addLogInfo(this.dataHandler.logger,
-                                   "新單賣出成功 " + symbol + " " + quantity.ToString());
+                    string.Format("{0} | 條件:{1,-10} 序號:{2,-12} 股票:{3,-6} 數量:{4,-3}",
+                                  "新單賣出成功", tag, clOrdId, symbol, quantity.ToString()));
+                return true;
             }
             else
             {
                 Utility.addLogWarning(this.dataHandler.logger,
-                                      "新單賣出失敗 " + symbol + " " + quantity.ToString());
+                    string.Format("{0} | 條件:{1,-10} 序號:{2,-12} 股票:{3,-6} 數量:{4,-3} 原因:{5}",
+                                  "新單賣出失敗", tag, clOrdId, symbol, quantity.ToString(), errMsg));
+                return false;
             }
         }
-        public void ruleSellNowPrice1(dynamic rule, string[] values)
+        public bool ruleSellNowPrice1(dynamic rule, string[] values)
         {
-            if (this.dataHandler.targetMap == null) return;
+            if (this.dataHandler.targetMap == null) return false;
 
             if (Convert.ToBoolean(rule.enabled))
             {
@@ -217,46 +229,48 @@ namespace AutoTrade
                     DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
                 {
                     int stockAmount = Convert.ToInt32(rule.stock.amount);
-                    var target = this.dataHandler.targetMap[values[1]];
-                    if (stockAmount <= target.stockData.orderAmount)
+                    var symbol = Utility.addPading(values[1]);
+                    var target = this.dataHandler.targetMap[symbol];
+                    if (stockAmount <= Interlocked.CompareExchange(ref target.stockData.matchAmount, 0, 0))
                     {
-                        Single max = target.maxPrice * Convert.ToSingle(rule.price.max.factor);
+                        float max = target.maxPrice * Convert.ToSingle(rule.price.max.factor);
                         var now = target.nowPrice;
                         string compare = Convert.ToString(rule.price.now.compare);
                         switch (compare)
                         {
                             case ">":
                                 if (now > max)
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice1");
                                 break;
                             case ">=":
                                 if (now > max || Utility.nearlyEqual(now, max))
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice1");
                                 break;
                             case "==":
                                 if (Utility.nearlyEqual(now, max))
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice1");
                                 break;
                             case "<=":
                                 if (now < max || Utility.nearlyEqual(now, max))
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice1");
                                 break;
                             case "<":
                                 if (now < max)
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice1");
                                 break;
                             case "!=":
                                 if (!Utility.nearlyEqual(now, max))
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice1");
                                 break;
                         }
                     }
                 }
             }
+            return false;
         }
-        public void ruleSellNowPrice2(dynamic rule, string[] values)
+        public bool ruleSellNowPrice2(dynamic rule, string[] values)
         {
-            if (this.dataHandler.targetMap == null) return;
+            if (this.dataHandler.targetMap == null) return false;
 
             if (Convert.ToBoolean(rule.enabled))
             {
@@ -268,54 +282,57 @@ namespace AutoTrade
                     DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0)
                 {
                     int stockAmount = Convert.ToInt32(rule.stock.amount);
-                    var target = this.dataHandler.targetMap[values[1]];
-                    if (stockAmount <= target.stockData.orderAmount)
+                    var symbol = Utility.addPading(values[1]);
+                    var target = this.dataHandler.targetMap[symbol];
+                    if (stockAmount <= Interlocked.CompareExchange(ref target.stockData.matchAmount, 0, 0))
                     {
-                        Single bull = target.bullPrice * Convert.ToSingle(rule.price.bull.factor);
+                        float bull = target.bullPrice * Convert.ToSingle(rule.price.bull.factor);
                         var now = target.nowPrice;
                         string compare = Convert.ToString(rule.price.now.compare);
                         switch (compare)
                         {
                             case ">":
                                 if (now > bull)
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice2");
                                 break;
                             case ">=":
                                 if (now > bull || Utility.nearlyEqual(now, bull))
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice2");
                                 break;
                             case "==":
                                 if (Utility.nearlyEqual(now, bull))
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice2");
                                 break;
                             case "<=":
                                 if (now < bull || Utility.nearlyEqual(now, bull))
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice2");
                                 break;
                             case "<":
                                 if (now < bull)
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice2");
                                 break;
                             case "!=":
                                 if (!Utility.nearlyEqual(now, bull))
-                                    this.createSellOrder(rule.order, values[1], target);
+                                    return this.createSellOrder(rule.order, symbol, target, "NowPrice2");
                                 break;
                         }
                     }
                 }
             }
+            return false;
         }
         public bool updateTarget(string[] values)
         {
             if (this.dataHandler.targetMap == null) return false;
-            if (!this.dataHandler.targetMap.ContainsKey(values[1]))
+            var symbol = Utility.addPading(values[1]);
+            if (!this.dataHandler.targetMap.ContainsKey(symbol))
             {
-                Utility.addLogWarning(this.dataHandler.logger,
-                                      "股票 " + values[1] + " 不在標的表中");
+                Utility.addLogWarning(this.dataHandler.logger, 
+                    string.Format("{0} | 報價股票:{1,-6}", "更新標的錯誤", symbol));
                 return false;
             }
 
-            this.dataHandler.targetMap[values[1]].updateFromQuoteEx(
+            this.dataHandler.targetMap[symbol].updateFromQuoteEx(
                 values[3], values[4], values[5], values[6], values[7], values[8], values[9], values[11]);
             return true;
         }
@@ -327,84 +344,88 @@ namespace AutoTrade
                 Utility.getXMLValue(status, "status") != "OK")
             {
                 Utility.addLogCrtical(this.dataHandler.logger,
-                                      "登入失敗 " + Utility.getXMLValue(status, "msg"));
+                                      string.Format("{0} | 原因:{1}", "登入失敗", Utility.getXMLValue(status, "msg")));
                 return;
             }
 
             this.isLogined = true;
-            Utility.addLogDebug(this.dataHandler.logger, "登入成功");
+            Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "登入成功"));
 
             if (RayinAPI.ConnectToOrderServer())
-                Utility.addLogDebug(this.dataHandler.logger, "請求連線下單線路成功");
+                Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "請求連線下單線路成功"));
             else
             {
-                Utility.addLogCrtical(this.dataHandler.logger, "請求連線下單線路失敗");
+                Utility.addLogCrtical(this.dataHandler.logger, string.Format("{0}", "請求連線下單線路失敗"));
                 return;
             }
 
             if (RayinAPI.ConnectToAckMatServer())
-                Utility.addLogDebug(this.dataHandler.logger, "請求連線回報線路成功");
+                Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "請求連線回報線路成功"));
             else
             {
-                Utility.addLogCrtical(this.dataHandler.logger, "請求連線回報線路失敗");
+                Utility.addLogCrtical(this.dataHandler.logger, string.Format("{0}", "請求連線回報線路失敗"));
                 return;
             }
 
-            if (RayinAPI.ConnectToQuoteServer())
-                Utility.addLogDebug(this.dataHandler.logger, "請求連線行情線路成功");
-            else
+            RayinAPI.ConnectToQuoteServer();
+            Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "請求連線報價線路成功"));
+            /*else
             {
-                Utility.addLogCrtical(this.dataHandler.logger, "請求連線行情線路失敗");
+                Utility.addLogCrtical(this.dataHandler.logger, "請求連線報價線路失敗");
                 return;
-            }
+            }*/
         }
         public void OnOdrConnect()
         {
             this.isOrderConnected = true;
-            Utility.addLogDebug(this.dataHandler.logger, "下單線路已連線");
+            Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "下單線路已連線"));
         }
         public void OnOdrDisConnect()
         {
             this.isOrderConnected = false;
             if (this.isLogined)
-                Utility.addLogCrtical(this.dataHandler.logger, "下單線路非正常斷線");
-            else Utility.addLogDebug(this.dataHandler.logger, "下單線路已斷線");
+                Utility.addLogCrtical(this.dataHandler.logger, string.Format("{0}", "下單線路非正常斷線"));
+            else 
+                Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "下單線路已斷線"));
         }
         public void OnOdrError(int errCode, string errMsg)
         {
-            Utility.addLogError(this.dataHandler.logger,
-                                "下單線路異常 " + errMsg);
+            Utility.addLogError(this.dataHandler.logger, 
+                string.Format("{0} | 原因:{1}", "下單線路錯誤", errMsg));
         }
         public void OnAckMatConnect()
         {
             this.isAckMatConnected = true;
-            RayinAPI.Recover((this.newAckCount + this.newMatCount).ToString());
-            Utility.addLogDebug(this.dataHandler.logger, "委託回報線路已連線");
+            //RayinAPI.Recover((this.newAckCount + this.newMatCount).ToString());
+            RayinAPI.Recover("EXCEL");
+            Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "回報線路已連線"));
         }
         public void OnAckMatDisConnect()
         {
             this.isAckMatConnected = false;
             if (this.isLogined)
-                Utility.addLogCrtical(this.dataHandler.logger, "主動回報線路非正常斷線");
-            else Utility.addLogDebug(this.dataHandler.logger, "委託回報線路已斷線");
+                Utility.addLogCrtical(this.dataHandler.logger, string.Format("{0}", "回報線路非正常斷線"));
+            else 
+                Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "回報線路已斷線"));
         }
         public void OnAckMatError(int errCode, string errMsg)
         {
-            Utility.addLogError(this.dataHandler.logger,
-                                "委託回報線路異常 " + errMsg);
+            Utility.addLogError(this.dataHandler.logger, 
+                string.Format("{0} | 原因:{1}", "回報線路錯誤", errMsg));
         }
         public void OnQuoteConnect()
         {
             this.isQuoteConnected = true;
-            Utility.addLogDebug(this.dataHandler.logger, "行情線路已連線");
+            Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "報價線路已連線"));
             this.registerTargets();
         }
         public void OnQuoteDisConnect()
         {
             this.isQuoteConnected = false;
             if (this.isLogined)
-                Utility.addLogCrtical(this.dataHandler.logger, "行情線路非正常斷線");
-            else Utility.addLogDebug(this.dataHandler.logger, "行情線路已斷線");
+                Utility.addLogCrtical(this.dataHandler.logger, string.Format("{0}", "報價線路非正常斷線"));
+            else 
+                Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "報價線路已斷線"));
         }
         public void OnNewQuote(string NewQuote)
         {
@@ -412,55 +433,68 @@ namespace AutoTrade
             var rules = this.dataHandler.config.Rules;
 
             string[] values = Regex.Split(NewQuote, @"\|\|", RegexOptions.IgnoreCase);
+            var symbol = Utility.addPading(values[1]);
 
             if (!this.updateTarget(values)) return;
-            if (!this.isOrderConnected) return;
-            if (!this.checkConditions(rules.Exclude, values[1])) return;
+            if (!this.isLogouted)
+            {
+                if (!this.isOrderConnected) return;
 
-            var buyRule = rules.Buy.NowPrice;
-            this.ruleBuyNowPrice(buyRule, values);
+                bool result = false;
 
-            var sellRule1 = rules.Sell.NowPrice1;
-            this.ruleSellNowPrice1(sellRule1, values);
+                var buyRule = rules.Buy.NowPrice;
+                if (!result) result = this.ruleBuyNowPrice(buyRule, values);
 
-            var sellRule2 = rules.Sell.NowPrice2;
-            this.ruleSellNowPrice2(sellRule2, values);
+                var sellRule1 = rules.Sell.NowPrice1;
+                if (!result) result = this.ruleSellNowPrice1(sellRule1, values);
 
-            Utility.addLogInfo(this.dataHandler.logger,
-                               "新行情 " + values[1] + " " + values[3] + " " +
-                               values[9] + " " + values[11]);
+                var sellRule2 = rules.Sell.NowPrice2;
+                if (!result) result = this.ruleSellNowPrice2(sellRule2, values);
+
+                if (result)
+                    Utility.addLogInfo(this.dataHandler.logger,
+                        string.Format("{0} | 股票:{1,-6} 參考價:{2,-6} " +
+                                      "漲停價:{3,-7} 最高價:{4,-7} 成交價:{5,-7} 累計成交量:{6,-7} 名稱:{7}",
+                                      "新報價      ", symbol, values[3], values[4], values[7], values[9], 
+                                      values[11], values[2]));
+            } 
         }
         public void OnInstantAck(string ExecType, string ClOrdId, string BranchId,
                                  string Account, string OrderDate, string OrderTime,
                                  string OrderID, string Symbol, int ExCode,
-                                 string Side, string OrdType, int PriceFlag, Single Price,
+                                 string Side, string OrdType, int PriceFlag, float Price,
                                  int OrderQty, int BeforeQty, int AfterQty,
                                  string TimeInForce, string errCode, string errMsg)
         {
             // only handle new orders
             if (ExecType == "O")
             {
-                if (errCode != string.Empty && errCode != "00000000")
+                var symbol = Utility.addPading(Symbol);
+                if (errCode != string.Empty && errCode != "000000" && errCode != "00000000")
                 {
                     if (this.dataHandler.targetMap == null) return;
 
+                    
                     if (Side == "B")
                     {
-                        this.dataHandler.targetMap[Symbol].stockData.orderAmount -= OrderQty;
-                        this.dataHandler.targetMap[Symbol].stockData.buyTimes -= 1;
+                        //this.dataHandler.targetMap[symbol].stockData.orderAmount -= OrderQty;
+                        Interlocked.Decrement(ref this.dataHandler.targetMap[symbol].stockData.buyTimes);
                     }
                     else
                     {
-                        this.dataHandler.targetMap[Symbol].stockData.orderAmount += OrderQty;
-                        this.dataHandler.targetMap[Symbol].stockData.sellTimes -= 1;
+                        Interlocked.Add(ref this.dataHandler.targetMap[symbol].stockData.matchAmount, OrderQty);
+                        //Interlocked.Decrement(ref this.dataHandler.targetMap[symbol].stockData.sellTimes);
                     }
+                    
                     Utility.addLogWarning(this.dataHandler.logger,
-                                          "及時回報失敗 :" + OrderID + " " + errMsg);
+                        string.Format("{0} | 編號:{1,-5} 序號:{2,-12} 股票:{3,-6} 原因:{4}", 
+                                      "及時回報失敗", OrderID, ClOrdId, symbol, errMsg));
                 }
                 else
                 {
                     Utility.addLogInfo(this.dataHandler.logger,
-                                       "及時回報成功 " + OrderID + " " + OrderDate + " " + OrderTime);
+                        string.Format("{0} | 編號:{1,-5} 序號:{2,-12} 股票:{3,-6} 買賣:{4,-1} 數量:{5}",
+                                      "及時回報成功", OrderID, ClOrdId, symbol, Side, OrderQty.ToString()));
                 }
             }
         }
@@ -468,7 +502,7 @@ namespace AutoTrade
                              string BranchId, string Account, string OrderDate,
                              string OrderTime, string OrderID, string Symbol,
                              int ExCode, string Side, string OrdType, int PriceFlag,
-                             Single Price, int OrderQty, string errCode, string errMsg,
+                             float Price, int OrderQty, string errCode, string errMsg,
                              [MarshalAs(UnmanagedType.AnsiBStr)] string ExecType,
                              int BeforeQty, int AfterQty, string TimeInForce, string UserData)
         {
@@ -476,57 +510,65 @@ namespace AutoTrade
             this.newAckCount++;
             if (ExecType == "O")
             {
-                if (errCode != string.Empty && errCode != "00000000")
+                var symbol = Utility.addPading(Symbol);
+                if (errCode != string.Empty && errCode != "000000" && errCode != "00000000")
                 {
                     if (this.dataHandler.targetMap == null) return;
 
+                    /*
                     if (Side == "B")
                     {
-                        this.dataHandler.targetMap[Symbol].stockData.orderAmount -= OrderQty;
-                        this.dataHandler.targetMap[Symbol].stockData.buyTimes -= 1;
+                        this.dataHandler.targetMap[symbol].stockData.orderAmount -= OrderQty;
+                        this.dataHandler.targetMap[symbol].stockData.buyTimes -= 1;
                     }
                     else
                     {
-                        this.dataHandler.targetMap[Symbol].stockData.orderAmount += OrderQty;
-                        this.dataHandler.targetMap[Symbol].stockData.sellTimes -= 1;
+                        this.dataHandler.targetMap[symbol].stockData.orderAmount += OrderQty;
+                        this.dataHandler.targetMap[symbol].stockData.sellTimes -= 1;
                     }
+                    */ 
                     Utility.addLogWarning(this.dataHandler.logger,
-                                          "委託回報錯誤 " + OrderID + " " + errMsg);
+                        string.Format("{0} | 編號:{1,-5} 序號:{2,-12} 股票:{3,-6} 原因:{4}",
+                                      "委託回報失敗", OrderID, ClOrdId, symbol, errMsg));
                 }
                 else
                 {
                     Utility.addLogInfo(this.dataHandler.logger,
-                                       "委託回報成功 " + OrderID + " " + OrderDate + " " + OrderTime);
+                        string.Format("{0} | 編號:{1,-5} 序號:{2,-12} 股票:{3,-6} 買賣:{4,-1} 數量:{5,-3}",
+                                      "委託回報成功", OrderID, ClOrdId, symbol, Side, OrderQty.ToString()));
                 }
             }
         }
         public void OnNewMat(string LineNo, string BranchId, string Account,
                              string OrderID, string Symbol, int ExCode,
                              string Side, string OrdType, string MatTime,
-                             Single MatPrice, int MatQty, string MatSeq)
+                             float MatPrice, int MatQty, string MatSeq)
         {
             this.newMatCount++;
             if (this.dataHandler.targetMap == null) return;
             var quantity = MatQty / 1000;
+            var symbol = Utility.addPading(Symbol);
+            int result;
 
             if (Side == "B")
             {
-                this.dataHandler.targetMap[Symbol].stockData.matchAmount += quantity;
+                result = Interlocked.Add(ref this.dataHandler.targetMap[symbol].stockData.matchAmount, quantity);
             }
             else
             {
-                this.dataHandler.targetMap[Symbol].stockData.matchAmount -= quantity;
+                result = Interlocked.Add(ref this.dataHandler.targetMap[symbol].stockData.matchAmount, -quantity);
             }
             Utility.addLogInfo(this.dataHandler.logger,
-                               "成交回報 " + OrderID + " " + MatPrice.ToString() + " " + quantity.ToString());
+                string.Format("{0} | 編號:{1,-5} 股票:{2,-6} 買賣:{3,-1} 數量:{4,-3} 價格:{5,-7} 庫存:{6,-3}",
+                              "成交回報    ", OrderID, symbol, Side, quantity.ToString(), MatPrice.ToString(), result));
         }
         public void OnMsgAlertEvent(int errCode, string errMsg)
         {
-            Utility.addLogWarning(this.dataHandler.logger, "訊息提醒 " + errMsg);
+            Utility.addLogWarning(this.dataHandler.logger, string.Format("{0} | 原因:{1}", "訊息提醒    ", errMsg));
         }
         public void registerEvents()
         {
-            Utility.addLogDebug(this.dataHandler.logger, "開始註冊事件...");
+            Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "開始註冊事件"));
 
             onLogin = new RayinAPI.OnLoginEvent(OnLogin);
             RayinAPI.SetOnLoginEvent(onLogin);
@@ -570,7 +612,7 @@ namespace AutoTrade
             onMsgAlert = new RayinAPI.OnMsgAlertEvent(OnMsgAlertEvent);
             RayinAPI.SetMsgAlertEvent(onMsgAlert);
 
-            Utility.addLogDebug(this.dataHandler.logger, "完成註冊事件...");
+            Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "完成註冊事件"));
         }
         public EventHandler(DataHandler handler)
         {
@@ -579,7 +621,9 @@ namespace AutoTrade
             this.newMatCount = 0;
             this.isLogined = false;
             this.isOrderConnected = false;
+            this.isAckMatConnected = false;
             this.isQuoteConnected = false;
+            this.isLogouted = false;
             registerEvents();
         }
         public void registerTargets()
@@ -588,12 +632,25 @@ namespace AutoTrade
             if (this.dataHandler.targetMap == null) return;
             var targets = this.dataHandler.targetMap;
 
-            int success = 0, failed = 0;
+            int success = 0, failed = 0, skipped = 0;
+            var rules = this.dataHandler.config.Rules;
 
-            Utility.addLogDebug(this.dataHandler.logger, "開始訂閱行情...");
+            Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "開始訂閱報價"));
+
+            //int counter = 0;
 
             foreach (var target in targets)
             {
+
+                if (!this.checkConditions(rules.Exclude, target.Key))
+                {
+                    skipped++;
+                    // Utility.addLogInfo(this.dataHandler.logger, string.Format("{0} | 股票:{1,-6}", "訂閱跳過", target.Key));
+                    continue;
+                }
+
+                //if (++counter <= 1000) continue;
+
                 var errCode = Marshal.StringToHGlobalAnsi("");
                 var errMsg = Marshal.StringToHGlobalAnsi("");
                 RayinAPI.AddQuote(1, target.Key, ref errCode, ref errMsg);
@@ -602,20 +659,52 @@ namespace AutoTrade
                 if (code == "00" || code == " ")
                 {
                     success++;
-                    Utility.addLogInfo(this.dataHandler.logger, "成功訂閱 " + target.Key);
+                    target.Value.registered = true;
+                    Utility.addLogInfo(this.dataHandler.logger, 
+                                       string.Format("{0} | 股票:{1,-6}", "訂閱成功    ", target.Key));
                 }
                 else
                 {
                     failed++;
                     Utility.addLogWarning(this.dataHandler.logger,
-                                          "失敗訂閱 " + target.Key + " " + code + " " + msg);
+                                          string.Format("{0} | 股票:{1,-6} 原因:{2}", 
+                                          "訂閱失敗    ", target.Key, msg));
                 }
 
             }
-            Utility.addLogDebug(this.dataHandler.logger, "完成行情訂閱" +
-                                " 成功: " + success.ToString() +
-                                " 失敗: " + failed.ToString());
+            Utility.addLogDebug(this.dataHandler.logger,
+                                string.Format("{0} | 成功:{1} 失敗:{2} 跳過:{3}", 
+                                "完成報價訂閱", success.ToString(), failed.ToString(), skipped.ToString()));
+        }
+        public void updateTotals()
+        {
+            if (this.dataHandler.config == null) return;
+            if (this.dataHandler.targetMap == null) return;
+            var targets = this.dataHandler.targetMap;
+            this.isLogouted = true;
 
+            //Utility.addLogInfo(this.dataHandler.logger, string.Format("{0}", "開始更新各股成交量"));
+
+            foreach (var target in targets)
+            {
+                var errCode = Marshal.StringToHGlobalAnsi("");
+                var errMsg = Marshal.StringToHGlobalAnsi("");
+                if (target.Value.registered)
+                {
+                    RayinAPI.DelQuote(1, target.Key, ref errCode, ref errMsg);
+                    var code = Marshal.PtrToStringAnsi(errCode);
+                    if (code == "00" || code == " ") target.Value.registered = false;
+                    continue;
+                }
+                else
+                {
+                    RayinAPI.AddQuote(1, target.Key, ref errCode, ref errMsg);
+                    Thread.Sleep(1);
+                    RayinAPI.DelQuote(1, target.Key, ref errCode, ref errMsg);
+                }
+            }
+
+            Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "完成更新各股成交量"));
         }
         public bool updateCapitalOnly()
         {
@@ -626,16 +715,20 @@ namespace AutoTrade
             if (this.isLogined) return true;
             var config = this.dataHandler.config;
             if (config == null) return false;
-
+            if (this.dataHandler.updateCapitalOnly())
+            {
+                this.dataHandler.updateCapitals();
+                return true;
+            }
+            
             DateTime begin = DateTime.ParseExact(Convert.ToString(config.Login.time.begin), "HH:mm:ss", null);
-            Utility.addLogDebug(this.dataHandler.logger, "等待登入時刻...");
+            Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "等待登入時刻"));
             while (DateTime.Now.TimeOfDay.CompareTo(begin.TimeOfDay) < 0)
             {
                 Thread.Sleep(100);
             }
 
             RayinAPI.SetDebugMode(Convert.ToBoolean(config.Login.debug));
-            RayinAPI.SetRecvTimeout(Convert.ToInt32(config.Login.timeout));
             RayinAPI.SetServer(
                     Convert.ToString(config.Login.host), Convert.ToInt32(config.Login.port));
 
@@ -644,11 +737,11 @@ namespace AutoTrade
                             Convert.ToString(config.Login.password));
             if (result)
             {
-                Utility.addLogDebug(this.dataHandler.logger, "發出登入請求成功");
+                Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "請求登入成功"));
             }
             else
             {
-                Utility.addLogError(this.dataHandler.logger, "發出登入請求失敗");
+                Utility.addLogError(this.dataHandler.logger, string.Format("{0}", "請求登入失敗"));
             }
             return result;
         }
@@ -656,44 +749,36 @@ namespace AutoTrade
         {
             var config = this.dataHandler.config;
             if (config == null) return false;
+            if (this.dataHandler.updateCapitalOnly()) return true;
             DateTime end = DateTime.ParseExact(Convert.ToString(config.Login.time.end), "HH:mm:ss", null);
             if (DateTime.Now.TimeOfDay.CompareTo(end.TimeOfDay) <= 0) return false;
             else return true;
         }
-        public bool logout()
+        public void logout()
         {
+            this.isLogined = false;
             var result = RayinAPI.Logout();
+
             if (result)
             {
-                this.isLogined = false;
-                Utility.addLogDebug(this.dataHandler.logger, "請求登出成功");
+                Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "登出成功"));
             }
             else
             {
-                Utility.addLogError(this.dataHandler.logger, "請求登出失敗");
-                if (RayinAPI.DisconnecrQuoteServer())
-                    this.isQuoteConnected = false;
-                if (RayinAPI.DisconnecrOrderServer())
-                    this.isOrderConnected = false;
-                if (RayinAPI.DisconnecrAckMatServer())
-                    this.isAckMatConnected = false;
-                if (!this.isQuoteConnected && !this.isOrderConnected && !this.isAckMatConnected)
-                {
-                    this.isLogined = false;
-                    Utility.addLogDebug(this.dataHandler.logger, "主動登出成功");
-                    return true;
-                }
+                Utility.addLogError(this.dataHandler.logger, string.Format("{0}", "登出失敗"));
+
+                RayinAPI.DisconnecrQuoteServer();
+                this.isQuoteConnected = false;
+                RayinAPI.DisconnecrOrderServer();
+                this.isOrderConnected = false;
+                RayinAPI.DisconnecrAckMatServer();
+                this.isAckMatConnected = false;
+
+                Utility.addLogDebug(this.dataHandler.logger, string.Format("{0}", "主動斷線成功"));
             }
-            return result;
         }
         public void storeRecords()
         {
-            Utility.addLogDebug(this.dataHandler.logger, "等待完全登出...");
-            while (this.isLogined || this.isQuoteConnected ||
-                   this.isOrderConnected || this.isAckMatConnected)
-            {
-                Thread.Sleep(1000);
-            }
             this.dataHandler.storeRecords();
         }
     }

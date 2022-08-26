@@ -1,28 +1,10646 @@
 [
   {
-    "symbol": "2330  ",
-    "capital": "1000000",
-    "price": {
-      "open": 100,
-      "max": 110,
-      "min": 90
-    },
-    "total": 1000,
-    "stock": {
-      "amount": 0
-    }
+    "symbol": "0050  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
   },
   {
-    "symbol": "0050  ",
-    "capital": "1000000",
-    "price": {
-      "open": 100,
-      "max": 110,
-      "min": 90
-    },
-    "total": 1000,
-    "stock": {
-      "amount": 10
-    }
+    "symbol": "0051  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "0052  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "0053  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "0055  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "0056  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "0057  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "0061  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1101  ",
+    "capital": "69368513420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1102  ",
+    "capital": "35459275570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1103  ",
+    "capital": "7747805480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1104  ",
+    "capital": "6536091920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1108  ",
+    "capital": "4047380490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1109  ",
+    "capital": "3419578680",
+    "total": 560,
+    "stock": 0
+  },
+  {
+    "symbol": "1110  ",
+    "capital": "5720007970",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1201  ",
+    "capital": "5060629140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1203  ",
+    "capital": "2400000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1210  ",
+    "capital": "8521592590",
+    "total": 20951,
+    "stock": 0
+  },
+  {
+    "symbol": "1213  ",
+    "capital": "566226270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1215  ",
+    "capital": "2679909980",
+    "total": 30819,
+    "stock": 0
+  },
+  {
+    "symbol": "1216  ",
+    "capital": "56820154210",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1217  ",
+    "capital": "4945133360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1218  ",
+    "capital": "4999990380",
+    "total": 5273,
+    "stock": 0
+  },
+  {
+    "symbol": "1219  ",
+    "capital": "3220138870",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1220  ",
+    "capital": "1770779440",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1225  ",
+    "capital": "2187030510",
+    "total": 1888,
+    "stock": 0
+  },
+  {
+    "symbol": "1227  ",
+    "capital": "9150895910",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1229  ",
+    "capital": "14096480360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1231  ",
+    "capital": "2242332650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1232  ",
+    "capital": "1599749150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1233  ",
+    "capital": "905919480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1234  ",
+    "capital": "4018710940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1235  ",
+    "capital": "1043979850",
+    "total": 627,
+    "stock": 0
+  },
+  {
+    "symbol": "1236  ",
+    "capital": "1083425100",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1256  ",
+    "capital": "338421600",
+    "total": 6517,
+    "stock": 0
+  },
+  {
+    "symbol": "1301  ",
+    "capital": "63657407810",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1303  ",
+    "capital": "79308215890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1304  ",
+    "capital": "11887635000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1305  ",
+    "capital": "5810504940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1307  ",
+    "capital": "3978181260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1308  ",
+    "capital": "5937439190",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1309  ",
+    "capital": "3786541410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1310  ",
+    "capital": "5278697640",
+    "total": 9786,
+    "stock": 0
+  },
+  {
+    "symbol": "1312  ",
+    "capital": "9266203280",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1313  ",
+    "capital": "13504956070",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1314  ",
+    "capital": "37848501300",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1315  ",
+    "capital": "990990000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1316  ",
+    "capital": "2398484610",
+    "total": 2219,
+    "stock": 0
+  },
+  {
+    "symbol": "1319  ",
+    "capital": "5914770680",
+    "total": 7795,
+    "stock": 0
+  },
+  {
+    "symbol": "1321  ",
+    "capital": "2272282680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1323  ",
+    "capital": "912745540",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1324  ",
+    "capital": "751218820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1325  ",
+    "capital": "852811980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1326  ",
+    "capital": "58611862910",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1337  ",
+    "capital": "2689547290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1338  ",
+    "capital": "838400000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1339  ",
+    "capital": "741238750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1340  ",
+    "capital": "1529228550",
+    "total": 6830,
+    "stock": 0
+  },
+  {
+    "symbol": "1341  ",
+    "capital": "504015570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1342  ",
+    "capital": "678453630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1402  ",
+    "capital": "53528752270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1409  ",
+    "capital": "16184092860",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1410  ",
+    "capital": "630000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1413  ",
+    "capital": "1321124540",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1414  ",
+    "capital": "2200000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1416  ",
+    "capital": "1853421680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1417  ",
+    "capital": "1899418400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1418  ",
+    "capital": "568343090",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1419  ",
+    "capital": "3000412800",
+    "total": 4,
+    "stock": 0
+  },
+  {
+    "symbol": "1423  ",
+    "capital": "1384000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1432  ",
+    "capital": "900000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1434  ",
+    "capital": "16846646370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1436  ",
+    "capital": "961995280",
+    "total": 204,
+    "stock": 0
+  },
+  {
+    "symbol": "1437  ",
+    "capital": "2033712840",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1438  ",
+    "capital": "712057590",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1439  ",
+    "capital": "920000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1440  ",
+    "capital": "16568158570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1441  ",
+    "capital": "1008000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1442  ",
+    "capital": "3662113580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1443  ",
+    "capital": "1353430110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1444  ",
+    "capital": "9573029420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1445  ",
+    "capital": "1306660340",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1446  ",
+    "capital": "1377095130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1447  ",
+    "capital": "9144872420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1449  ",
+    "capital": "1134587630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1451  ",
+    "capital": "2069600000",
+    "total": 6333,
+    "stock": 0
+  },
+  {
+    "symbol": "1452  ",
+    "capital": "1326414000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1453  ",
+    "capital": "1006149800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1454  ",
+    "capital": "1298338480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1455  ",
+    "capital": "5316883800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1456  ",
+    "capital": "937200000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1457  ",
+    "capital": "3016476400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1459  ",
+    "capital": "3586289070",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1460  ",
+    "capital": "6946434840",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1463  ",
+    "capital": "1732683810",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1464  ",
+    "capital": "3845656520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1465  ",
+    "capital": "1036072670",
+    "total": 3358,
+    "stock": 0
+  },
+  {
+    "symbol": "1466  ",
+    "capital": "1111573200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1467  ",
+    "capital": "2336246670",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1468  ",
+    "capital": "1604052440",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1470  ",
+    "capital": "857670000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1471  ",
+    "capital": "1504145360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1472  ",
+    "capital": "249880820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1473  ",
+    "capital": "1471535340",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1474  ",
+    "capital": "1298969690",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1475  ",
+    "capital": "660167490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1476  ",
+    "capital": "2743671110",
+    "total": 4125,
+    "stock": 0
+  },
+  {
+    "symbol": "1477  ",
+    "capital": "2418565810",
+    "total": 22548,
+    "stock": 0
+  },
+  {
+    "symbol": "1503  ",
+    "capital": "5209722230",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1504  ",
+    "capital": "21387966160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1506  ",
+    "capital": "2631617510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1512  ",
+    "capital": "2533124940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1513  ",
+    "capital": "4761343100",
+    "total": 48334,
+    "stock": 0
+  },
+  {
+    "symbol": "1514  ",
+    "capital": "2283266720",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1515  ",
+    "capital": "1814735000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1516  ",
+    "capital": "356841740",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1517  ",
+    "capital": "2256850070",
+    "total": 1365,
+    "stock": 0
+  },
+  {
+    "symbol": "1519  ",
+    "capital": "2610585480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1521  ",
+    "capital": "762300000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1522  ",
+    "capital": "3428978810",
+    "total": 21754,
+    "stock": 0
+  },
+  {
+    "symbol": "1524  ",
+    "capital": "1653103970",
+    "total": 14949,
+    "stock": 0
+  },
+  {
+    "symbol": "1525  ",
+    "capital": "734001350",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1526  ",
+    "capital": "600000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1527  ",
+    "capital": "1385706400",
+    "total": 1330,
+    "stock": 0
+  },
+  {
+    "symbol": "1528  ",
+    "capital": "1993310000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1529  ",
+    "capital": "1359679820",
+    "total": 825,
+    "stock": 0
+  },
+  {
+    "symbol": "1530  ",
+    "capital": "965941710",
+    "total": 180,
+    "stock": 0
+  },
+  {
+    "symbol": "1531  ",
+    "capital": "1836080800",
+    "total": 1158,
+    "stock": 0
+  },
+  {
+    "symbol": "1532  ",
+    "capital": "3761221120",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1533  ",
+    "capital": "985474860",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1535  ",
+    "capital": "1237425520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1536  ",
+    "capital": "2795175130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1537  ",
+    "capital": "820663940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1538  ",
+    "capital": "338889990",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1539  ",
+    "capital": "653700000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1540  ",
+    "capital": "854736120",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1541  ",
+    "capital": "788000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1558  ",
+    "capital": "605356310",
+    "total": 444,
+    "stock": 0
+  },
+  {
+    "symbol": "1560  ",
+    "capital": "1431260000",
+    "total": 13139,
+    "stock": 0
+  },
+  {
+    "symbol": "1568  ",
+    "capital": "1030865590",
+    "total": 3386,
+    "stock": 0
+  },
+  {
+    "symbol": "1582  ",
+    "capital": "1237241710",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1583  ",
+    "capital": "1104003720",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1587  ",
+    "capital": "686244490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1589  ",
+    "capital": "1106175190",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1590  ",
+    "capital": "1999999980",
+    "total": 3348,
+    "stock": 0
+  },
+  {
+    "symbol": "1597  ",
+    "capital": "811875490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1598  ",
+    "capital": "1341147540",
+    "total": 3830,
+    "stock": 0
+  },
+  {
+    "symbol": "1603  ",
+    "capital": "1916880000",
+    "total": 779,
+    "stock": 0
+  },
+  {
+    "symbol": "1604  ",
+    "capital": "3872000000",
+    "total": 4051,
+    "stock": 0
+  },
+  {
+    "symbol": "1605  ",
+    "capital": "34313329480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1608  ",
+    "capital": "6327735060",
+    "total": 4178,
+    "stock": 0
+  },
+  {
+    "symbol": "1609  ",
+    "capital": "6458954020",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1611  ",
+    "capital": "3227357420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1612  ",
+    "capital": "3160800630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1614  ",
+    "capital": "2691134060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1615  ",
+    "capital": "1378137170",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1616  ",
+    "capital": "1941485150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1617  ",
+    "capital": "1577332350",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1618  ",
+    "capital": "1926917470",
+    "total": 2591,
+    "stock": 0
+  },
+  {
+    "symbol": "1626  ",
+    "capital": "1455444960",
+    "total": 689,
+    "stock": 0
+  },
+  {
+    "symbol": "1701  ",
+    "capital": "2980810800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1702  ",
+    "capital": "2941329620",
+    "total": 2837,
+    "stock": 0
+  },
+  {
+    "symbol": "1707  ",
+    "capital": "1481373730",
+    "total": 2585,
+    "stock": 0
+  },
+  {
+    "symbol": "1708  ",
+    "capital": "2490016510",
+    "total": 20240,
+    "stock": 0
+  },
+  {
+    "symbol": "1709  ",
+    "capital": "4770162720",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1710  ",
+    "capital": "8857030290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1711  ",
+    "capital": "5477522260",
+    "total": 3222,
+    "stock": 0
+  },
+  {
+    "symbol": "1712  ",
+    "capital": "4204925850",
+    "total": 40449,
+    "stock": 0
+  },
+  {
+    "symbol": "1713  ",
+    "capital": "1509517000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1714  ",
+    "capital": "10168248080",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1717  ",
+    "capital": "11782654830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1718  ",
+    "capital": "16862097450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1720  ",
+    "capital": "1786960890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1721  ",
+    "capital": "1848840920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1722  ",
+    "capital": "9800000000",
+    "total": 10845,
+    "stock": 0
+  },
+  {
+    "symbol": "1723  ",
+    "capital": "2369044800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1725  ",
+    "capital": "1818299780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1726  ",
+    "capital": "1620000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1727  ",
+    "capital": "1082500000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1730  ",
+    "capital": "632338510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1731  ",
+    "capital": "1329152440",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1732  ",
+    "capital": "424439570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1733  ",
+    "capital": "999501920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1734  ",
+    "capital": "1677220220",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1735  ",
+    "capital": "993880000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1736  ",
+    "capital": "3036166170",
+    "total": 1831,
+    "stock": 0
+  },
+  {
+    "symbol": "1737  ",
+    "capital": "2000000000",
+    "total": 3486,
+    "stock": 0
+  },
+  {
+    "symbol": "1752  ",
+    "capital": "1009884720",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1760  ",
+    "capital": "857390130",
+    "total": 15692,
+    "stock": 0
+  },
+  {
+    "symbol": "1762  ",
+    "capital": "775600000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1773  ",
+    "capital": "2500000000",
+    "total": 7145,
+    "stock": 0
+  },
+  {
+    "symbol": "1776  ",
+    "capital": "703352990",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1783  ",
+    "capital": "769992350",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1786  ",
+    "capital": "661904250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1789  ",
+    "capital": "7907392220",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1795  ",
+    "capital": "2625913120",
+    "total": 15604,
+    "stock": 0
+  },
+  {
+    "symbol": "1802  ",
+    "capital": "29080608000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1805  ",
+    "capital": "1002654000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1806  ",
+    "capital": "4337820780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1808  ",
+    "capital": "3921966370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1809  ",
+    "capital": "1670419370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1810  ",
+    "capital": "3698536100",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1817  ",
+    "capital": "726000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1903  ",
+    "capital": "2600391210",
+    "total": 201,
+    "stock": 0
+  },
+  {
+    "symbol": "1904  ",
+    "capital": "11082745220",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1905  ",
+    "capital": "11028353160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1906  ",
+    "capital": "1510000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1907  ",
+    "capital": "16603714950",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1909  ",
+    "capital": "12776857270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2002  ",
+    "capital": "157731289960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2006  ",
+    "capital": "7302138180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2007  ",
+    "capital": "5306516130",
+    "total": 741,
+    "stock": 0
+  },
+  {
+    "symbol": "2008  ",
+    "capital": "2008522930",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2009  ",
+    "capital": "3596221650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2010  ",
+    "capital": "6476553900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2012  ",
+    "capital": "2877740000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2013  ",
+    "capital": "2000000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2014  ",
+    "capital": "14355444460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2015  ",
+    "capital": "5815994240",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2017  ",
+    "capital": "3418674620",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2020  ",
+    "capital": "2225261000",
+    "total": 921,
+    "stock": 0
+  },
+  {
+    "symbol": "2022  ",
+    "capital": "4797519760",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2023  ",
+    "capital": "18905695180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2024  ",
+    "capital": "975000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2025  ",
+    "capital": "2811672620",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2027  ",
+    "capital": "20285505120",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2028  ",
+    "capital": "3257148000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2029  ",
+    "capital": "3211800000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2030  ",
+    "capital": "2805260270",
+    "total": 2515,
+    "stock": 0
+  },
+  {
+    "symbol": "2031  ",
+    "capital": "3211463410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2032  ",
+    "capital": "1305215450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2033  ",
+    "capital": "806945360",
+    "total": 79,
+    "stock": 0
+  },
+  {
+    "symbol": "2034  ",
+    "capital": "4453545270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2038  ",
+    "capital": "1812645220",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2049  ",
+    "capital": "3407922400",
+    "total": 14261,
+    "stock": 0
+  },
+  {
+    "symbol": "2059  ",
+    "capital": "952970720",
+    "total": 899,
+    "stock": 0
+  },
+  {
+    "symbol": "2062  ",
+    "capital": "1999941520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2069  ",
+    "capital": "1663868360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2101  ",
+    "capital": "8339349040",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2102  ",
+    "capital": "4733292070",
+    "total": 5919,
+    "stock": 0
+  },
+  {
+    "symbol": "2103  ",
+    "capital": "8257099780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2104  ",
+    "capital": "9847336250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2105  ",
+    "capital": "32414155360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2106  ",
+    "capital": "9094100000",
+    "total": 4041,
+    "stock": 0
+  },
+  {
+    "symbol": "2107  ",
+    "capital": "3423260000",
+    "total": 718,
+    "stock": 0
+  },
+  {
+    "symbol": "2108  ",
+    "capital": "4924166590",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2109  ",
+    "capital": "2793491340",
+    "total": 700,
+    "stock": 0
+  },
+  {
+    "symbol": "2114  ",
+    "capital": "779917070",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2115  ",
+    "capital": "994030130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2201  ",
+    "capital": "10000000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2204  ",
+    "capital": "5536203420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2206  ",
+    "capital": "7976396040",
+    "total": 11275,
+    "stock": 0
+  },
+  {
+    "symbol": "2207  ",
+    "capital": "5461791840",
+    "total": 1562,
+    "stock": 0
+  },
+  {
+    "symbol": "2208  ",
+    "capital": "9317872960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2211  ",
+    "capital": "4199819630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2227  ",
+    "capital": "3000000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2228  ",
+    "capital": "757802810",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2231  ",
+    "capital": "1219166650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2233  ",
+    "capital": "602880890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2236  ",
+    "capital": "457597030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2239  ",
+    "capital": "1181323720",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2241  ",
+    "capital": "896023060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2243  ",
+    "capital": "461324420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2247  ",
+    "capital": "807087350",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2250  ",
+    "capital": "270000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2301  ",
+    "capital": "23508670320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2302  ",
+    "capital": "1663028810",
+    "total": 2210,
+    "stock": 0
+  },
+  {
+    "symbol": "2303  ",
+    "capital": "124821234840",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2305  ",
+    "capital": "2056608270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2308  ",
+    "capital": "25975433290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2312  ",
+    "capital": "14908802110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2313  ",
+    "capital": "11918205890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2314  ",
+    "capital": "2380283200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2316  ",
+    "capital": "1827405360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2317  ",
+    "capital": "138629906090",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2321  ",
+    "capital": "945997770",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2323  ",
+    "capital": "11588812000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2324  ",
+    "capital": "44071466250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2327  ",
+    "capital": "5440600050",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2328  ",
+    "capital": "5183462820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2329  ",
+    "capital": "8256675330",
+    "total": 2775,
+    "stock": 0
+  },
+  {
+    "symbol": "2330  ",
+    "capital": "259303804580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2331  ",
+    "capital": "5574029680",
+    "total": 9138,
+    "stock": 0
+  },
+  {
+    "symbol": "2332  ",
+    "capital": "5998364730",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2337  ",
+    "capital": "18558843200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2338  ",
+    "capital": "2556735350",
+    "total": 2600,
+    "stock": 0
+  },
+  {
+    "symbol": "2340  ",
+    "capital": "4386228460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2342  ",
+    "capital": "1561567440",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2344  ",
+    "capital": "39800001930",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2345  ",
+    "capital": "5600483970",
+    "total": 19898,
+    "stock": 0
+  },
+  {
+    "symbol": "2347  ",
+    "capital": "16679469680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2348  ",
+    "capital": "1471081170",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2349  ",
+    "capital": "6936796630",
+    "total": 2521,
+    "stock": 0
+  },
+  {
+    "symbol": "2351  ",
+    "capital": "1821402490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2352  ",
+    "capital": "19667819580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2353  ",
+    "capital": "30478538280",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2354  ",
+    "capital": "14144851920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2355  ",
+    "capital": "3974954200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2356  ",
+    "capital": "35874750660",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2357  ",
+    "capital": "7427602800",
+    "total": 60640,
+    "stock": 0
+  },
+  {
+    "symbol": "2358  ",
+    "capital": "1246161720",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2359  ",
+    "capital": "1714710520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2360  ",
+    "capital": "4254470370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2362  ",
+    "capital": "6422630000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2363  ",
+    "capital": "6814448700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2364  ",
+    "capital": "248004220",
+    "total": 28942,
+    "stock": 0
+  },
+  {
+    "symbol": "2365  ",
+    "capital": "2215284960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2367  ",
+    "capital": "6194071750",
+    "total": 29936,
+    "stock": 0
+  },
+  {
+    "symbol": "2368  ",
+    "capital": "5464878410",
+    "total": 30207,
+    "stock": 0
+  },
+  {
+    "symbol": "2369  ",
+    "capital": "3801023440",
+    "total": 1707,
+    "stock": 0
+  },
+  {
+    "symbol": "2371  ",
+    "capital": "23395366850",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2373  ",
+    "capital": "2362025180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2374  ",
+    "capital": "2875823120",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2375  ",
+    "capital": "1086753340",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2376  ",
+    "capital": "6356888860",
+    "total": 13676,
+    "stock": 0
+  },
+  {
+    "symbol": "2377  ",
+    "capital": "8448561990",
+    "total": 8307,
+    "stock": 0
+  },
+  {
+    "symbol": "2379  ",
+    "capital": "5128636410",
+    "total": 15126,
+    "stock": 0
+  },
+  {
+    "symbol": "2380  ",
+    "capital": "1932210840",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2382  ",
+    "capital": "38626274320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2383  ",
+    "capital": "3329182990",
+    "total": 14236,
+    "stock": 0
+  },
+  {
+    "symbol": "2385  ",
+    "capital": "7518464210",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2387  ",
+    "capital": "1952510510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2388  ",
+    "capital": "4954539410",
+    "total": 16414,
+    "stock": 0
+  },
+  {
+    "symbol": "2390  ",
+    "capital": "2140216020",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2392  ",
+    "capital": "5123269400",
+    "total": 3067,
+    "stock": 0
+  },
+  {
+    "symbol": "2393  ",
+    "capital": "4433930860",
+    "total": 3435,
+    "stock": 0
+  },
+  {
+    "symbol": "2395  ",
+    "capital": "7758374110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2397  ",
+    "capital": "1144888570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2399  ",
+    "capital": "1781000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2401  ",
+    "capital": "5919949190",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2402  ",
+    "capital": "3075365330",
+    "total": 2044,
+    "stock": 0
+  },
+  {
+    "symbol": "2404  ",
+    "capital": "1905866980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2405  ",
+    "capital": "3434273030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2406  ",
+    "capital": "3509056890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2408  ",
+    "capital": "30976778940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2409  ",
+    "capital": "76993960920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2412  ",
+    "capital": "77574465450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2413  ",
+    "capital": "1273592000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2414  ",
+    "capital": "1617358460",
+    "total": 1112,
+    "stock": 0
+  },
+  {
+    "symbol": "2415  ",
+    "capital": "800000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2417  ",
+    "capital": "1584288640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2419  ",
+    "capital": "3213172290",
+    "total": 19051,
+    "stock": 0
+  },
+  {
+    "symbol": "2420  ",
+    "capital": "1526486880",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2421  ",
+    "capital": "2509297320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2423  ",
+    "capital": "1450472890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2424  ",
+    "capital": "380250000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2425  ",
+    "capital": "1014988310",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2426  ",
+    "capital": "3006222520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2427  ",
+    "capital": "1843144630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2428  ",
+    "capital": "1281127260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2429  ",
+    "capital": "397482000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2430  ",
+    "capital": "1168000000",
+    "total": 6022,
+    "stock": 0
+  },
+  {
+    "symbol": "2431  ",
+    "capital": "1109270140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2433  ",
+    "capital": "1444960110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2434  ",
+    "capital": "370000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2436  ",
+    "capital": "1780099610",
+    "total": 6919,
+    "stock": 0
+  },
+  {
+    "symbol": "2438  ",
+    "capital": "601956410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2439  ",
+    "capital": "2164702420",
+    "total": 10283,
+    "stock": 0
+  },
+  {
+    "symbol": "2440  ",
+    "capital": "1391172710",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2441  ",
+    "capital": "5688459210",
+    "total": 29535,
+    "stock": 0
+  },
+  {
+    "symbol": "2442  ",
+    "capital": "2413475630",
+    "total": 1711,
+    "stock": 0
+  },
+  {
+    "symbol": "2443  ",
+    "capital": "1456870000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2444  ",
+    "capital": "1055575730",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2449  ",
+    "capital": "12227450650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2450  ",
+    "capital": "2582526570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2451  ",
+    "capital": "4290616750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2453  ",
+    "capital": "1000000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2454  ",
+    "capital": "15990375780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2455  ",
+    "capital": "1849059180",
+    "total": 6751,
+    "stock": 0
+  },
+  {
+    "symbol": "2457  ",
+    "capital": "3752084160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2458  ",
+    "capital": "3038803920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2459  ",
+    "capital": "1055956150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2460  ",
+    "capital": "1692000000",
+    "total": 2140,
+    "stock": 0
+  },
+  {
+    "symbol": "2461  ",
+    "capital": "1638061050",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2462  ",
+    "capital": "1419345960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2464  ",
+    "capital": "1955312260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2465  ",
+    "capital": "535873010",
+    "total": 1549,
+    "stock": 0
+  },
+  {
+    "symbol": "2466  ",
+    "capital": "1616233780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2467  ",
+    "capital": "1567553480",
+    "total": 3671,
+    "stock": 0
+  },
+  {
+    "symbol": "2468  ",
+    "capital": "699612490",
+    "total": 2639,
+    "stock": 0
+  },
+  {
+    "symbol": "2471  ",
+    "capital": "472538900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2472  ",
+    "capital": "1634951600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2474  ",
+    "capital": "7144670680",
+    "total": 12499,
+    "stock": 0
+  },
+  {
+    "symbol": "2476  ",
+    "capital": "1897682980",
+    "total": 5887,
+    "stock": 0
+  },
+  {
+    "symbol": "2477  ",
+    "capital": "1982165550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2478  ",
+    "capital": "1447313390",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2480  ",
+    "capital": "1063602910",
+    "total": 4166,
+    "stock": 0
+  },
+  {
+    "symbol": "2481  ",
+    "capital": "3828149270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2482  ",
+    "capital": "696377130",
+    "total": 5544,
+    "stock": 0
+  },
+  {
+    "symbol": "2483  ",
+    "capital": "1090938070",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2484  ",
+    "capital": "1594210220",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2485  ",
+    "capital": "3176890370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2486  ",
+    "capital": "2219585790",
+    "total": 1124,
+    "stock": 0
+  },
+  {
+    "symbol": "2488  ",
+    "capital": "799994330",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2489  ",
+    "capital": "7600000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2491  ",
+    "capital": "820080000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2492  ",
+    "capital": "4858042990",
+    "total": 8026,
+    "stock": 0
+  },
+  {
+    "symbol": "2493  ",
+    "capital": "1144373900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2495  ",
+    "capital": "2735515380",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2496  ",
+    "capital": "191004400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2497  ",
+    "capital": "1187984630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2498  ",
+    "capital": "8262589850",
+    "total": 24617,
+    "stock": 0
+  },
+  {
+    "symbol": "2501  ",
+    "capital": "11595610590",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2504  ",
+    "capital": "11800000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2505  ",
+    "capital": "3800000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2506  ",
+    "capital": "3870000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2509  ",
+    "capital": "2245505300",
+    "total": 5160,
+    "stock": 0
+  },
+  {
+    "symbol": "2511  ",
+    "capital": "16233261470",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2514  ",
+    "capital": "3947292780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2515  ",
+    "capital": "15308998220",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2516  ",
+    "capital": "2262784570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2520  ",
+    "capital": "5541701000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2524  ",
+    "capital": "3717590230",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2527  ",
+    "capital": "2703060000",
+    "total": 3287,
+    "stock": 0
+  },
+  {
+    "symbol": "2528  ",
+    "capital": "3799974090",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2530  ",
+    "capital": "8399880000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2534  ",
+    "capital": "4742279700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2535  ",
+    "capital": "3384924580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2536  ",
+    "capital": "3328086520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2537  ",
+    "capital": "3005577950",
+    "total": 1548,
+    "stock": 0
+  },
+  {
+    "symbol": "2538  ",
+    "capital": "4384487640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2539  ",
+    "capital": "6446658160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2540  ",
+    "capital": "1612600000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2542  ",
+    "capital": "15603850310",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2543  ",
+    "capital": "2374837880",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2545  ",
+    "capital": "3277348080",
+    "total": 2522,
+    "stock": 0
+  },
+  {
+    "symbol": "2546  ",
+    "capital": "1060356600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2547  ",
+    "capital": "8800946490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2548  ",
+    "capital": "2768127260",
+    "total": 3908,
+    "stock": 0
+  },
+  {
+    "symbol": "2597  ",
+    "capital": "1849500000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2601  ",
+    "capital": "8347760670",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2603  ",
+    "capital": "21164200820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2605  ",
+    "capital": "5853532970",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2606  ",
+    "capital": "8450557120",
+    "total": 14075,
+    "stock": 0
+  },
+  {
+    "symbol": "2607  ",
+    "capital": "10671410940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2608  ",
+    "capital": "4670004980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2609  ",
+    "capital": "34921042700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2610  ",
+    "capital": "59935427320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2611  ",
+    "capital": "1890022720",
+    "total": 2000,
+    "stock": 0
+  },
+  {
+    "symbol": "2612  ",
+    "capital": "1974845930",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2613  ",
+    "capital": "1484234580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2614  ",
+    "capital": "4760553550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2615  ",
+    "capital": "28061462930",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2616  ",
+    "capital": "1372818270",
+    "total": 3205,
+    "stock": 0
+  },
+  {
+    "symbol": "2617  ",
+    "capital": "4172944870",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2618  ",
+    "capital": "52872937570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2630  ",
+    "capital": "1505751090",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2633  ",
+    "capital": "56282930580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2634  ",
+    "capital": "9418671010",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2636  ",
+    "capital": "1433912300",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2637  ",
+    "capital": "7464091990",
+    "total": 37245,
+    "stock": 0
+  },
+  {
+    "symbol": "2642  ",
+    "capital": "954670000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2701  ",
+    "capital": "4499678380",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2702  ",
+    "capital": "1104855380",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2704  ",
+    "capital": "3669233430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2705  ",
+    "capital": "1913128300",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2706  ",
+    "capital": "4999983460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2707  ",
+    "capital": "1274032380",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2712  ",
+    "capital": "1050000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2722  ",
+    "capital": "1115229610",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2723  ",
+    "capital": "1800000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2727  ",
+    "capital": "769878830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2731  ",
+    "capital": "765302070",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2739  ",
+    "capital": "1015260000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2748  ",
+    "capital": "904825500",
+    "total": 616,
+    "stock": 0
+  },
+  {
+    "symbol": "2753  ",
+    "capital": "660447960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2801  ",
+    "capital": "104885708420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2809  ",
+    "capital": "11212342650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2812  ",
+    "capital": "47654465860",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2816  ",
+    "capital": "2236080000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2820  ",
+    "capital": "13429600000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2832  ",
+    "capital": "3622004000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2834  ",
+    "capital": "77431952950",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2836  ",
+    "capital": "12383477910",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2838  ",
+    "capital": "34952186940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2845  ",
+    "capital": "35139632360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2849  ",
+    "capital": "19576093490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2850  ",
+    "capital": "3159633000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2851  ",
+    "capital": "5903887500",
+    "total": 4802,
+    "stock": 0
+  },
+  {
+    "symbol": "2852  ",
+    "capital": "3011637840",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2855  ",
+    "capital": "14558313430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2867  ",
+    "capital": "30995010440",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2880  ",
+    "capital": "131941449700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2881  ",
+    "capital": "134049543940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2882  ",
+    "capital": "147025101280",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2883  ",
+    "capital": "190869208970",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2884  ",
+    "capital": "142751000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2885  ",
+    "capital": "121374359140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2886  ",
+    "capital": "135998239830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2887  ",
+    "capital": "125093831700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2888  ",
+    "capital": "157846182430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2889  ",
+    "capital": "29975085550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2890  ",
+    "capital": "112810541060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2891  ",
+    "capital": "199969795690",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2892  ",
+    "capital": "132234422690",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2897  ",
+    "capital": "30330063010",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2901  ",
+    "capital": "730432830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2903  ",
+    "capital": "14169405890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2904  ",
+    "capital": "690344320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2905  ",
+    "capital": "9133620830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2906  ",
+    "capital": "2091110930",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2908  ",
+    "capital": "5098875580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2910  ",
+    "capital": "2087250000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2911  ",
+    "capital": "1846777750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2912  ",
+    "capital": "10396222550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2913  ",
+    "capital": "7900000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2915  ",
+    "capital": "7343187720",
+    "total": 15415,
+    "stock": 0
+  },
+  {
+    "symbol": "2923  ",
+    "capital": "17402969820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2929  ",
+    "capital": "1094938380",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2939  ",
+    "capital": "455486650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2945  ",
+    "capital": "675000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3002  ",
+    "capital": "1020000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3003  ",
+    "capital": "1556548900",
+    "total": 19793,
+    "stock": 0
+  },
+  {
+    "symbol": "3004  ",
+    "capital": "526471550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3005  ",
+    "capital": "6000554000",
+    "total": 8609,
+    "stock": 0
+  },
+  {
+    "symbol": "3006  ",
+    "capital": "2861569530",
+    "total": 9688,
+    "stock": 0
+  },
+  {
+    "symbol": "3008  ",
+    "capital": "1334681970",
+    "total": 9389,
+    "stock": 0
+  },
+  {
+    "symbol": "3010  ",
+    "capital": "2360179410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3011  ",
+    "capital": "1127192510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3013  ",
+    "capital": "1959350180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3014  ",
+    "capital": "1610801240",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3015  ",
+    "capital": "1872619500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3016  ",
+    "capital": "2880154860",
+    "total": 8758,
+    "stock": 0
+  },
+  {
+    "symbol": "3017  ",
+    "capital": "3533101570",
+    "total": 12855,
+    "stock": 0
+  },
+  {
+    "symbol": "3018  ",
+    "capital": "781471320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3019  ",
+    "capital": "2810839010",
+    "total": 3003,
+    "stock": 0
+  },
+  {
+    "symbol": "3021  ",
+    "capital": "930000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3022  ",
+    "capital": "1765977900",
+    "total": 35386,
+    "stock": 0
+  },
+  {
+    "symbol": "3023  ",
+    "capital": "2355231060",
+    "total": 2154,
+    "stock": 0
+  },
+  {
+    "symbol": "3024  ",
+    "capital": "2771574960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3025  ",
+    "capital": "709205500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3026  ",
+    "capital": "1579907790",
+    "total": 1514,
+    "stock": 0
+  },
+  {
+    "symbol": "3027  ",
+    "capital": "988563110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3028  ",
+    "capital": "2158938190",
+    "total": 4812,
+    "stock": 0
+  },
+  {
+    "symbol": "3029  ",
+    "capital": "1524007120",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3030  ",
+    "capital": "2362160000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3031  ",
+    "capital": "1816742240",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3032  ",
+    "capital": "1132856260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3033  ",
+    "capital": "4222546000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3034  ",
+    "capital": "6085114690",
+    "total": 31384,
+    "stock": 0
+  },
+  {
+    "symbol": "3035  ",
+    "capital": "2485503130",
+    "total": 74415,
+    "stock": 0
+  },
+  {
+    "symbol": "3036  ",
+    "capital": "10185791510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3037  ",
+    "capital": "14752603330",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3038  ",
+    "capital": "1574076030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3040  ",
+    "capital": "630000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3041  ",
+    "capital": "1934097460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3042  ",
+    "capital": "3097570400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3043  ",
+    "capital": "1948781660",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3044  ",
+    "capital": "5256058980",
+    "total": 2147,
+    "stock": 0
+  },
+  {
+    "symbol": "3045  ",
+    "capital": "35192336030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3046  ",
+    "capital": "714480130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3047  ",
+    "capital": "1907094830",
+    "total": 13994,
+    "stock": 0
+  },
+  {
+    "symbol": "3048  ",
+    "capital": "2698297940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3049  ",
+    "capital": "8069485290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3050  ",
+    "capital": "1459844500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3051  ",
+    "capital": "1700000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3052  ",
+    "capital": "2287135540",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3054  ",
+    "capital": "834110410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3055  ",
+    "capital": "1187419180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3056  ",
+    "capital": "2117167080",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3057  ",
+    "capital": "926786680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3058  ",
+    "capital": "1585763510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3059  ",
+    "capital": "2789473250",
+    "total": 8281,
+    "stock": 0
+  },
+  {
+    "symbol": "3060  ",
+    "capital": "1375631900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3062  ",
+    "capital": "3286054180",
+    "total": 4343,
+    "stock": 0
+  },
+  {
+    "symbol": "3090  ",
+    "capital": "1826571500",
+    "total": 1408,
+    "stock": 0
+  },
+  {
+    "symbol": "3092  ",
+    "capital": "928430400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3094  ",
+    "capital": "831170890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3130  ",
+    "capital": "331907000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3138  ",
+    "capital": "467216630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3149  ",
+    "capital": "2233936040",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3164  ",
+    "capital": "863713640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3167  ",
+    "capital": "801341160",
+    "total": 287,
+    "stock": 0
+  },
+  {
+    "symbol": "3189  ",
+    "capital": "4508440600",
+    "total": 12129,
+    "stock": 0
+  },
+  {
+    "symbol": "3209  ",
+    "capital": "2165747580",
+    "total": 11823,
+    "stock": 0
+  },
+  {
+    "symbol": "3229  ",
+    "capital": "642630000",
+    "total": 302,
+    "stock": 0
+  },
+  {
+    "symbol": "3231  ",
+    "capital": "29029220500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3257  ",
+    "capital": "799865900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3266  ",
+    "capital": "3523143090",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3296  ",
+    "capital": "967244500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3305  ",
+    "capital": "1342374740",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3308  ",
+    "capital": "704910260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3311  ",
+    "capital": "680000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3312  ",
+    "capital": "1376254550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3321  ",
+    "capital": "1561448250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3338  ",
+    "capital": "879081410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3346  ",
+    "capital": "1066651540",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3356  ",
+    "capital": "898221030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3376  ",
+    "capital": "1924853460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3380  ",
+    "capital": "5417184600",
+    "total": 2971,
+    "stock": 0
+  },
+  {
+    "symbol": "3383  ",
+    "capital": "750000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3406  ",
+    "capital": "1127092630",
+    "total": 7642,
+    "stock": 0
+  },
+  {
+    "symbol": "3413  ",
+    "capital": "966475460",
+    "total": 665,
+    "stock": 0
+  },
+  {
+    "symbol": "3416  ",
+    "capital": "726174470",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3419  ",
+    "capital": "1204804170",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3432  ",
+    "capital": "665860000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3437  ",
+    "capital": "1445480000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3443  ",
+    "capital": "1340119110",
+    "total": 12870,
+    "stock": 0
+  },
+  {
+    "symbol": "3450  ",
+    "capital": "1456813820",
+    "total": 3901,
+    "stock": 0
+  },
+  {
+    "symbol": "3454  ",
+    "capital": "865678930",
+    "total": 6721,
+    "stock": 0
+  },
+  {
+    "symbol": "3481  ",
+    "capital": "95564561460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3494  ",
+    "capital": "1200000000",
+    "total": 9515,
+    "stock": 0
+  },
+  {
+    "symbol": "3501  ",
+    "capital": "1182579270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3504  ",
+    "capital": "1140597850",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3515  ",
+    "capital": "1229254290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3518  ",
+    "capital": "791422300",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3528  ",
+    "capital": "661094660",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3530  ",
+    "capital": "781689000",
+    "total": 339,
+    "stock": 0
+  },
+  {
+    "symbol": "3532  ",
+    "capital": "3878483000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3533  ",
+    "capital": "1061806300",
+    "total": 5195,
+    "stock": 0
+  },
+  {
+    "symbol": "3535  ",
+    "capital": "790523560",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3536  ",
+    "capital": "1068000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3543  ",
+    "capital": "892631500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3545  ",
+    "capital": "2164346500",
+    "total": 15340,
+    "stock": 0
+  },
+  {
+    "symbol": "3550  ",
+    "capital": "850000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3557  ",
+    "capital": "803004150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3563  ",
+    "capital": "447282340",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3576  ",
+    "capital": "16278139780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3583  ",
+    "capital": "811390000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3588  ",
+    "capital": "528101200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3591  ",
+    "capital": "1288353260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3592  ",
+    "capital": "758552260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3593  ",
+    "capital": "930424160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3596  ",
+    "capital": "2203543210",
+    "total": 12418,
+    "stock": 0
+  },
+  {
+    "symbol": "3605  ",
+    "capital": "1343958840",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3607  ",
+    "capital": "1216622390",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3617  ",
+    "capital": "809510000",
+    "total": 5095,
+    "stock": 0
+  },
+  {
+    "symbol": "3622  ",
+    "capital": "1513276000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3645  ",
+    "capital": "1317989940",
+    "total": 1969,
+    "stock": 0
+  },
+  {
+    "symbol": "3653  ",
+    "capital": "1222596310",
+    "total": 10381,
+    "stock": 0
+  },
+  {
+    "symbol": "3661  ",
+    "capital": "714572040",
+    "total": 36168,
+    "stock": 0
+  },
+  {
+    "symbol": "3665  ",
+    "capital": "1527787840",
+    "total": 7044,
+    "stock": 0
+  },
+  {
+    "symbol": "3669  ",
+    "capital": "929199500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3673  ",
+    "capital": "4066637590",
+    "total": 3758,
+    "stock": 0
+  },
+  {
+    "symbol": "3679  ",
+    "capital": "626762290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3682  ",
+    "capital": "43171963990",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3686  ",
+    "capital": "1135136430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3694  ",
+    "capital": "1528658080",
+    "total": 506,
+    "stock": 0
+  },
+  {
+    "symbol": "3701  ",
+    "capital": "2136348830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3702  ",
+    "capital": "18790568330",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3703  ",
+    "capital": "8232159800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3704  ",
+    "capital": "3975249700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3705  ",
+    "capital": "2664229830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3706  ",
+    "capital": "12065567890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3708  ",
+    "capital": "935046040",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3711  ",
+    "capital": "43599279320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3712  ",
+    "capital": "2462421460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3714  ",
+    "capital": "7547839600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3715  ",
+    "capital": "2775489340",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4104  ",
+    "capital": "1411489700",
+    "total": 4441,
+    "stock": 0
+  },
+  {
+    "symbol": "4106  ",
+    "capital": "1009115570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4108  ",
+    "capital": "1986188790",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4119  ",
+    "capital": "953823720",
+    "total": 6018,
+    "stock": 0
+  },
+  {
+    "symbol": "4133  ",
+    "capital": "605535940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4137  ",
+    "capital": "794923500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4142  ",
+    "capital": "4295077500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4148  ",
+    "capital": "640340010",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4155  ",
+    "capital": "949336510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4164  ",
+    "capital": "1615348550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4190  ",
+    "capital": "608237000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4306  ",
+    "capital": "6382873490",
+    "total": 2432,
+    "stock": 0
+  },
+  {
+    "symbol": "4426  ",
+    "capital": "1726771980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4438  ",
+    "capital": "1033752920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4439  ",
+    "capital": "377698000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4440  ",
+    "capital": "675980000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4526  ",
+    "capital": "2548264610",
+    "total": 8796,
+    "stock": 0
+  },
+  {
+    "symbol": "4532  ",
+    "capital": "5049151050",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4536  ",
+    "capital": "908200000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4540  ",
+    "capital": "941780000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4545  ",
+    "capital": "770000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4551  ",
+    "capital": "1152224980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4552  ",
+    "capital": "1160000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4555  ",
+    "capital": "669926170",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4557  ",
+    "capital": "419718400",
+    "total": 5486,
+    "stock": 0
+  },
+  {
+    "symbol": "4560  ",
+    "capital": "680972400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4562  ",
+    "capital": "875460000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4564  ",
+    "capital": "1827883030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4566  ",
+    "capital": "717443040",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4571  ",
+    "capital": "533800000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4572  ",
+    "capital": "358000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4576  ",
+    "capital": "1198018480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4581  ",
+    "capital": "338990000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4583  ",
+    "capital": "801713510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4720  ",
+    "capital": "1031350590",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4722  ",
+    "capital": "1000091590",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4737  ",
+    "capital": "606021940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4739  ",
+    "capital": "1070292690",
+    "total": 11083,
+    "stock": 0
+  },
+  {
+    "symbol": "4746  ",
+    "capital": "1202559630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4755  ",
+    "capital": "1007060000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4763  ",
+    "capital": "586049970",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4764  ",
+    "capital": "855420620",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4766  ",
+    "capital": "1205707800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4770  ",
+    "capital": "790020000",
+    "total": 6972,
+    "stock": 0
+  },
+  {
+    "symbol": "4807  ",
+    "capital": "383960320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4904  ",
+    "capital": "32585008100",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4906  ",
+    "capital": "4051589770",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4912  ",
+    "capital": "625207750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4915  ",
+    "capital": "4552353240",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4916  ",
+    "capital": "833543920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4919  ",
+    "capital": "4197652680",
+    "total": 44034,
+    "stock": 0
+  },
+  {
+    "symbol": "4927  ",
+    "capital": "1899379880",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4930  ",
+    "capital": "800000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4934  ",
+    "capital": "2250000000",
+    "total": 6951,
+    "stock": 0
+  },
+  {
+    "symbol": "4935  ",
+    "capital": "1288640910",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4938  ",
+    "capital": "26684533060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4942  ",
+    "capital": "1423676130",
+    "total": 4098,
+    "stock": 0
+  },
+  {
+    "symbol": "4943  ",
+    "capital": "1570465820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4952  ",
+    "capital": "1088158160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4956  ",
+    "capital": "1004082360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4958  ",
+    "capital": "9470491610",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4960  ",
+    "capital": "6752466800",
+    "total": 1873,
+    "stock": 0
+  },
+  {
+    "symbol": "4961  ",
+    "capital": "1865453120",
+    "total": 6436,
+    "stock": 0
+  },
+  {
+    "symbol": "4967  ",
+    "capital": "715486870",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4968  ",
+    "capital": "884689060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4976  ",
+    "capital": "1387410000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4977  ",
+    "capital": "686898410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4989  ",
+    "capital": "1377765000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4994  ",
+    "capital": "1106390000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4999  ",
+    "capital": "744172000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5007  ",
+    "capital": "2949401540",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5203  ",
+    "capital": "788008000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5215  ",
+    "capital": "643375000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5222  ",
+    "capital": "678287820",
+    "total": 1393,
+    "stock": 0
+  },
+  {
+    "symbol": "5225  ",
+    "capital": "614060000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5234  ",
+    "capital": "1027159110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5243  ",
+    "capital": "1685289150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5244  ",
+    "capital": "679440800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5258  ",
+    "capital": "895425790",
+    "total": 30506,
+    "stock": 0
+  },
+  {
+    "symbol": "5269  ",
+    "capital": "692155240",
+    "total": 2193,
+    "stock": 0
+  },
+  {
+    "symbol": "5283  ",
+    "capital": "730004250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5284  ",
+    "capital": "436646080",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5285  ",
+    "capital": "1020409260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5288  ",
+    "capital": "658261530",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5306  ",
+    "capital": "1260000000",
+    "total": 3286,
+    "stock": 0
+  },
+  {
+    "symbol": "5388  ",
+    "capital": "2523897670",
+    "total": 13363,
+    "stock": 0
+  },
+  {
+    "symbol": "5434  ",
+    "capital": "1816995670",
+    "total": 3721,
+    "stock": 0
+  },
+  {
+    "symbol": "5469  ",
+    "capital": "5284413520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5471  ",
+    "capital": "1678770620",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5484  ",
+    "capital": "668010000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5515  ",
+    "capital": "2574401050",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5519  ",
+    "capital": "2191971800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5521  ",
+    "capital": "4922801550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5522  ",
+    "capital": "7815962410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5525  ",
+    "capital": "2645912660",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5531  ",
+    "capital": "9775892450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5533  ",
+    "capital": "2852449440",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5534  ",
+    "capital": "2903259600",
+    "total": 3140,
+    "stock": 0
+  },
+  {
+    "symbol": "5538  ",
+    "capital": "2012033330",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5546  ",
+    "capital": "823534020",
+    "total": 226,
+    "stock": 0
+  },
+  {
+    "symbol": "5607  ",
+    "capital": "2549791000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5608  ",
+    "capital": "3292670900",
+    "total": 3892,
+    "stock": 0
+  },
+  {
+    "symbol": "5706  ",
+    "capital": "737669480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5871  ",
+    "capital": "17329141530",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5876  ",
+    "capital": "44816031400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5880  ",
+    "capital": "140089354460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5906  ",
+    "capital": "324000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5907  ",
+    "capital": "1955310000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6005  ",
+    "capital": "21709080970",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6024  ",
+    "capital": "2104375840",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6108  ",
+    "capital": "1598993110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6112  ",
+    "capital": "1883573360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6115  ",
+    "capital": "1876621540",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6116  ",
+    "capital": "29403288510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6117  ",
+    "capital": "886500000",
+    "total": 2402,
+    "stock": 0
+  },
+  {
+    "symbol": "6120  ",
+    "capital": "6655551140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6128  ",
+    "capital": "1275887400",
+    "total": 351,
+    "stock": 0
+  },
+  {
+    "symbol": "6133  ",
+    "capital": "1170062940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6136  ",
+    "capital": "1155364120",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6139  ",
+    "capital": "2255409290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6141  ",
+    "capital": "1160230050",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6142  ",
+    "capital": "3307792150",
+    "total": 2925,
+    "stock": 0
+  },
+  {
+    "symbol": "6152  ",
+    "capital": "1677384630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6153  ",
+    "capital": "5561776940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6155  ",
+    "capital": "871477220",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6164  ",
+    "capital": "1000002390",
+    "total": 431,
+    "stock": 0
+  },
+  {
+    "symbol": "6165  ",
+    "capital": "532424030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6166  ",
+    "capital": "2174972570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6168  ",
+    "capital": "2060698010",
+    "total": 3938,
+    "stock": 0
+  },
+  {
+    "symbol": "6176  ",
+    "capital": "4650272630",
+    "total": 12339,
+    "stock": 0
+  },
+  {
+    "symbol": "6177  ",
+    "capital": "3879106160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6183  ",
+    "capital": "1500000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6184  ",
+    "capital": "1582306570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6189  ",
+    "capital": "2004067430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6191  ",
+    "capital": "4743030000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6192  ",
+    "capital": "1068397450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6196  ",
+    "capital": "1950180790",
+    "total": 5599,
+    "stock": 0
+  },
+  {
+    "symbol": "6197  ",
+    "capital": "1220858820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6201  ",
+    "capital": "892000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6202  ",
+    "capital": "2261682000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6205  ",
+    "capital": "793733450",
+    "total": 5295,
+    "stock": 0
+  },
+  {
+    "symbol": "6206  ",
+    "capital": "1430623240",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6209  ",
+    "capital": "1742286310",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6213  ",
+    "capital": "3829572180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6214  ",
+    "capital": "2693933040",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6215  ",
+    "capital": "827896930",
+    "total": 198,
+    "stock": 0
+  },
+  {
+    "symbol": "6216  ",
+    "capital": "897736370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6224  ",
+    "capital": "856453610",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6225  ",
+    "capital": "437236550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6226  ",
+    "capital": "1165397890",
+    "total": 293,
+    "stock": 0
+  },
+  {
+    "symbol": "6230  ",
+    "capital": "863433960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6235  ",
+    "capital": "1732813060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6239  ",
+    "capital": "7591466340",
+    "total": 8822,
+    "stock": 0
+  },
+  {
+    "symbol": "6243  ",
+    "capital": "453228410",
+    "total": 434,
+    "stock": 0
+  },
+  {
+    "symbol": "6257  ",
+    "capital": "4526685140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6269  ",
+    "capital": "3203410990",
+    "total": 4994,
+    "stock": 0
+  },
+  {
+    "symbol": "6271  ",
+    "capital": "1786904250",
+    "total": 11627,
+    "stock": 0
+  },
+  {
+    "symbol": "6277  ",
+    "capital": "1194711660",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6278  ",
+    "capital": "2923983530",
+    "total": 3487,
+    "stock": 0
+  },
+  {
+    "symbol": "6281  ",
+    "capital": "991729450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6282  ",
+    "capital": "5166212950",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6283  ",
+    "capital": "1479063430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6285  ",
+    "capital": "3964331020",
+    "total": 40844,
+    "stock": 0
+  },
+  {
+    "symbol": "6288  ",
+    "capital": "1827332590",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6289  ",
+    "capital": "523890680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6405  ",
+    "capital": "658000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6409  ",
+    "capital": "872261670",
+    "total": 2612,
+    "stock": 0
+  },
+  {
+    "symbol": "6412  ",
+    "capital": "3953883900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6414  ",
+    "capital": "1060370190",
+    "total": 8302,
+    "stock": 0
+  },
+  {
+    "symbol": "6415  ",
+    "capital": "950227050",
+    "total": 9136,
+    "stock": 0
+  },
+  {
+    "symbol": "6416  ",
+    "capital": "731888750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6426  ",
+    "capital": "385090000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6431  ",
+    "capital": "685688350",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6438  ",
+    "capital": "714317110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6442  ",
+    "capital": "693000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6443  ",
+    "capital": "5021914660",
+    "total": 109389,
+    "stock": 0
+  },
+  {
+    "symbol": "6449  ",
+    "capital": "889535140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6451  ",
+    "capital": "1074648000",
+    "total": 1050,
+    "stock": 0
+  },
+  {
+    "symbol": "6456  ",
+    "capital": "3379398000",
+    "total": 1974,
+    "stock": 0
+  },
+  {
+    "symbol": "6464  ",
+    "capital": "1303100370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6477  ",
+    "capital": "1175796100",
+    "total": 6705,
+    "stock": 0
+  },
+  {
+    "symbol": "6491  ",
+    "capital": "700000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6504  ",
+    "capital": "726000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6505  ",
+    "capital": "95259596520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6515  ",
+    "capital": "342480000",
+    "total": 10052,
+    "stock": 0
+  },
+  {
+    "symbol": "6525  ",
+    "capital": "1290473840",
+    "total": 1528,
+    "stock": 0
+  },
+  {
+    "symbol": "6531  ",
+    "capital": "807096230",
+    "total": 16016,
+    "stock": 0
+  },
+  {
+    "symbol": "6533  ",
+    "capital": "506509110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6541  ",
+    "capital": "3526041010",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6550  ",
+    "capital": "7414518660",
+    "total": 57700,
+    "stock": 0
+  },
+  {
+    "symbol": "6552  ",
+    "capital": "830000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6558  ",
+    "capital": "937495000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6573  ",
+    "capital": "804993450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6579  ",
+    "capital": "1486554680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6581  ",
+    "capital": "1112708870",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6582  ",
+    "capital": "1061741410",
+    "total": 15404,
+    "stock": 0
+  },
+  {
+    "symbol": "6585  ",
+    "capital": "692430000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6591  ",
+    "capital": "320979270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6592  ",
+    "capital": "5150004070",
+    "total": 5847,
+    "stock": 0
+  },
+  {
+    "symbol": "6598  ",
+    "capital": "817632180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6605  ",
+    "capital": "1658163970",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6625  ",
+    "capital": "443404440",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6641  ",
+    "capital": "370000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6655  ",
+    "capital": "740281990",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6666  ",
+    "capital": "473880000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6668  ",
+    "capital": "782863760",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6669  ",
+    "capital": "1748407910",
+    "total": 6427,
+    "stock": 0
+  },
+  {
+    "symbol": "6670  ",
+    "capital": "1310300000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6671  ",
+    "capital": "607500000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6672  ",
+    "capital": "714543450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6674  ",
+    "capital": "684049010",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6691  ",
+    "capital": "679071400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6698  ",
+    "capital": "663897530",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6706  ",
+    "capital": "735368650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6715  ",
+    "capital": "605000000",
+    "total": 226,
+    "stock": 0
+  },
+  {
+    "symbol": "6719  ",
+    "capital": "782647890",
+    "total": 8539,
+    "stock": 0
+  },
+  {
+    "symbol": "6743  ",
+    "capital": "1500000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6754  ",
+    "capital": "660000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6756  ",
+    "capital": "684780000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6768  ",
+    "capital": "1960456170",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6770  ",
+    "capital": "39465997420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6776  ",
+    "capital": "815814300",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6781  ",
+    "capital": "854187800",
+    "total": 3830,
+    "stock": 0
+  },
+  {
+    "symbol": "6789  ",
+    "capital": "3144761190",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6790  ",
+    "capital": "2671290210",
+    "total": 895,
+    "stock": 0
+  },
+  {
+    "symbol": "6792  ",
+    "capital": "478753250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6796  ",
+    "capital": "332276550",
+    "total": 8701,
+    "stock": 0
+  },
+  {
+    "symbol": "6799  ",
+    "capital": "403841330",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6806  ",
+    "capital": "1965000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6807  ",
+    "capital": "540000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6854  ",
+    "capital": "1071786220",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8011  ",
+    "capital": "1494560620",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8016  ",
+    "capital": "1201368760",
+    "total": 10918,
+    "stock": 0
+  },
+  {
+    "symbol": "8021  ",
+    "capital": "1421804670",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8028  ",
+    "capital": "1487736290",
+    "total": 22899,
+    "stock": 0
+  },
+  {
+    "symbol": "8033  ",
+    "capital": "1326297750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8039  ",
+    "capital": "2091196920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8046  ",
+    "capital": "6461654870",
+    "total": 22882,
+    "stock": 0
+  },
+  {
+    "symbol": "8070  ",
+    "capital": "689419426",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8072  ",
+    "capital": "800000000",
+    "total": 2919,
+    "stock": 0
+  },
+  {
+    "symbol": "8081  ",
+    "capital": "861720720",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8101  ",
+    "capital": "2080887950",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8103  ",
+    "capital": "789534130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8104  ",
+    "capital": "746306010",
+    "total": 1076,
+    "stock": 0
+  },
+  {
+    "symbol": "8105  ",
+    "capital": "4415448510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8110  ",
+    "capital": "5217218760",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8112  ",
+    "capital": "4584964730",
+    "total": 5370,
+    "stock": 0
+  },
+  {
+    "symbol": "8114  ",
+    "capital": "1062849190",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8131  ",
+    "capital": "4422222230",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8150  ",
+    "capital": "7272401260",
+    "total": 5142,
+    "stock": 0
+  },
+  {
+    "symbol": "8163  ",
+    "capital": "2800000010",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8201  ",
+    "capital": "623662750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8210  ",
+    "capital": "1207697000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8213  ",
+    "capital": "2712424880",
+    "total": 2082,
+    "stock": 0
+  },
+  {
+    "symbol": "8215  ",
+    "capital": "3206745140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8222  ",
+    "capital": "685735000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8249  ",
+    "capital": "1490550000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8261  ",
+    "capital": "1163404930",
+    "total": 12205,
+    "stock": 0
+  },
+  {
+    "symbol": "8271  ",
+    "capital": "1018243460",
+    "total": 1177,
+    "stock": 0
+  },
+  {
+    "symbol": "8341  ",
+    "capital": "1115000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8367  ",
+    "capital": "877319380",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8374  ",
+    "capital": "1122504870",
+    "total": 1035,
+    "stock": 0
+  },
+  {
+    "symbol": "8404  ",
+    "capital": "3151781260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8411  ",
+    "capital": "1753981850",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8422  ",
+    "capital": "1088880000",
+    "total": 9595,
+    "stock": 0
+  },
+  {
+    "symbol": "8429  ",
+    "capital": "1857471510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8438  ",
+    "capital": "705180000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8442  ",
+    "capital": "599996820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8443  ",
+    "capital": "668000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8454  ",
+    "capital": "2184912600",
+    "total": 12467,
+    "stock": 0
+  },
+  {
+    "symbol": "8462  ",
+    "capital": "774553540",
+    "total": 1322,
+    "stock": 0
+  },
+  {
+    "symbol": "8463  ",
+    "capital": "1500000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8464  ",
+    "capital": "2930202000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8466  ",
+    "capital": "660590000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8467  ",
+    "capital": "495340000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8473  ",
+    "capital": "1442491580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8478  ",
+    "capital": "888862760",
+    "total": 7244,
+    "stock": 0
+  },
+  {
+    "symbol": "8480  ",
+    "capital": "392700000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8481  ",
+    "capital": "666018660",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8482  ",
+    "capital": "1104440000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8488  ",
+    "capital": "675000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8499  ",
+    "capital": "518553080",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8926  ",
+    "capital": "5890485950",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8940  ",
+    "capital": "674910320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8996  ",
+    "capital": "893840800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9103  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9105  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9110  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9136  ",
+    "capital": "0",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9802  ",
+    "capital": "1895751180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9902  ",
+    "capital": "980496000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9904  ",
+    "capital": "29467872130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9905  ",
+    "capital": "3050000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9906  ",
+    "capital": "833439810",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9907  ",
+    "capital": "15791453420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9908  ",
+    "capital": "5163580000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9910  ",
+    "capital": "8816810990",
+    "total": 3726,
+    "stock": 0
+  },
+  {
+    "symbol": "9911  ",
+    "capital": "2211211880",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9912  ",
+    "capital": "545325690",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9914  ",
+    "capital": "2989838000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9917  ",
+    "capital": "4511970930",
+    "total": 4370,
+    "stock": 0
+  },
+  {
+    "symbol": "9918  ",
+    "capital": "1805374530",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9919  ",
+    "capital": "1953627500",
+    "total": 2343,
+    "stock": 0
+  },
+  {
+    "symbol": "9921  ",
+    "capital": "3750646260",
+    "total": 4022,
+    "stock": 0
+  },
+  {
+    "symbol": "9924  ",
+    "capital": "1884521700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9925  ",
+    "capital": "3874896050",
+    "total": 2110,
+    "stock": 0
+  },
+  {
+    "symbol": "9926  ",
+    "capital": "1795040750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9927  ",
+    "capital": "1673185340",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9928  ",
+    "capital": "607245830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9929  ",
+    "capital": "1012800000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9930  ",
+    "capital": "2485403680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9931  ",
+    "capital": "1104305530",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9933  ",
+    "capital": "7825738260",
+    "total": 5266,
+    "stock": 0
+  },
+  {
+    "symbol": "9934  ",
+    "capital": "3581639620",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9935  ",
+    "capital": "1696233420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9937  ",
+    "capital": "3090430000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9938  ",
+    "capital": "2979639020",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9939  ",
+    "capital": "2877858790",
+    "total": 3625,
+    "stock": 0
+  },
+  {
+    "symbol": "9940  ",
+    "capital": "7368465000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9941  ",
+    "capital": "4821465370",
+    "total": 48599,
+    "stock": 0
+  },
+  {
+    "symbol": "9942  ",
+    "capital": "831613200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9943  ",
+    "capital": "1252199600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9944  ",
+    "capital": "1091071000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9945  ",
+    "capital": "21068333970",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9946  ",
+    "capital": "3265541500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9955  ",
+    "capital": "1032082290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9958  ",
+    "capital": "2315482580",
+    "total": 9647,
+    "stock": 0
+  },
+  {
+    "symbol": "1240  ",
+    "capital": "367601850",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1258  ",
+    "capital": "368197910",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1259  ",
+    "capital": "323895000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1264  ",
+    "capital": "370643670",
+    "total": 3781,
+    "stock": 0
+  },
+  {
+    "symbol": "1268  ",
+    "capital": "427237300",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1336  ",
+    "capital": "770984190",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1565  ",
+    "capital": "504165160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1569  ",
+    "capital": "1214474410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1570  ",
+    "capital": "515008390",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1580  ",
+    "capital": "502302420",
+    "total": 1870,
+    "stock": 0
+  },
+  {
+    "symbol": "1584  ",
+    "capital": "1224705330",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1586  ",
+    "capital": "858419540",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1591  ",
+    "capital": "331648070",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1593  ",
+    "capital": "352275330",
+    "total": 2110,
+    "stock": 0
+  },
+  {
+    "symbol": "1595  ",
+    "capital": "469261340",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1599  ",
+    "capital": "745287640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1742  ",
+    "capital": "815500000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1777  ",
+    "capital": "445917130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1781  ",
+    "capital": "474076050",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1784  ",
+    "capital": "496269240",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1785  ",
+    "capital": "5971032430",
+    "total": 5045,
+    "stock": 0
+  },
+  {
+    "symbol": "1788  ",
+    "capital": "405209710",
+    "total": 1702,
+    "stock": 0
+  },
+  {
+    "symbol": "1796  ",
+    "capital": "414597930",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1799  ",
+    "capital": "1143657750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1813  ",
+    "capital": "466355100",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "1815  ",
+    "capital": "4284685110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2035  ",
+    "capital": "3500000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2061  ",
+    "capital": "469287580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2063  ",
+    "capital": "450000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2064  ",
+    "capital": "696300000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2065  ",
+    "capital": "543771990",
+    "total": 7553,
+    "stock": 0
+  },
+  {
+    "symbol": "2066  ",
+    "capital": "365028700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2067  ",
+    "capital": "451381770",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2070  ",
+    "capital": "357828000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2221  ",
+    "capital": "423250000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2230  ",
+    "capital": "399131940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2235  ",
+    "capital": "358780000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2596  ",
+    "capital": "1000000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2640  ",
+    "capital": "592649560",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2641  ",
+    "capital": "1886358880",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2643  ",
+    "capital": "300000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2718  ",
+    "capital": "845760000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2719  ",
+    "capital": "187421000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2724  ",
+    "capital": "596563450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2726  ",
+    "capital": "357852160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2729  ",
+    "capital": "232666800",
+    "total": 2468,
+    "stock": 0
+  },
+  {
+    "symbol": "2732  ",
+    "capital": "459950700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2734  ",
+    "capital": "372597600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2736  ",
+    "capital": "489923830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2740  ",
+    "capital": "201854840",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2743  ",
+    "capital": "320317000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2745  ",
+    "capital": "293085260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2752  ",
+    "capital": "230199840",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2754  ",
+    "capital": "462800000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2755  ",
+    "capital": "200000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2756  ",
+    "capital": "170436250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2916  ",
+    "capital": "546268780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2924  ",
+    "capital": "328051740",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2926  ",
+    "capital": "473896500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2937  ",
+    "capital": "367008420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "2947  ",
+    "capital": "192686000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3064  ",
+    "capital": "433715020",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3066  ",
+    "capital": "830706120",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3067  ",
+    "capital": "200000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3071  ",
+    "capital": "1100000000",
+    "total": 1150,
+    "stock": 0
+  },
+  {
+    "symbol": "3073  ",
+    "capital": "320995560",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3078  ",
+    "capital": "2273910640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3081  ",
+    "capital": "913691770",
+    "total": 5873,
+    "stock": 0
+  },
+  {
+    "symbol": "3083  ",
+    "capital": "862716080",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3085  ",
+    "capital": "580385770",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3086  ",
+    "capital": "193694000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3088  ",
+    "capital": "904014840",
+    "total": 3651,
+    "stock": 0
+  },
+  {
+    "symbol": "3089  ",
+    "capital": "651133140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3093  ",
+    "capital": "362888940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3095  ",
+    "capital": "1092763210",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3105  ",
+    "capital": "4239763840",
+    "total": 9270,
+    "stock": 0
+  },
+  {
+    "symbol": "3114  ",
+    "capital": "590800000",
+    "total": 499,
+    "stock": 0
+  },
+  {
+    "symbol": "3115  ",
+    "capital": "436976000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3118  ",
+    "capital": "324528600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3122  ",
+    "capital": "391449340",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3128  ",
+    "capital": "420000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3131  ",
+    "capital": "292160150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3141  ",
+    "capital": "747860280",
+    "total": 17927,
+    "stock": 0
+  },
+  {
+    "symbol": "3147  ",
+    "capital": "390060990",
+    "total": 2592,
+    "stock": 0
+  },
+  {
+    "symbol": "3152  ",
+    "capital": "690162000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3162  ",
+    "capital": "1095313420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3163  ",
+    "capital": "752868990",
+    "total": 23315,
+    "stock": 0
+  },
+  {
+    "symbol": "3169  ",
+    "capital": "624269810",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3171  ",
+    "capital": "667035150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3176  ",
+    "capital": "1394125050",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3178  ",
+    "capital": "450500000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3188  ",
+    "capital": "1202951200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3191  ",
+    "capital": "871947610",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3202  ",
+    "capital": "1171648700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3205  ",
+    "capital": "325456310",
+    "total": 4211,
+    "stock": 0
+  },
+  {
+    "symbol": "3206  ",
+    "capital": "589166210",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3207  ",
+    "capital": "537703410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3211  ",
+    "capital": "1496355210",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3213  ",
+    "capital": "586855470",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3217  ",
+    "capital": "901042030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3218  ",
+    "capital": "761230000",
+    "total": 9497,
+    "stock": 0
+  },
+  {
+    "symbol": "3219  ",
+    "capital": "702839680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3221  ",
+    "capital": "1028564100",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3224  ",
+    "capital": "681726480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3226  ",
+    "capital": "644305730",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3227  ",
+    "capital": "1460617270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3228  ",
+    "capital": "677927050",
+    "total": 2840,
+    "stock": 0
+  },
+  {
+    "symbol": "3230  ",
+    "capital": "710109000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3232  ",
+    "capital": "365678650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3234  ",
+    "capital": "764746920",
+    "total": 3925,
+    "stock": 0
+  },
+  {
+    "symbol": "3236  ",
+    "capital": "929208960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3252  ",
+    "capital": "501957540",
+    "total": 1279,
+    "stock": 0
+  },
+  {
+    "symbol": "3259  ",
+    "capital": "746876420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3260  ",
+    "capital": "2667870040",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3264  ",
+    "capital": "4901700760",
+    "total": 10831,
+    "stock": 0
+  },
+  {
+    "symbol": "3265  ",
+    "capital": "1362616590",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3268  ",
+    "capital": "334262720",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3272  ",
+    "capital": "546143020",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3276  ",
+    "capital": "697126660",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3284  ",
+    "capital": "689617900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3285  ",
+    "capital": "427353240",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3287  ",
+    "capital": "439704830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3288  ",
+    "capital": "150000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3289  ",
+    "capital": "747751210",
+    "total": 3764,
+    "stock": 0
+  },
+  {
+    "symbol": "3290  ",
+    "capital": "995489260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3293  ",
+    "capital": "1409007800",
+    "total": 14279,
+    "stock": 0
+  },
+  {
+    "symbol": "3294  ",
+    "capital": "1320159190",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3297  ",
+    "capital": "360494450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3303  ",
+    "capital": "940906070",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3306  ",
+    "capital": "506077020",
+    "total": 4,
+    "stock": 0
+  },
+  {
+    "symbol": "3310  ",
+    "capital": "521832200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3313  ",
+    "capital": "1187707760",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3317  ",
+    "capital": "612515500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3322  ",
+    "capital": "1074657030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3323  ",
+    "capital": "803059140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3324  ",
+    "capital": "883940920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3325  ",
+    "capital": "846345790",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3332  ",
+    "capital": "481042460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3339  ",
+    "capital": "516312760",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3349  ",
+    "capital": "385304310",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3354  ",
+    "capital": "701124260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3357  ",
+    "capital": "1031340000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3360  ",
+    "capital": "764022440",
+    "total": 8508,
+    "stock": 0
+  },
+  {
+    "symbol": "3362  ",
+    "capital": "1419398800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3363  ",
+    "capital": "883145800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3372  ",
+    "capital": "1754500000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3373  ",
+    "capital": "432898010",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3374  ",
+    "capital": "2713643160",
+    "total": 8472,
+    "stock": 0
+  },
+  {
+    "symbol": "3379  ",
+    "capital": "380417480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3388  ",
+    "capital": "740610000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3390  ",
+    "capital": "675050590",
+    "total": 4203,
+    "stock": 0
+  },
+  {
+    "symbol": "3402  ",
+    "capital": "730476920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3426  ",
+    "capital": "264000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3434  ",
+    "capital": "240620000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3438  ",
+    "capital": "471658150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3441  ",
+    "capital": "400399200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3444  ",
+    "capital": "391145860",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3455  ",
+    "capital": "598507500",
+    "total": 4799,
+    "stock": 0
+  },
+  {
+    "symbol": "3465  ",
+    "capital": "323298620",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3466  ",
+    "capital": "608875730",
+    "total": 2501,
+    "stock": 0
+  },
+  {
+    "symbol": "3479  ",
+    "capital": "710601640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3483  ",
+    "capital": "779614850",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3484  ",
+    "capital": "697365570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3489  ",
+    "capital": "831306700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3490  ",
+    "capital": "570064350",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3491  ",
+    "capital": "621586620",
+    "total": 7357,
+    "stock": 0
+  },
+  {
+    "symbol": "3492  ",
+    "capital": "355316000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3498  ",
+    "capital": "628730080",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3499  ",
+    "capital": "549705960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3508  ",
+    "capital": "1021417370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3511  ",
+    "capital": "799729450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3512  ",
+    "capital": "840000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3516  ",
+    "capital": "505902160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3520  ",
+    "capital": "688467780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3521  ",
+    "capital": "472639070",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3523  ",
+    "capital": "618298680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3526  ",
+    "capital": "589441290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3527  ",
+    "capital": "444451250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3529  ",
+    "capital": "761621920",
+    "total": 9006,
+    "stock": 0
+  },
+  {
+    "symbol": "3531  ",
+    "capital": "611750110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3537  ",
+    "capital": "535647420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3540  ",
+    "capital": "730665480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3541  ",
+    "capital": "567871420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3546  ",
+    "capital": "481775480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3548  ",
+    "capital": "601213980",
+    "total": 460,
+    "stock": 0
+  },
+  {
+    "symbol": "3551  ",
+    "capital": "567748900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3552  ",
+    "capital": "855929490",
+    "total": 14425,
+    "stock": 0
+  },
+  {
+    "symbol": "3555  ",
+    "capital": "257627970",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3556  ",
+    "capital": "612527350",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3558  ",
+    "capital": "490608810",
+    "total": 11197,
+    "stock": 0
+  },
+  {
+    "symbol": "3564  ",
+    "capital": "591231000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3567  ",
+    "capital": "341270000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3570  ",
+    "capital": "170970000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3577  ",
+    "capital": "528641770",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3580  ",
+    "capital": "394706570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3581  ",
+    "capital": "510060000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3587  ",
+    "capital": "623131570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3594  ",
+    "capital": "904217710",
+    "total": 9908,
+    "stock": 0
+  },
+  {
+    "symbol": "3597  ",
+    "capital": "391461500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3609  ",
+    "capital": "352793870",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3611  ",
+    "capital": "424769400",
+    "total": 252,
+    "stock": 0
+  },
+  {
+    "symbol": "3615  ",
+    "capital": "684669760",
+    "total": 96,
+    "stock": 0
+  },
+  {
+    "symbol": "3623  ",
+    "capital": "291859460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3624  ",
+    "capital": "1173408420",
+    "total": 5913,
+    "stock": 0
+  },
+  {
+    "symbol": "3625  ",
+    "capital": "1141313820",
+    "total": 545,
+    "stock": 0
+  },
+  {
+    "symbol": "3628  ",
+    "capital": "450000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3629  ",
+    "capital": "336074550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3630  ",
+    "capital": "1841918480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3631  ",
+    "capital": "818209090",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3632  ",
+    "capital": "408897380",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3642  ",
+    "capital": "433686420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3646  ",
+    "capital": "392973710",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3652  ",
+    "capital": "750975000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3663  ",
+    "capital": "734980570",
+    "total": 243,
+    "stock": 0
+  },
+  {
+    "symbol": "3664  ",
+    "capital": "511112940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3666  ",
+    "capital": "586856000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3672  ",
+    "capital": "317903750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3675  ",
+    "capital": "444282500",
+    "total": 10327,
+    "stock": 0
+  },
+  {
+    "symbol": "3680  ",
+    "capital": "840972700",
+    "total": 28903,
+    "stock": 0
+  },
+  {
+    "symbol": "3684  ",
+    "capital": "245915360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3685  ",
+    "capital": "795740000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3687  ",
+    "capital": "300595720",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3689  ",
+    "capital": "771108550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3691  ",
+    "capital": "758834200",
+    "total": 3017,
+    "stock": 0
+  },
+  {
+    "symbol": "3693  ",
+    "capital": "384906940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3707  ",
+    "capital": "3332034700",
+    "total": 27181,
+    "stock": 0
+  },
+  {
+    "symbol": "3709  ",
+    "capital": "1005694500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3710  ",
+    "capital": "2328751130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "3713  ",
+    "capital": "780900000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4102  ",
+    "capital": "423734430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4105  ",
+    "capital": "2486499590",
+    "total": 16754,
+    "stock": 0
+  },
+  {
+    "symbol": "4107  ",
+    "capital": "692983360",
+    "total": 3506,
+    "stock": 0
+  },
+  {
+    "symbol": "4109  ",
+    "capital": "889366810",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4111  ",
+    "capital": "569829850",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4113  ",
+    "capital": "2111381370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4114  ",
+    "capital": "3437007240",
+    "total": 54778,
+    "stock": 0
+  },
+  {
+    "symbol": "4116  ",
+    "capital": "445660000",
+    "total": 5094,
+    "stock": 0
+  },
+  {
+    "symbol": "4120  ",
+    "capital": "867471190",
+    "total": 216,
+    "stock": 0
+  },
+  {
+    "symbol": "4121  ",
+    "capital": "849291450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4123  ",
+    "capital": "5189986840",
+    "total": 8159,
+    "stock": 0
+  },
+  {
+    "symbol": "4126  ",
+    "capital": "726000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4127  ",
+    "capital": "457600000",
+    "total": 91,
+    "stock": 0
+  },
+  {
+    "symbol": "4128  ",
+    "capital": "5110971480",
+    "total": 74126,
+    "stock": 0
+  },
+  {
+    "symbol": "4129  ",
+    "capital": "881116000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4130  ",
+    "capital": "1093758510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4131  ",
+    "capital": "190000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4138  ",
+    "capital": "300000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4139  ",
+    "capital": "425499110",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4147  ",
+    "capital": "2523560000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4153  ",
+    "capital": "617590890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4154  ",
+    "capital": "357200000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4157  ",
+    "capital": "20910392",
+    "total": 4021,
+    "stock": 0
+  },
+  {
+    "symbol": "4160  ",
+    "capital": "242470160",
+    "total": 1245,
+    "stock": 0
+  },
+  {
+    "symbol": "4161  ",
+    "capital": "526597360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4162  ",
+    "capital": "1455968400",
+    "total": 63560,
+    "stock": 0
+  },
+  {
+    "symbol": "4163  ",
+    "capital": "482901430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4167  ",
+    "capital": "3170206070",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4168  ",
+    "capital": "974728100",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4171  ",
+    "capital": "417872500",
+    "total": 6848,
+    "stock": 0
+  },
+  {
+    "symbol": "4173  ",
+    "capital": "745743550",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4174  ",
+    "capital": "2292793740",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4175  ",
+    "capital": "352323640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4183  ",
+    "capital": "238000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4188  ",
+    "capital": "532214000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4192  ",
+    "capital": "1150770000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4198  ",
+    "capital": "161080000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4205  ",
+    "capital": "887720260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4207  ",
+    "capital": "1620908320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4303  ",
+    "capital": "675000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4304  ",
+    "capital": "360380650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4305  ",
+    "capital": "550140000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4401  ",
+    "capital": "1202862860",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4402  ",
+    "capital": "459918300",
+    "total": 2270,
+    "stock": 0
+  },
+  {
+    "symbol": "4406  ",
+    "capital": "519120000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4413  ",
+    "capital": "313146890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4416  ",
+    "capital": "615393470",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4417  ",
+    "capital": "839713990",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4419  ",
+    "capital": "465789170",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4420  ",
+    "capital": "404550000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4430  ",
+    "capital": "562736090",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4432  ",
+    "capital": "505890000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4433  ",
+    "capital": "611519910",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4502  ",
+    "capital": "581116860",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4503  ",
+    "capital": "478633260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4506  ",
+    "capital": "1770120000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4510  ",
+    "capital": "1080106890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4513  ",
+    "capital": "768803000",
+    "total": 2902,
+    "stock": 0
+  },
+  {
+    "symbol": "4523  ",
+    "capital": "640000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4527  ",
+    "capital": "761523700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4528  ",
+    "capital": "765142680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4529  ",
+    "capital": "845933960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4530  ",
+    "capital": "494372760",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4533  ",
+    "capital": "1584341100",
+    "total": 3292,
+    "stock": 0
+  },
+  {
+    "symbol": "4534  ",
+    "capital": "867889480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4535  ",
+    "capital": "756617400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4538  ",
+    "capital": "504560000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4541  ",
+    "capital": "676470680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4542  ",
+    "capital": "322854000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4543  ",
+    "capital": "569700000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4549  ",
+    "capital": "444778690",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4550  ",
+    "capital": "378387830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4554  ",
+    "capital": "213749000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4556  ",
+    "capital": "418840000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4558  ",
+    "capital": "500000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4561  ",
+    "capital": "585216190",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4563  ",
+    "capital": "549500000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4568  ",
+    "capital": "301165000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4577  ",
+    "capital": "489929980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4580  ",
+    "capital": "431320000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4609  ",
+    "capital": "479468200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4702  ",
+    "capital": "723332000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4706  ",
+    "capital": "790300930",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4707  ",
+    "capital": "3280262820",
+    "total": 3719,
+    "stock": 0
+  },
+  {
+    "symbol": "4711  ",
+    "capital": "610560000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4712  ",
+    "capital": "736907370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4714  ",
+    "capital": "1394638180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4716  ",
+    "capital": "743095610",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4721  ",
+    "capital": "749863040",
+    "total": 7586,
+    "stock": 0
+  },
+  {
+    "symbol": "4726  ",
+    "capital": "1551791000",
+    "total": 13400,
+    "stock": 0
+  },
+  {
+    "symbol": "4728  ",
+    "capital": "544630000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4729  ",
+    "capital": "777267410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4735  ",
+    "capital": "367687580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4736  ",
+    "capital": "931092610",
+    "total": 8900,
+    "stock": 0
+  },
+  {
+    "symbol": "4741  ",
+    "capital": "328415840",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4743  ",
+    "capital": "3884976030",
+    "total": 158901,
+    "stock": 0
+  },
+  {
+    "symbol": "4744  ",
+    "capital": "459810260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4745  ",
+    "capital": "774495470",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4747  ",
+    "capital": "300187500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4754  ",
+    "capital": "250274510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4760  ",
+    "capital": "318009080",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4767  ",
+    "capital": "314150000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4768  ",
+    "capital": "358511240",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4773  ",
+    "capital": "495800000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4804  ",
+    "capital": "453479200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4806  ",
+    "capital": "541941850",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4903  ",
+    "capital": "1002793270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4905  ",
+    "capital": "292600440",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4907  ",
+    "capital": "1181457780",
+    "total": 1,
+    "stock": 0
+  },
+  {
+    "symbol": "4908  ",
+    "capital": "782169070",
+    "total": 7099,
+    "stock": 0
+  },
+  {
+    "symbol": "4909  ",
+    "capital": "933568640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4911  ",
+    "capital": "556600000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4923  ",
+    "capital": "283340000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4924  ",
+    "capital": "371644090",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4931  ",
+    "capital": "639517610",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4933  ",
+    "capital": "800316750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4939  ",
+    "capital": "982008680",
+    "total": 122,
+    "stock": 0
+  },
+  {
+    "symbol": "4945  ",
+    "capital": "300368000",
+    "total": 964,
+    "stock": 0
+  },
+  {
+    "symbol": "4946  ",
+    "capital": "139313980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4950  ",
+    "capital": "467597500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4953  ",
+    "capital": "669210880",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4966  ",
+    "capital": "812000380",
+    "total": 8280,
+    "stock": 0
+  },
+  {
+    "symbol": "4971  ",
+    "capital": "365109430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4972  ",
+    "capital": "393720530",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4973  ",
+    "capital": "635058330",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4974  ",
+    "capital": "725001040",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4979  ",
+    "capital": "1323577940",
+    "total": 18612,
+    "stock": 0
+  },
+  {
+    "symbol": "4987  ",
+    "capital": "289800000",
+    "total": 1089,
+    "stock": 0
+  },
+  {
+    "symbol": "4991  ",
+    "capital": "1108420670",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "4995  ",
+    "capital": "418980360",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5009  ",
+    "capital": "4567359910",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5011  ",
+    "capital": "894100350",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5013  ",
+    "capital": "1334160000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5014  ",
+    "capital": "1853330540",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5015  ",
+    "capital": "606391890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5016  ",
+    "capital": "496220760",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5201  ",
+    "capital": "306746000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5202  ",
+    "capital": "890940000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5205  ",
+    "capital": "102500000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5206  ",
+    "capital": "1559250000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5209  ",
+    "capital": "276647500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5210  ",
+    "capital": "621777790",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5211  ",
+    "capital": "320247270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5212  ",
+    "capital": "346330000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5213  ",
+    "capital": "4256693450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5220  ",
+    "capital": "396670000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5223  ",
+    "capital": "445497810",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5227  ",
+    "capital": "700000000",
+    "total": 11927,
+    "stock": 0
+  },
+  {
+    "symbol": "5228  ",
+    "capital": "380562530",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5230  ",
+    "capital": "469558240",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5236  ",
+    "capital": "585000940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5245  ",
+    "capital": "449900000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5251  ",
+    "capital": "356953770",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5263  ",
+    "capital": "609643580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5272  ",
+    "capital": "559731180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5274  ",
+    "capital": "377905680",
+    "total": 9089,
+    "stock": 0
+  },
+  {
+    "symbol": "5276  ",
+    "capital": "395000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5278  ",
+    "capital": "152391000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5281  ",
+    "capital": "370100000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5287  ",
+    "capital": "507957500",
+    "total": 7806,
+    "stock": 0
+  },
+  {
+    "symbol": "5289  ",
+    "capital": "863750810",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5291  ",
+    "capital": "409256060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5299  ",
+    "capital": "358500810",
+    "total": 800,
+    "stock": 0
+  },
+  {
+    "symbol": "5301  ",
+    "capital": "1045525710",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5302  ",
+    "capital": "1598883490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5309  ",
+    "capital": "1555879640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5310  ",
+    "capital": "289435170",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5312  ",
+    "capital": "600598980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5314  ",
+    "capital": "600000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5315  ",
+    "capital": "1063518320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5321  ",
+    "capital": "349731950",
+    "total": 511,
+    "stock": 0
+  },
+  {
+    "symbol": "5324  ",
+    "capital": "2263790900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5328  ",
+    "capital": "1727107240",
+    "total": 25,
+    "stock": 0
+  },
+  {
+    "symbol": "5340  ",
+    "capital": "1948939640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5344  ",
+    "capital": "794474600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5345  ",
+    "capital": "475000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5347  ",
+    "capital": "16389822670",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5348  ",
+    "capital": "289503100",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5351  ",
+    "capital": "2702793470",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5353  ",
+    "capital": "750000000",
+    "total": 10454,
+    "stock": 0
+  },
+  {
+    "symbol": "5355  ",
+    "capital": "1661227920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5356  ",
+    "capital": "1030400000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5364  ",
+    "capital": "288499400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5371  ",
+    "capital": "3909811100",
+    "total": 6711,
+    "stock": 0
+  },
+  {
+    "symbol": "5381  ",
+    "capital": "1801568370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5383  ",
+    "capital": "794003990",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5386  ",
+    "capital": "267609520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5392  ",
+    "capital": "1699639900",
+    "total": 16113,
+    "stock": 0
+  },
+  {
+    "symbol": "5398  ",
+    "capital": "499504600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5403  ",
+    "capital": "708790450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5410  ",
+    "capital": "881006230",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5425  ",
+    "capital": "2634854860",
+    "total": 134027,
+    "stock": 0
+  },
+  {
+    "symbol": "5426  ",
+    "capital": "1438000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5432  ",
+    "capital": "206878040",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5438  ",
+    "capital": "1125365650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5439  ",
+    "capital": "929757520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5443  ",
+    "capital": "1651361440",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5450  ",
+    "capital": "1223922500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5452  ",
+    "capital": "1487636690",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5455  ",
+    "capital": "655018130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5457  ",
+    "capital": "1702399000",
+    "total": 3255,
+    "stock": 0
+  },
+  {
+    "symbol": "5460  ",
+    "capital": "587781300",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5464  ",
+    "capital": "710714900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5465  ",
+    "capital": "1476826290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5468  ",
+    "capital": "278229090",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5474  ",
+    "capital": "403559440",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5475  ",
+    "capital": "1271270170",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5478  ",
+    "capital": "1274743320",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5481  ",
+    "capital": "734028910",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5483  ",
+    "capital": "5862216510",
+    "total": 29634,
+    "stock": 0
+  },
+  {
+    "symbol": "5487  ",
+    "capital": "240625160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5488  ",
+    "capital": "915861240",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5489  ",
+    "capital": "1027064410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5490  ",
+    "capital": "962131010",
+    "total": 5850,
+    "stock": 0
+  },
+  {
+    "symbol": "5493  ",
+    "capital": "416088150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5498  ",
+    "capital": "1899283460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5508  ",
+    "capital": "2174281330",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5511  ",
+    "capital": "1134400000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5512  ",
+    "capital": "7439927120",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5514  ",
+    "capital": "2079091640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5516  ",
+    "capital": "413586000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5520  ",
+    "capital": "603152450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5523  ",
+    "capital": "1550014640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5529  ",
+    "capital": "1240528490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5530  ",
+    "capital": "4200841990",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5536  ",
+    "capital": "572686180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5543  ",
+    "capital": "373044590",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5601  ",
+    "capital": "648000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5603  ",
+    "capital": "806743130",
+    "total": 9805,
+    "stock": 0
+  },
+  {
+    "symbol": "5604  ",
+    "capital": "1087829680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5609  ",
+    "capital": "1360800000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5701  ",
+    "capital": "2967569570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5703  ",
+    "capital": "702395940",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5704  ",
+    "capital": "388616580",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5820  ",
+    "capital": "38347144610",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5864  ",
+    "capital": "2668442380",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5878  ",
+    "capital": "250243030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5902  ",
+    "capital": "945000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "5903  ",
+    "capital": "2232200000",
+    "total": 3329,
+    "stock": 0
+  },
+  {
+    "symbol": "5904  ",
+    "capital": "1008594620",
+    "total": 15746,
+    "stock": 0
+  },
+  {
+    "symbol": "5905  ",
+    "capital": "2498246370",
+    "total": 759,
+    "stock": 0
+  },
+  {
+    "symbol": "6015  ",
+    "capital": "3512515950",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6016  ",
+    "capital": "5944549860",
+    "total": 2621,
+    "stock": 0
+  },
+  {
+    "symbol": "6020  ",
+    "capital": "2523531540",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6021  ",
+    "capital": "3098559740",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6023  ",
+    "capital": "2899762880",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6026  ",
+    "capital": "3001348670",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6101  ",
+    "capital": "1164223710",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6103  ",
+    "capital": "894320890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6104  ",
+    "capital": "902791840",
+    "total": 11592,
+    "stock": 0
+  },
+  {
+    "symbol": "6109  ",
+    "capital": "544004140",
+    "total": 6261,
+    "stock": 0
+  },
+  {
+    "symbol": "6111  ",
+    "capital": "655868910",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6113  ",
+    "capital": "500471000",
+    "total": 6205,
+    "stock": 0
+  },
+  {
+    "symbol": "6114  ",
+    "capital": "439119370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6118  ",
+    "capital": "908895730",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6121  ",
+    "capital": "1849705190",
+    "total": 5992,
+    "stock": 0
+  },
+  {
+    "symbol": "6122  ",
+    "capital": "707909610",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6123  ",
+    "capital": "575894300",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6124  ",
+    "capital": "1824799450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6125  ",
+    "capital": "2490111500",
+    "total": 8832,
+    "stock": 0
+  },
+  {
+    "symbol": "6126  ",
+    "capital": "1227625870",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6127  ",
+    "capital": "1080797510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6129  ",
+    "capital": "1809436750",
+    "total": 13613,
+    "stock": 0
+  },
+  {
+    "symbol": "6130  ",
+    "capital": "443000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6134  ",
+    "capital": "725798980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6138  ",
+    "capital": "740725000",
+    "total": 6042,
+    "stock": 0
+  },
+  {
+    "symbol": "6140  ",
+    "capital": "383679060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6143  ",
+    "capital": "830068970",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6144  ",
+    "capital": "382737010",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6146  ",
+    "capital": "970163800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6147  ",
+    "capital": "7386755390",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6148  ",
+    "capital": "466037570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6150  ",
+    "capital": "483459850",
+    "total": 2754,
+    "stock": 0
+  },
+  {
+    "symbol": "6151  ",
+    "capital": "552573000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6154  ",
+    "capital": "800800000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6156  ",
+    "capital": "805346090",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6158  ",
+    "capital": "550479880",
+    "total": 1016,
+    "stock": 0
+  },
+  {
+    "symbol": "6160  ",
+    "capital": "684891200",
+    "total": 1685,
+    "stock": 0
+  },
+  {
+    "symbol": "6161  ",
+    "capital": "749833030",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6163  ",
+    "capital": "1336933800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6167  ",
+    "capital": "1621732210",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6169  ",
+    "capital": "233949600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6170  ",
+    "capital": "896700380",
+    "total": 455,
+    "stock": 0
+  },
+  {
+    "symbol": "6171  ",
+    "capital": "866547100",
+    "total": 2253,
+    "stock": 0
+  },
+  {
+    "symbol": "6173  ",
+    "capital": "1720000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6174  ",
+    "capital": "500000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6175  ",
+    "capital": "1432196060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6179  ",
+    "capital": "881467310",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6180  ",
+    "capital": "1754935730",
+    "total": 2463,
+    "stock": 0
+  },
+  {
+    "symbol": "6182  ",
+    "capital": "5409337300",
+    "total": 50634,
+    "stock": 0
+  },
+  {
+    "symbol": "6185  ",
+    "capital": "1498675310",
+    "total": 17816,
+    "stock": 0
+  },
+  {
+    "symbol": "6186  ",
+    "capital": "1499861290",
+    "total": 1853,
+    "stock": 0
+  },
+  {
+    "symbol": "6187  ",
+    "capital": "833239020",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6188  ",
+    "capital": "2783589100",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6190  ",
+    "capital": "1616652300",
+    "total": 4596,
+    "stock": 0
+  },
+  {
+    "symbol": "6194  ",
+    "capital": "600000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6195  ",
+    "capital": "501929420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6198  ",
+    "capital": "226353500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6199  ",
+    "capital": "617600180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6203  ",
+    "capital": "799532770",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6204  ",
+    "capital": "231020800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6207  ",
+    "capital": "838735890",
+    "total": 4341,
+    "stock": 0
+  },
+  {
+    "symbol": "6208  ",
+    "capital": "1182016790",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6210  ",
+    "capital": "350480000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6212  ",
+    "capital": "1020000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6217  ",
+    "capital": "728116250",
+    "total": 30247,
+    "stock": 0
+  },
+  {
+    "symbol": "6218  ",
+    "capital": "642620000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6219  ",
+    "capital": "1540162760",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6220  ",
+    "capital": "1319723880",
+    "total": 3279,
+    "stock": 0
+  },
+  {
+    "symbol": "6221  ",
+    "capital": "716623910",
+    "total": 7324,
+    "stock": 0
+  },
+  {
+    "symbol": "6222  ",
+    "capital": "405888780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6223  ",
+    "capital": "940783800",
+    "total": 1966,
+    "stock": 0
+  },
+  {
+    "symbol": "6227  ",
+    "capital": "761117860",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6228  ",
+    "capital": "400000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6229  ",
+    "capital": "356407000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6231  ",
+    "capital": "380434880",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6233  ",
+    "capital": "796098960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6234  ",
+    "capital": "1003863980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6236  ",
+    "capital": "316540390",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6237  ",
+    "capital": "786146210",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6240  ",
+    "capital": "228673700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6241  ",
+    "capital": "337172880",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6242  ",
+    "capital": "233100000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6244  ",
+    "capital": "3550418750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6245  ",
+    "capital": "1180424380",
+    "total": 6698,
+    "stock": 0
+  },
+  {
+    "symbol": "6246  ",
+    "capital": "371092250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6247  ",
+    "capital": "603210000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6248  ",
+    "capital": "607115470",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6259  ",
+    "capital": "185172060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6261  ",
+    "capital": "1284979890",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6263  ",
+    "capital": "625009640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6264  ",
+    "capital": "1163552910",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6265  ",
+    "capital": "1181721510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6266  ",
+    "capital": "1094226760",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6270  ",
+    "capital": "721457590",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6274  ",
+    "capital": "2691517990",
+    "total": 5001,
+    "stock": 0
+  },
+  {
+    "symbol": "6275  ",
+    "capital": "697869250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6276  ",
+    "capital": "314900000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6279  ",
+    "capital": "996547070",
+    "total": 25388,
+    "stock": 0
+  },
+  {
+    "symbol": "6284  ",
+    "capital": "1401803410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6287  ",
+    "capital": "1095363980",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6290  ",
+    "capital": "1477661970",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6291  ",
+    "capital": "420000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6292  ",
+    "capital": "469007120",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6294  ",
+    "capital": "245727410",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6404  ",
+    "capital": "202180000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6411  ",
+    "capital": "925416310",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6417  ",
+    "capital": "422740000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6418  ",
+    "capital": "345220000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6419  ",
+    "capital": "131591700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6425  ",
+    "capital": "436020000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6432  ",
+    "capital": "305928350",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6435  ",
+    "capital": "334330000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6441  ",
+    "capital": "433184290",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6446  ",
+    "capital": "2851440910",
+    "total": 63385,
+    "stock": 0
+  },
+  {
+    "symbol": "6457  ",
+    "capital": "318547920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6461  ",
+    "capital": "1162310000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6462  ",
+    "capital": "692717540",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6465  ",
+    "capital": "322816750",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6469  ",
+    "capital": "891352010",
+    "total": 9384,
+    "stock": 0
+  },
+  {
+    "symbol": "6470  ",
+    "capital": "326941000",
+    "total": 2905,
+    "stock": 0
+  },
+  {
+    "symbol": "6472  ",
+    "capital": "685292800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6482  ",
+    "capital": "171484400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6485  ",
+    "capital": "430365080",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6486  ",
+    "capital": "395702330",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6488  ",
+    "capital": "4372500000",
+    "total": 16030,
+    "stock": 0
+  },
+  {
+    "symbol": "6492  ",
+    "capital": "897436200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6494  ",
+    "capital": "315596900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6496  ",
+    "capital": "466670000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6499  ",
+    "capital": "732340740",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6506  ",
+    "capital": "823608260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6508  ",
+    "capital": "860611560",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6509  ",
+    "capital": "1734903260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6510  ",
+    "capital": "327890220",
+    "total": 1419,
+    "stock": 0
+  },
+  {
+    "symbol": "6512  ",
+    "capital": "250000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6514  ",
+    "capital": "300153820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6516  ",
+    "capital": "466201920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6523  ",
+    "capital": "450476250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6527  ",
+    "capital": "242760000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6530  ",
+    "capital": "337500000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6532  ",
+    "capital": "361008670",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6535  ",
+    "capital": "1631328250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6538  ",
+    "capital": "372690000",
+    "total": 361,
+    "stock": 0
+  },
+  {
+    "symbol": "6542  ",
+    "capital": "420006300",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6546  ",
+    "capital": "662269370",
+    "total": 16507,
+    "stock": 0
+  },
+  {
+    "symbol": "6547  ",
+    "capital": "3271981500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6556  ",
+    "capital": "287500000",
+    "total": 375,
+    "stock": 0
+  },
+  {
+    "symbol": "6560  ",
+    "capital": "258747150",
+    "total": 1927,
+    "stock": 0
+  },
+  {
+    "symbol": "6561  ",
+    "capital": "706823810",
+    "total": 501,
+    "stock": 0
+  },
+  {
+    "symbol": "6568  ",
+    "capital": "308091200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6569  ",
+    "capital": "332613000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6570  ",
+    "capital": "330861770",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6574  ",
+    "capital": "219900000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6576  ",
+    "capital": "1180002520",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6577  ",
+    "capital": "382548700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6578  ",
+    "capital": "393318520",
+    "total": 365,
+    "stock": 0
+  },
+  {
+    "symbol": "6588  ",
+    "capital": "267008250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6589  ",
+    "capital": "3036862350",
+    "total": 48840,
+    "stock": 0
+  },
+  {
+    "symbol": "6590  ",
+    "capital": "182912500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6593  ",
+    "capital": "203094010",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6594  ",
+    "capital": "301596280",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6596  ",
+    "capital": "300000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6603  ",
+    "capital": "1494387800",
+    "total": 5335,
+    "stock": 0
+  },
+  {
+    "symbol": "6609  ",
+    "capital": "724562460",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6612  ",
+    "capital": "339639000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6615  ",
+    "capital": "213624000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6616  ",
+    "capital": "286250000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6624  ",
+    "capital": "180000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6629  ",
+    "capital": "357141660",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6640  ",
+    "capital": "282765000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6642  ",
+    "capital": "373996620",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6643  ",
+    "capital": "317100000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6649  ",
+    "capital": "420000000",
+    "total": 2746,
+    "stock": 0
+  },
+  {
+    "symbol": "6651  ",
+    "capital": "329533800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6654  ",
+    "capital": "369627200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6661  ",
+    "capital": "233042480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6662  ",
+    "capital": "256124000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6664  ",
+    "capital": "550000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6667  ",
+    "capital": "397788780",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6679  ",
+    "capital": "542423350",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6680  ",
+    "capital": "191019700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6683  ",
+    "capital": "272256610",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6684  ",
+    "capital": "244730000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6690  ",
+    "capital": "222407200",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6693  ",
+    "capital": "457200000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6697  ",
+    "capital": "273233640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6703  ",
+    "capital": "208000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6712  ",
+    "capital": "680878000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6716  ",
+    "capital": "269757400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6721  ",
+    "capital": "225000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6727  ",
+    "capital": "226393020",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6728  ",
+    "capital": "230000000",
+    "total": 894,
+    "stock": 0
+  },
+  {
+    "symbol": "6732  ",
+    "capital": "489126180",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6733  ",
+    "capital": "1030760260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6735  ",
+    "capital": "398940000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6741  ",
+    "capital": "602889985",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6747  ",
+    "capital": "241890000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6751  ",
+    "capital": "200000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6752  ",
+    "capital": "283020000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6761  ",
+    "capital": "239085130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6762  ",
+    "capital": "258892420",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6763  ",
+    "capital": "179039130",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6767  ",
+    "capital": "291090000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6788  ",
+    "capital": "347396830",
+    "total": 1319,
+    "stock": 0
+  },
+  {
+    "symbol": "6803  ",
+    "capital": "697104880",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6804  ",
+    "capital": "300000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6811  ",
+    "capital": "414490000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6823  ",
+    "capital": "200405000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6829  ",
+    "capital": "591690000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6892  ",
+    "capital": "508210000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "6898  ",
+    "capital": "156165630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "7402  ",
+    "capital": "248228480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "7556  ",
+    "capital": "229086830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "7578  ",
+    "capital": "340729990",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8024  ",
+    "capital": "451601000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8027  ",
+    "capital": "1001021680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8032  ",
+    "capital": "518103000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8034  ",
+    "capital": "628737250",
+    "total": 1828,
+    "stock": 0
+  },
+  {
+    "symbol": "8038  ",
+    "capital": "598541900",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8040  ",
+    "capital": "688500740",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8042  ",
+    "capital": "1294625490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8043  ",
+    "capital": "799071700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8044  ",
+    "capital": "1285139450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8047  ",
+    "capital": "416663430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8048  ",
+    "capital": "544712060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8049  ",
+    "capital": "1182798080",
+    "total": 2466,
+    "stock": 0
+  },
+  {
+    "symbol": "8050  ",
+    "capital": "1770997730",
+    "total": 17845,
+    "stock": 0
+  },
+  {
+    "symbol": "8054  ",
+    "capital": "908858360",
+    "total": 1626,
+    "stock": 0
+  },
+  {
+    "symbol": "8059  ",
+    "capital": "1886180000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8064  ",
+    "capital": "1648178360",
+    "total": 386,
+    "stock": 0
+  },
+  {
+    "symbol": "8066  ",
+    "capital": "301523040",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8067  ",
+    "capital": "300000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8068  ",
+    "capital": "686599920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8069  ",
+    "capital": "11404047150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8071  ",
+    "capital": "518542830",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8074  ",
+    "capital": "809744660",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8076  ",
+    "capital": "2775315380",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8077  ",
+    "capital": "1097283430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8080  ",
+    "capital": "231638210",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8083  ",
+    "capital": "351331930",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8084  ",
+    "capital": "695141490",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8085  ",
+    "capital": "1399830600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8086  ",
+    "capital": "1965161230",
+    "total": 6073,
+    "stock": 0
+  },
+  {
+    "symbol": "8087  ",
+    "capital": "290689650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8088  ",
+    "capital": "609217499",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8089  ",
+    "capital": "582455270",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8091  ",
+    "capital": "455601140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8092  ",
+    "capital": "388506160",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8096  ",
+    "capital": "1452647580",
+    "total": 1653,
+    "stock": 0
+  },
+  {
+    "symbol": "8097  ",
+    "capital": "451625050",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8099  ",
+    "capital": "885600000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8107  ",
+    "capital": "750000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8109  ",
+    "capital": "776094040",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8111  ",
+    "capital": "1091022230",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8121  ",
+    "capital": "1829937430",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8147  ",
+    "capital": "323876560",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8155  ",
+    "capital": "497560000",
+    "total": 3099,
+    "stock": 0
+  },
+  {
+    "symbol": "8171  ",
+    "capital": "587232300",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8176  ",
+    "capital": "717010000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8182  ",
+    "capital": "1070412150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8183  ",
+    "capital": "1212510680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8234  ",
+    "capital": "1412264720",
+    "total": 1975,
+    "stock": 0
+  },
+  {
+    "symbol": "8240  ",
+    "capital": "1000044140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8255  ",
+    "capital": "914570000",
+    "total": 12762,
+    "stock": 0
+  },
+  {
+    "symbol": "8277  ",
+    "capital": "916288330",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8279  ",
+    "capital": "271008510",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8284  ",
+    "capital": "463420000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8289  ",
+    "capital": "683337650",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8291  ",
+    "capital": "473120000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8299  ",
+    "capital": "1970739930",
+    "total": 9164,
+    "stock": 0
+  },
+  {
+    "symbol": "8342  ",
+    "capital": "335366920",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8349  ",
+    "capital": "1292901960",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8354  ",
+    "capital": "785322630",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8358  ",
+    "capital": "2525880000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8383  ",
+    "capital": "1137604820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8390  ",
+    "capital": "1199276600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8401  ",
+    "capital": "600416800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8403  ",
+    "capital": "1143258680",
+    "total": 6010,
+    "stock": 0
+  },
+  {
+    "symbol": "8409  ",
+    "capital": "320000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8410  ",
+    "capital": "365892000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8415  ",
+    "capital": "10315000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8416  ",
+    "capital": "282107100",
+    "total": 326,
+    "stock": 0
+  },
+  {
+    "symbol": "8418  ",
+    "capital": "783590000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8420  ",
+    "capital": "509900000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8421  ",
+    "capital": "548171400",
+    "total": 3542,
+    "stock": 0
+  },
+  {
+    "symbol": "8423  ",
+    "capital": "241059000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8424  ",
+    "capital": "360543680",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8426  ",
+    "capital": "502425000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8431  ",
+    "capital": "444554820",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8432  ",
+    "capital": "383981400",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8433  ",
+    "capital": "520816000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8435  ",
+    "capital": "317004500",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8436  ",
+    "capital": "1182608300",
+    "total": 3583,
+    "stock": 0
+  },
+  {
+    "symbol": "8437  ",
+    "capital": "478510700",
+    "total": 10585,
+    "stock": 0
+  },
+  {
+    "symbol": "8440  ",
+    "capital": "380002250",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8444  ",
+    "capital": "897668450",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8446  ",
+    "capital": "529144050",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8450  ",
+    "capital": "513099470",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8455  ",
+    "capital": "252190560",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8472  ",
+    "capital": "177358000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8476  ",
+    "capital": "705103370",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8477  ",
+    "capital": "315928380",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8489  ",
+    "capital": "377524140",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8905  ",
+    "capital": "1194400000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8906  ",
+    "capital": "340373700",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8908  ",
+    "capital": "2240874640",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8916  ",
+    "capital": "1497023310",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8917  ",
+    "capital": "1478658720",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8921  ",
+    "capital": "465921590",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8923  ",
+    "capital": "303758000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8924  ",
+    "capital": "838000000",
+    "total": 2168,
+    "stock": 0
+  },
+  {
+    "symbol": "8927  ",
+    "capital": "2508620260",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8928  ",
+    "capital": "508540150",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8929  ",
+    "capital": "505808620",
+    "total": 5505,
+    "stock": 0
+  },
+  {
+    "symbol": "8930  ",
+    "capital": "818094060",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8931  ",
+    "capital": "1222548620",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8932  ",
+    "capital": "602558480",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8933  ",
+    "capital": "3013812520",
+    "total": 22075,
+    "stock": 0
+  },
+  {
+    "symbol": "8935  ",
+    "capital": "843000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8936  ",
+    "capital": "2480781570",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8937  ",
+    "capital": "724788000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "8938  ",
+    "capital": "1353127220",
+    "total": 2862,
+    "stock": 0
+  },
+  {
+    "symbol": "8941  ",
+    "capital": "304104970",
+    "total": 160,
+    "stock": 0
+  },
+  {
+    "symbol": "8942  ",
+    "capital": "1658400800",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9949  ",
+    "capital": "440333600",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9950  ",
+    "capital": "1477160000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9951  ",
+    "capital": "749000000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9960  ",
+    "capital": "335925000",
+    "total": 0,
+    "stock": 0
+  },
+  {
+    "symbol": "9962  ",
+    "capital": "902202600",
+    "total": 0,
+    "stock": 0
   }
 ]
