@@ -2,7 +2,8 @@
   "Login": {
     "host": "itstradeuat.pscnet.com.tw",
     "port": 11002,
-    "debug": true,
+    "debug": false,
+    "verbose": 0,
     "username": "A100000261",
     "password": "AA123456",
     "subcomp": "5850",
@@ -29,10 +30,9 @@
   },
   "Rules": {
     "Exclude": {
-      "IDLength": {
+      "OnlyShare": {
         "enabled": true,
-        "length": 4,
-        "fund": true
+        "code": "0100  "
       },
       "NotDayTrade": {
         "enabled": true
