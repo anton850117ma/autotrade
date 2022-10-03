@@ -20,6 +20,7 @@
   - host: 伺服器域名或地址
   - port: 連線埠號
   - debug: 是否開啟API的日誌功能(`true / false`)
+  - test: 是否開啟測試模式(`true / false`)
   - verbose: 程式紀錄事件的最低嚴重性層級(`0 ~ 5`)
   - username: 登入帳號
   - password: 登入密碼
@@ -27,14 +28,17 @@
   - account: 券商帳號
   - time: 時間相關
     - download: 可下載盤前檔的時間(`HH:MM:SS`)
-    - begin: 登入時間(`HH:MM:SS`)
-    - end: 登出時間(`HH:MM:SS`)
+    - begin: 開始時間(`HH:MM:SS`)
+    - end: 結束時間(`HH:MM:SS`)
 
 **注意**: 
 
 - `debug`的路徑固定為`Logs`，跟下方的`LogDir`沒有關係。
-- 執行時間是在`登入時間`以後，程式就會登入。
-- 執行時間超過`登出時間`，程式就會自動登出並結束。
+- 開啟測試模式後:
+  - 下單行為將不會真的下單，而是直接模擬下單成功並完全成交
+  - 不會回寫任何紀錄，就算是選擇更新資本額
+- 執行時間是在`開始時間`以後，程式就會登入。
+- 執行時間超過`結束時間`，程式就會自動登出並結束。
 - 如果是更新資本額，則將不會登入或登出。
 - `verbose`從0到5分為6級，0嚴重性最低，5嚴重性最高。
   - 0 (Trace): 程式最詳盡的運行流程
@@ -43,7 +47,7 @@
   - 3 (Warning): 異常或非預期的事件
   - 4 (Error): 影響程式正常交易的錯誤事件
   - 5 (Critical): 影響程式正常運行的重大錯誤事件
-  - 以0為例，只要是嚴重性0以上的資訊或事件都會被記錄在日誌裡。
+  - 以0為例，只要是嚴重性0以上的資訊或事件都會被記錄在日誌裡
 
 ```json
 {
@@ -51,6 +55,7 @@
     "host": "itstradeuat.pscnet.com.tw",
     "port": 11002,
     "debug": false,
+    "test": false,
     "verbose": 0,
     "username": "A100000261",
     "password": "AA123456",
@@ -70,17 +75,26 @@
   - T30: T30 檔案網址
     - TSE: 上市盤前檔網址
     - OTC: 上櫃盤前檔網址
-  - Info: 個股資訊
-    - url: 查詢網址
-    - update: 是否只更新個股資本額資訊而不交易(`true / false`)
+  - PreData: 昨日資訊相關網址
+    - mode: 更新模式 (`On / Auto / Off`)
+      - `On`: 只要是在`結束時間`前開啟程式，就會去爬網站並更新昨日成交量與漲停價
+      - `Auto`: 此模式會去搜尋前一個交易日的日誌檔，並判斷該日誌中是否有更新昨日資訊的紀錄。
+      如果有，就不會更新，如果沒有，就會更新。如果已經是在`結束時間`後，則不會更新。
+      - `Off`: 將不會進行更新，而是直接使用紀錄檔中的昨日成交量與漲停價
+    - source: 來源網址(鉅亨網新版網頁API)
+    - backup: 備用網址(鉅亨網舊版網頁)
+  - Capital: 個股資訊
+    - enabled: 是否只更新個股資本額資訊而不交易(`true / false`)
+      - `true`: 更新資本額
+      - `false`: 交易
+    - source: 來源網址(公開資訊觀測站)
 
 **注意**: 
 
+- `更新模式`的字串不看大小寫，預設為`Off`。
+- `Auto`模式會需要查看先前日誌檔中幾個訊息，因此`Verbose`需要設為**0**才能使用。
 - 由於觀測站的限制，1分鐘只能查詢20次，更新幾千個股票會非常久，因此將更新資本額和交易分開。
 - 由於初始化時盤前檔是必要的，因此必須在能取得盤前檔後才能更新資本額。
-- 請透過`update`來決定是更新資本額或交易:
-  - `true`: 更新資本額
-  - `false`: 交易
 - 更新資本額時會自動套用下方`OnlyShare`條件來排除不必要的查詢。
 
 ```json
@@ -90,9 +104,14 @@
       "TSE": "http://download.pscnet.com.tw/download/ap/T30/ASCT30S_",
       "OTC": "http://download.pscnet.com.tw/download/ap/T30/ASCT30O_"
     },
-    "Info": {
-      "url": "https://mops.twse.com.tw/mops/web/t146sb05",
-      "update": false
+    "PreData": {
+      "mode": "auto",
+      "source": "https://ws.api.cnyes.com/ws/api/v1/charting/history?resolution=D&symbol=TWS:0000:STOCK&from=1111&to=1111",
+      "backup": "https://www.cnyes.com/archive/twstock/ps_historyprice/0000.html"
+    },
+    "Capital": {
+      "enabled": false,
+      "source": "https://mops.twse.com.tw/mops/web/t146sb05"
     }
   }
 }
@@ -114,7 +133,7 @@
 ```json
 {
   "Paths": {
-    "Records": "data/Records.json",
+    "Records": "Data/Records.json",
     "LogDir": "Logs"
   }
 }
@@ -144,6 +163,8 @@
       - price: 價格區間(區間外的會被排除)
         - min: 最小價格(`整數或小數`)
         - max: 最大價格(`整數或小數`)
+    - **PreBull**: 昨日漲停且無庫存
+      - enabled: 是否啟用此條件(`true / false`)
   - Buy: 買進條件類別
     - **NowPrice**: 最新成交價大於等於昨日收盤價x106.66%且無庫存
       - enabled: 是否啟用此條件(`true / false`)
@@ -237,6 +258,9 @@
           "min": 10,
           "max": 400
         }
+      },
+      "PreBull": {
+        "enabled": true
       }
     },
     "Buy": {
