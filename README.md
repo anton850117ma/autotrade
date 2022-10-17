@@ -153,6 +153,8 @@
     - **OnlyShare**: 股票代號非一般上市櫃(如只能是4碼)
       - enabled: 是否啟用此條件(`true / false`)
       - code: 排除排列順序在此字串前的股票代號(`字串`)
+    - **NotExistedInT30**: 不在盤前檔
+      - enabled: 是否啟用此條件(`true / false`)
     - **NotDayTrade**: 無當沖註記
       - enabled: 是否啟用此條件(`true / false`)
     - **FullCash**: 是全額交割(用交易方式判斷)
@@ -223,6 +225,7 @@
 
 **注意**: 
 
+- 如果有庫存，該股票將會被訂閱，無視其他的訂閱條件。
 - 買進賣出的庫存條件差異:
   - 買進: 買進是用次數限制，如果有昨日庫存，該股票的買進初始值就會是1。
   - 賣出: 賣出是用庫存量限制，如果有至少該值的庫存就會滿足該條件。
@@ -241,6 +244,9 @@
       "OnlyShare": {
         "enabled": true,
         "code": "0100  "
+      },
+      "NotExistedInT30": {
+        "enabled": true
       },
       "NotDayTrade": {
         "enabled": true
